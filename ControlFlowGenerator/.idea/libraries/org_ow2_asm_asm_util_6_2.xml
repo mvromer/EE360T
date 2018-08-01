@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="org.ow2.asm:asm-util:6.2" type="repository">
+    <properties maven-id="org.ow2.asm:asm-util:6.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-util/6.2/asm-util-6.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm/6.2/asm-6.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-tree/6.2/asm-tree-6.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/ow2/asm/asm-analysis/6.2/asm-analysis-6.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
