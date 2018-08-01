@@ -14,8 +14,13 @@ public class Main {
                 repository.addClass( exampleClass );
             }
 
-            for( String name : repository.getClasses().keySet() ) {
-                System.out.println( name );
+            for( Class clazz : repository.getClasses() ) {
+                System.out.println( "Class: " + clazz.getName() );
+                System.out.println( "Methods:" );
+                for( Method method : clazz.getMethods() ) {
+                    System.out.println( "    " + method.getName() + method.getDescriptor() );
+                }
+                System.out.println();
             }
         }
         catch( Exception ex ) {

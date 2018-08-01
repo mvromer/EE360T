@@ -1,18 +1,21 @@
 package ee360t.controlFlowGenerator;
 
-import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.tree.MethodNode;
 
 import static org.objectweb.asm.Opcodes.ASM4;
 
-public class MethodBuilder extends MethodVisitor {
-    Method result;
+public class MethodBuilder extends MethodNode {
+    Class ownerClass;
 
-    public MethodBuilder( String methodName, String methodDescriptor ) {
-        super( ASM4 );
-        result = new Method( methodName, methodDescriptor );
+    public MethodBuilder( Class ownerClass, int access, String name, String desc, String signature,
+                          String[] exceptions ) {
+        super( ASM4, access, name, desc, signature, exceptions );
+        this.ownerClass = ownerClass;
     }
 
-    public Method getResult() {
-        return result;
+    @Override
+    public void visitEnd() {
+        // TODO: Build CFG using Analyzer.
+        ownerClass.addMethod( name, desc );
     }
 }

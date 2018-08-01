@@ -3,6 +3,7 @@ package ee360t.controlFlowGenerator;
 import org.objectweb.asm.ClassReader;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class ClassRepository {
         classes.put( result.getName(), result );
     }
 
-    public Map<String, Class> getClasses() {
-        return classes;
+    public Collection<Class> getClasses() {
+        return classes.values();
     }
 }
