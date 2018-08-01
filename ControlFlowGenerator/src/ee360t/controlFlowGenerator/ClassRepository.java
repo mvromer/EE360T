@@ -20,8 +20,8 @@ public class ClassRepository {
 
         ClassBuilder classBuilder = new ClassBuilder();
         classReader.accept( classBuilder, 0 );
-        Class clazz = classBuilder.getResult();
-        classes.put( clazz.getName(), clazz );
+        Class result = classBuilder.getResult();
+        classes.put( result.getName(), result );
     }
 
     public Map<String, Class> getClasses() {
