@@ -4,7 +4,7 @@ public class Main {
 
     public static void main( String[] args ) {
         String[] exampleClasses = {
-            "ee360t.controlFlowGenerator.examples.E1"
+            "ee360t.controlFlowGenerator.examples.E3"
         };
 
         ClassRepository repository = new ClassRepository();
