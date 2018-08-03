@@ -5,18 +5,18 @@ import org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.objectweb.asm.tree.analysis.BasicValue;
 
 public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
-    IndexGraph instructionGraph = new IndexGraph();
+    IndexGraph controlFlow = new IndexGraph();
 
     public ControlFlowAnalyzer() {
         super( new BasicInterpreter() );
     }
 
-    public IndexGraph getInstructionGraph() {
-        return instructionGraph;
+    public IndexGraph getControlFlow() {
+        return controlFlow;
     }
 
     @Override
     protected void newControlFlowEdge( int iFrom, int iTo ) {
-        instructionGraph.addEdge( iFrom, iTo );
+        controlFlow.addEdge( iFrom, iTo );
     }
 }

@@ -1,9 +1,16 @@
 package ee360t.controlFlowGenerator;
 
+import ee360t.controlFlowGenerator.utility.IndexGraph;
+
+import java.util.Map;
+import java.util.Set;
+
 public class Main {
 
     public static void main( String[] args ) {
         String[] exampleClasses = {
+            "ee360t.controlFlowGenerator.examples.E1",
+            "ee360t.controlFlowGenerator.examples.E2",
             "ee360t.controlFlowGenerator.examples.E3"
         };
 
@@ -16,9 +23,18 @@ public class Main {
 
             for( Class clazz : repository.getClasses() ) {
                 System.out.println( "Class: " + clazz.getName() );
-                System.out.println( "Methods:" );
+                System.out.println( "    Methods:" );
                 for( Method method : clazz.getMethods() ) {
-                    System.out.println( "    " + method.getName() + method.getDescriptor() );
+                    System.out.println( "        " + method.getName() + method.getDescriptor() );
+                    System.out.println( "            Control Flow:" );
+
+                    IndexGraph controlFlow = method.getControlFlow();
+                    Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
+                    for( int iFrom : edges.keySet() ) {
+                        for( int iTo : edges.get( iFrom ) ) {
+                            System.out.println( String.format( "                %d -> %d", iFrom, iTo ) );
+                        }
+                    }
                 }
                 System.out.println();
             }

@@ -50,6 +50,14 @@ public class IndexGraph {
         backEdges.get( iTo ).add( iFrom );
     }
 
+    public Set<Integer> getNodes() {
+        return nodes;
+    }
+
+    public Map<Integer, Set<Integer>> getEdges() {
+        return edges;
+    }
+
     public void printDot( PrintStream stream ) {
         stream.println( "digraph {" );
         for( int iFrom : edges.keySet() ) {

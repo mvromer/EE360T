@@ -1,8 +1,6 @@
 package ee360t.controlFlowGenerator.utility;
 
 import ee360t.controlFlowGenerator.Class;
-import ee360t.controlFlowGenerator.utility.ControlFlowAnalyzer;
-import ee360t.controlFlowGenerator.utility.IndexGraph;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
@@ -38,15 +36,16 @@ public class MethodBuilder extends MethodNode {
 
         // Use a custom analyzer that will record the control flow edges found by the ASM method analyzer.
         ControlFlowAnalyzer analyzer = new ControlFlowAnalyzer();
+        IndexGraph controlFlow = null;
 
         try {
             analyzer.analyze( ownerClass.getName(), this );
-            IndexGraph instructionGraph = analyzer.getInstructionGraph();
+            controlFlow = analyzer.getControlFlow();
 
             // TODO: Remove me.
-            printInstructions();
-            System.out.println( "Before pruning:" );
-            instructionGraph.printDot( System.out );
+//            printInstructions();
+//            System.out.println( "Before pruning:" );
+//            controlFlow.printDot( System.out );
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
             // instructions signifying labels, line numbers, and stack frames.
@@ -59,23 +58,23 @@ public class MethodBuilder extends MethodNode {
                 if( instructionType == AbstractInsnNode.LABEL ||
                     instructionType == AbstractInsnNode.LINE ||
                     instructionType == AbstractInsnNode.FRAME ) {
-                    instructionGraph.removeNode( iInstruction );
+                    controlFlow.removeNode( iInstruction );
                     // TODO: Remove me.
-                    System.out.println( "Removing instruction at index " + iInstruction );
+//                    System.out.println( "Removing instruction at index " + iInstruction );
                 }
 
                 ++iInstruction;
             }
 
             // TODO: Remove me.
-            System.out.println( "After pruning:" );
-            instructionGraph.printDot( System.out );
+//            System.out.println( "After pruning:" );
+//            controlFlow.printDot( System.out );
         }
         catch( AnalyzerException ex ) {
             throw new RuntimeException( ex );
         }
 
-        ownerClass.addMethod( name, desc );
+        ownerClass.addMethod( name, desc, controlFlow );
     }
 
     private void printInstructions() {
