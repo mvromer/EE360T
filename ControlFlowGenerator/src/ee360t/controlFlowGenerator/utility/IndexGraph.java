@@ -4,6 +4,10 @@ import java.io.PrintStream;
 import java.util.*;
 
 public class IndexGraph {
+    // Well-defined entry and exit nodes.
+    public static final int ENTRY = -2;
+    public static final int EXIT = -1;
+
     Set<Integer> nodes = new HashSet<>();
     Map<Integer, Set<Integer>> edges = new HashMap<>();
     Map<Integer, Set<Integer>> backEdges = new HashMap<>();

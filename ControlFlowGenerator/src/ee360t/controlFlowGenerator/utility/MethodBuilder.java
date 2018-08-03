@@ -1,6 +1,7 @@
 package ee360t.controlFlowGenerator.utility;
 
 import ee360t.controlFlowGenerator.Class;
+import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
@@ -42,6 +43,10 @@ public class MethodBuilder extends MethodNode {
             analyzer.analyze( ownerClass.getName(), this );
             controlFlow = analyzer.getControlFlow();
 
+            // Add an edge from the well-defined entry node to the first instruction in the control flow graph, which is
+            // always at index 0. Do this now so that the entry node points to the first real instruction after pruning.
+            controlFlow.addEdge( IndexGraph.ENTRY, 0 );
+
             // TODO: Remove me.
 //            printInstructions();
 //            System.out.println( "Before pruning:" );
@@ -54,6 +59,7 @@ public class MethodBuilder extends MethodNode {
             while( instructionIter.hasNext() ) {
                 AbstractInsnNode currentInstruction = instructionIter.next();
                 int instructionType = currentInstruction.getType();
+                int opcode = currentInstruction.getOpcode();
 
                 if( instructionType == AbstractInsnNode.LABEL ||
                     instructionType == AbstractInsnNode.LINE ||
@@ -61,6 +67,15 @@ public class MethodBuilder extends MethodNode {
                     controlFlow.removeNode( iInstruction );
                     // TODO: Remove me.
 //                    System.out.println( "Removing instruction at index " + iInstruction );
+                }
+                else if( opcode == Opcodes.ARETURN ||
+                    opcode == Opcodes.DRETURN ||
+                    opcode == Opcodes.FRETURN ||
+                    opcode == Opcodes.IRETURN ||
+                    opcode == Opcodes.LRETURN ||
+                    opcode == Opcodes.RETURN ) {
+                    // Add an edge from this return statement to the well-defined exit node for this method.
+                    controlFlow.addEdge( iInstruction, IndexGraph.EXIT );
                 }
 
                 ++iInstruction;
