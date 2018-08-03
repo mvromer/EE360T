@@ -1,20 +1,17 @@
-package ee360t.controlFlowGenerator;
+package ee360t.controlFlowGenerator.utility;
 
+import ee360t.controlFlowGenerator.Class;
+import ee360t.controlFlowGenerator.utility.ControlFlowAnalyzer;
 import ee360t.controlFlowGenerator.utility.IndexGraph;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.analysis.Analyzer;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
-import org.objectweb.asm.tree.analysis.BasicInterpreter;
-import org.objectweb.asm.tree.analysis.BasicValue;
 import org.objectweb.asm.util.Textifier;
 import org.objectweb.asm.util.TraceMethodVisitor;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
 
 import static org.objectweb.asm.Opcodes.ASM4;
 
@@ -39,19 +36,16 @@ public class MethodBuilder extends MethodNode {
         // time.
         //
 
-        // Use a custom analyzer that will record the control flow edges found by the ASM method analyzer
-        IndexGraph instructionGraph = new IndexGraph();
-        Analyzer<BasicValue> a = new Analyzer<BasicValue>( new BasicInterpreter() ) {
-            @Override
-            protected void newControlFlowEdge( int iFrom, int iTo ) {
-                instructionGraph.addEdge( iFrom, iTo );
-            }
-        };
+        // Use a custom analyzer that will record the control flow edges found by the ASM method analyzer.
+        ControlFlowAnalyzer analyzer = new ControlFlowAnalyzer();
 
         try {
-            a.analyze( ownerClass.getName(), this );
+            analyzer.analyze( ownerClass.getName(), this );
+            IndexGraph instructionGraph = analyzer.getInstructionGraph();
 
+            // TODO: Remove me.
             printInstructions();
+            System.out.println( "Before pruning:" );
             instructionGraph.printDot( System.out );
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
@@ -65,18 +59,20 @@ public class MethodBuilder extends MethodNode {
                 if( instructionType == AbstractInsnNode.LABEL ||
                     instructionType == AbstractInsnNode.LINE ||
                     instructionType == AbstractInsnNode.FRAME ) {
-                    System.out.println( "Removing instruction " + iInstruction );
                     instructionGraph.removeNode( iInstruction );
+                    // TODO: Remove me.
+                    System.out.println( "Removing instruction at index " + iInstruction );
                 }
 
                 ++iInstruction;
             }
 
+            // TODO: Remove me.
+            System.out.println( "After pruning:" );
             instructionGraph.printDot( System.out );
         }
         catch( AnalyzerException ex ) {
-            System.err.println( "Analyzer error" );
-            ex.printStackTrace( System.err );
+            throw new RuntimeException( ex );
         }
 
         ownerClass.addMethod( name, desc );

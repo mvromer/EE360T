@@ -1,5 +1,7 @@
-package ee360t.controlFlowGenerator;
+package ee360t.controlFlowGenerator.utility;
 
+import ee360t.controlFlowGenerator.Class;
+import ee360t.controlFlowGenerator.utility.MethodBuilder;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.MethodVisitor;
 

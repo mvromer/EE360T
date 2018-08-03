@@ -1,5 +1,6 @@
 package ee360t.controlFlowGenerator;
 
+import ee360t.controlFlowGenerator.utility.ClassBuilder;
 import org.objectweb.asm.ClassReader;
 
 import java.io.IOException;
