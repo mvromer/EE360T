@@ -1,5 +1,10 @@
 package ee360t.controlFlowGenerator;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import ee360t.controlFlowGenerator.serialization.ClassRepositorySerializer;
+import ee360t.controlFlowGenerator.serialization.ClassSerializer;
+import ee360t.controlFlowGenerator.serialization.MethodSerializer;
 import ee360t.controlFlowGenerator.utility.IndexGraph;
 
 import java.util.Map;
@@ -38,6 +43,17 @@ public class Main {
                 }
                 System.out.println();
             }
+
+            // Serialize.
+            Gson gson = new GsonBuilder()
+                .registerTypeAdapter( ClassRepository.class, new ClassRepositorySerializer() )
+                .registerTypeAdapter( Class.class, new ClassSerializer() )
+                .registerTypeAdapter( Method.class, new MethodSerializer() )
+                .setPrettyPrinting()
+                .disableHtmlEscaping()
+                .create();
+            String json = gson.toJson( repository );
+            System.out.println( json );
         }
         catch( Exception ex ) {
             System.err.println( "Error running generator." );
