@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Premain-Class: ee360t.controlflow.trace.TracerAgent
+Premain-Class: ee360t.controlflow.trace.agent.TracerAgent

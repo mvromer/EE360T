@@ -1,4 +1,4 @@
-package ee360t.controlflow.trace;
+package ee360t.controlflow.trace.driver;
 
 public class App {
     public static void main( String[] args ) {

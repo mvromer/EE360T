@@ -1,4 +1,4 @@
-package ee360t.controlflow.trace;
+package ee360t.controlflow.trace.agent;
 
 import java.lang.instrument.Instrumentation;
 
