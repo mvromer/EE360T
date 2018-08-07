@@ -3,6 +3,7 @@ package ee360t.controlflow.trace.agent;
 import com.beust.jcommander.JCommander;
 
 import java.lang.instrument.Instrumentation;
+import java.util.Arrays;
 
 public class TracerAgent {
     public static void premain( String agentArgs, Instrumentation inst ) {
@@ -18,5 +19,7 @@ public class TracerAgent {
         }
 
         System.out.println( "Trace type: " + options.traceType.toString() );
+        System.out.println( "Prefixes: " + Arrays.toString( options.prefixesToTrace.toArray() ) );
+        inst.addTransformer( new TracerTransformer( options.prefixesToTrace ) );
     }
 }
