@@ -6,6 +6,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/TracerAgent/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="TracerAgent" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
