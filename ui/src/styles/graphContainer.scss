@@ -1,0 +1,51 @@
+.class-view, .method-view {
+  display: inline-block;
+  height: 100%;
+  overflow: scroll;
+  padding: 4rem 2rem 2rem;
+  position: relative;
+}
+
+.class-view {
+  width: 60%;
+  border-right: 4px $gcolor5 solid;
+
+  p {
+    margin-bottom: 2rem;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid $gcolor5;
+    position: absolute;
+    right: 0;
+    display: none;
+  }
+
+  .systemDiv {
+    height: 70%;
+    margin: auto;
+
+    .classGroup {
+      cursor: pointer;
+    }
+  }
+}
+.method-view {
+  width: 39%;
+
+  &> .mermaid {
+    opacity: 0;
+    position: absolute;
+    margin: auto;
+    width: 90%;
+    transition: .2s opacity ease-in-out;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}

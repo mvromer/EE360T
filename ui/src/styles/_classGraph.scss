@@ -1,0 +1,91 @@
+g.classGroup {
+  &.highlighted {
+    rect {
+      fill: $highlightBg;
+      stroke: $highlightBorder;
+      transition: .7s all ease-in-out;
+    }
+
+    text {
+      color: #fff;
+      fill: #fff;
+      transition: .7s all ease-in-out;
+    }
+
+    line {
+      stroke: $highlightBorder;
+      transition: .7s all ease-in-out;
+    }
+  }
+
+  &>text:first-of-type {
+    font-weight: 700;
+    color: black;
+    fill: black;
+  }
+
+  text {
+    color: $graphText;
+    fill: $graphText;
+    stroke: none;
+    font-size: 10px;
+  }
+
+  rect {
+    fill: $graphBg;
+    stroke: $graphBorder;
+  }
+
+  line {
+    stroke: $graphBorder;
+    stroke-width: 1;
+  }
+}
+
+.classLabel {
+  .box {
+    stroke: none;
+    stroke-width: 0;
+    fill: $graphBg;
+    opacity: 0.5;
+  }
+
+  .label {
+    fill: $graphBorder;
+    font-size: 10px;
+  }
+}
+
+.relation {
+  stroke: grey;
+  stroke-width: 1;
+  fill: none;
+}
+
+#compositionStart,
+#compositionEnd,
+#dependencyStart,
+#dependencyEnd,
+#extensionStart,
+#extensionEnd {
+  fill: grey;
+  stroke: grey;
+  stroke-width: 1;
+
+  &.hightlighted {
+    fill: $highlightEdge;
+    stroke: $highlightEdge;
+  }
+}
+
+#aggregationStart,
+#aggregationEnd {
+  fill: grey;
+  stroke: grey;
+  stroke-width: 1;
+
+  .hightlighted & {
+    fill: $highlightEdge;
+    stroke: $highlightEdge;
+  }
+}
