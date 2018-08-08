@@ -1,0 +1,91 @@
+{
+  "system" : {
+    "classes": {
+      "pset5": {
+        "fields": ["int test", "Object[] elem"],
+        "methods": {
+          "foo": {
+            "cfgNodes": ["foo0", "foo1", "foo2", "foo3", "foo4", "foo5", "foo6"],
+            "cfgEdges": [
+              ["foo0", "foo1"],
+              ["foo0", "foo2"],
+              ["foo2", "foo3"],
+              ["foo3", "foo4"],
+              ["foo3", "foo5"],
+              ["foo5", "foo6"],
+              ["foo6", "foo3"]
+            ],
+            "basicBlockNodes": [],
+            "basicBlockEedges": []
+          },
+          "bar": {
+            "cfgNodes": ["bar0", "bar1"],
+            "cfgEdges": [
+              ["bar0", "bar1"]
+            ],
+            "basicBlockNodes": [],
+            "basicBlockEedges": []
+          }
+        },
+        "crossEdges": [
+          ["foo4", "bar0"],
+          ["bar1", "foo2"]
+        ]
+      },
+      "pset4": {
+        "methods": {
+          "hoo": {
+            "cfgNodes": ["hoo0", "hoo1", "hoo2", "hoo3", "hoo4"],
+            "cfgEdges": [
+              ["hoo0", "hoo1"],
+              ["hoo1", "hoo2"],
+              ["hoo2", "hoo3"],
+              ["hoo3", "hoo4"]
+            ],
+            "basicBlockNodes": [],
+            "basicBlockEedges": []
+          },
+          "har": {
+            "cfgNodes": ["bar0", "bar1", "bar2"],
+            "cfgEdges": [
+              ["bar0", "bar1"],
+              ["bar0", "bar2"]
+            ],
+            "basicBlockNodes": [],
+            "basicBlockEedges": []
+          }
+        },
+        "crossEdges": [
+          ["hoo4", "bar0"],
+          ["bar1", "hoo2"]
+        ]
+      }
+    },
+    "classRelations": [
+      ["pset5", "pset4", "composition"]
+    ]
+  },
+
+  "testRuns": {
+    "test1": {
+      "classesVisited": ["pset5", "pset4"],
+      "nodesVisited": [{
+          "class": "pset5",
+          "nodes": ["foo0", "foo2", "foo3", "foo4", "bar0", "bar1", "foo2", "foo3", "foo5", "foo6"]
+        },
+        {
+          "class": "pset4",
+          "nodes": ["hoo0", "hoo1", "hoo2", "hoo3", "hoo4", "bar0", "bar1"]
+        }
+      ]
+    },
+    "test2": {
+      "classesVisited": ["pset5"],
+      "nodesVisited": [{
+          "class": "pset5",
+          "nodes": ["foo0", "foo1"]
+        }
+      ]
+    }
+  }
+}

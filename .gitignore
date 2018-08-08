@@ -2,3 +2,5 @@ ControlTracer/.idea/workspace.xml
 ControlTracer/.idea/codeStyles/
 ControlTracer/out/**
 ControlTracer/*.json
+.DS_Store
+.idea/
