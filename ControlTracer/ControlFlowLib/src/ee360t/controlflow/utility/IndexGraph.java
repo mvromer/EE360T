@@ -20,8 +20,8 @@ public class IndexGraph {
 
     public void removeNode( int iNode ) {
         if( nodes.contains( iNode ) ) {
-            Set<Integer> predecessors = backEdges.get( iNode );
-            Set<Integer> successors = edges.get( iNode );
+            Set<Integer> predecessors = getPredecessors( iNode );
+            Set<Integer> successors = getSuccessors( iNode );
 
             for( int iSuccessor : successors ) {
                 // Remove the back edge to the given node from its successor.
@@ -62,6 +62,10 @@ public class IndexGraph {
         return edges;
     }
 
+    public Set<Integer> getSuccessors( int iNode ) {
+        return edges.get( iNode );
+    }
+
     public void printDot( PrintStream stream ) {
         stream.println( "digraph {" );
         for( int iFrom : edges.keySet() ) {
@@ -70,5 +74,9 @@ public class IndexGraph {
             }
         }
         stream.println( "}" );
+    }
+
+    private Set<Integer> getPredecessors( int iNode ) {
+        return backEdges.get( iNode );
     }
 }

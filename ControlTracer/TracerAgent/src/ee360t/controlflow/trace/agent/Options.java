@@ -13,4 +13,7 @@ public class Options {
     @Parameter( names = { "-prefix", "-p" },
         description = "Prefixes of fully qualified class names to trace" )
     public List<String> prefixesToTrace = new ArrayList<>();
+
+    @Parameter( names = { "-verbose", "-v" } )
+    public boolean verbose = false;
 }

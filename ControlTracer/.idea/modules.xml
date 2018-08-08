@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AsmGenPlayground/AsmGenPlayground.iml" filepath="$PROJECT_DIR$/AsmGenPlayground/AsmGenPlayground.iml" />
       <module fileurl="file://$PROJECT_DIR$/ControlFlowGenerator/ControlFlowGenerator.iml" filepath="$PROJECT_DIR$/ControlFlowGenerator/ControlFlowGenerator.iml" />
       <module fileurl="file://$PROJECT_DIR$/ControlFlowLib/ControlFlowLib.iml" filepath="$PROJECT_DIR$/ControlFlowLib/ControlFlowLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/TraceDriver/TraceDriver.iml" filepath="$PROJECT_DIR$/TraceDriver/TraceDriver.iml" />

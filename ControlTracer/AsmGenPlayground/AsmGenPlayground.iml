@@ -7,15 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" scope="RUNTIME">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../out/artifacts/TracerAgent/TracerAgent.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="org.ow2.asm:asm-util:6.2" level="project" />
+    <orderEntry type="module" module-name="TracerAgent" />
   </component>
 </module>

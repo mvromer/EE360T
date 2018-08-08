@@ -11,6 +11,7 @@
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/ow2/asm/asm/6.2/asm-6.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/ow2/asm/asm-tree/6.2/asm-tree-6.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/ow2/asm/asm-analysis/6.2/asm-analysis-6.2.jar" path-in-jar="/" />
+      <element id="module-output" name="ControlFlowLib" />
     </root>
   </artifact>
 </component>
