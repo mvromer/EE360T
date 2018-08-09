@@ -3,5 +3,4 @@ ControlTracer/.idea/codeStyles/
 ControlTracer/out/**
 ControlTracer/*.json
 .DS_Store
-.idea/
 node_modules/
