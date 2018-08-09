@@ -16,4 +16,7 @@ public class Options {
 
     @Parameter( names = { "-verbose", "-v" } )
     public boolean verbose = false;
+
+    @Parameter( names = { "-out", "-o" } )
+    public String outputPath;
 }

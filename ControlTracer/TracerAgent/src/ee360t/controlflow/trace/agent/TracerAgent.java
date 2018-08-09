@@ -7,9 +7,6 @@ import java.util.Arrays;
 
 public class TracerAgent {
     public static void premain( String agentArgs, Instrumentation inst ) {
-        // TODO: This will likely move into the transformer.
-        Runtime.getRuntime().addShutdownHook( new TracerShutdownHook() );
-
         Options options = new Options();
         if( agentArgs != null ) {
             JCommander.newBuilder()
@@ -18,8 +15,7 @@ public class TracerAgent {
                 .parse( agentArgs.split( "\\s" ) );
         }
 
-        System.out.println( "Trace type: " + options.traceType.toString() );
-        System.out.println( "Prefixes: " + Arrays.toString( options.prefixesToTrace.toArray() ) + "\n" );
+        Runtime.getRuntime().addShutdownHook( new TracerShutdownHook( options.outputPath ) );
         inst.addTransformer( new TraceTransformer( options.prefixesToTrace, options.verbose ) );
     }
 }
