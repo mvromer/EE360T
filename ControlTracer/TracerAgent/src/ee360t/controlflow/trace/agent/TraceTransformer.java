@@ -82,7 +82,6 @@ public class TraceTransformer implements ClassFileTransformer {
         if( !modifiedClass )
             return null;
 
-        // TODO DELETE ME
         if( verbose ) {
             TraceClassVisitor classVisitor = new TraceClassVisitor( new PrintWriter( System.out ) );
             classNode.accept( classVisitor );
@@ -121,6 +120,7 @@ public class TraceTransformer implements ClassFileTransformer {
     private void instrumentTracedMethod( ClassNode owner, MethodNode method ) {
         try {
             IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
+            TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
 
             // TODO: Ultimately want to do different things depending if we're tracing control flow or basic blocks.
             // For each node, we want to record when we're about to visit it. We visit the nodes in reverse index order
@@ -195,10 +195,10 @@ public class TraceTransformer implements ClassFileTransformer {
     private void instrumentJunitTestMethod( ClassNode owner, MethodNode method ) {
         try {
             IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
-            Set<Integer> startNodes = controlFlow.getSuccessors( IndexGraph.ENTRY );
 
             // We expect the entry node to point to the first instruction of the method, and there better be only one
             // initial instruction in any given method.
+            Set<Integer> startNodes = controlFlow.getSuccessors( IndexGraph.ENTRY );
             assert startNodes.size() == 1;
 
             int iStartInstruction = startNodes.iterator().next();

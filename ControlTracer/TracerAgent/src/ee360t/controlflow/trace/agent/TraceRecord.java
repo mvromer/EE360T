@@ -14,4 +14,12 @@ public class TraceRecord {
     public void addNode( int globalId ) {
         tracePath.add( globalId );
     }
+
+    String getLabel() {
+        return label;
+    }
+
+    List<Integer> getTracePath() {
+        return tracePath;
+    }
 }
