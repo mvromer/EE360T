@@ -193,19 +193,18 @@ public class TraceTransformer implements ClassFileTransformer {
                 instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
                         visitNodeType.getDescriptor(), false ) );
 
-                // If this node has the EXIT node as a successor, make sure we visit the EXIT node AFTER this instruction.
+                // If this node has the EXIT node as a successor, make sure we visit the EXIT node.
                 Set<Integer> successors = controlFlow.getSuccessors( iNode );
                 if( successors.contains( IndexGraph.EXIT ) ) {
-                    InsnList exitInstrumentation = new InsnList();
                     int globalExitId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
                         IndexGraph.EXIT );
-                    exitInstrumentation.add( new IntInsnNode( BIPUSH, globalExitId ) );
-                    exitInstrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
+                    instrumentation.add( new IntInsnNode( BIPUSH, globalExitId ) );
+                    instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
                         visitNodeType.getDescriptor(), false ) );
-                    method.instructions.insert( exitInstrumentation );
                 }
 
-                method.instructions.insertBefore( method.instructions.get( iNode ), instrumentation );
+                AbstractInsnNode insertPoint = method.instructions.get( iNode );
+                method.instructions.insertBefore( insertPoint, instrumentation );
             }
         }
         catch( Exception ex ) {
