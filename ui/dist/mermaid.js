@@ -64667,7 +64667,7 @@ var addSubGraph = exports.addSubGraph = function addSubGraph(list, title) {
 
   nodeList = uniq(nodeList.concat.apply(nodeList, list));
 
-  var subGraph = { id: 'subGraph' + subCount, nodes: nodeList, title: title.trim() };
+  var subGraph = { id: title.trim(), nodes: nodeList, title: title.trim() };
   subGraphs.push(subGraph);
   subCount = subCount + 1;
   return subGraph.id;

@@ -18,12 +18,12 @@ const loadJSON = (file, callback) => {
   xobj.send(null);
 };
 
-loadJSON("data.json", (response) => {
+loadJSON("results.json", (response) => {
   const data = JSON.parse(response);
-  const {system, testRuns} = data;
+  const { controlFlows, traceRecords, globalIdToNodeId } = data;
 
-  genClassGraph(system);
-  initTestView(testRuns);
+  genClassGraph(controlFlows);
+  initTestView(traceRecords);
 
   mermaid.initialize({
     // theme: 'forest',
@@ -36,6 +36,14 @@ loadJSON("data.json", (response) => {
     },
     // sequenceDiagram: { actorMargin: 300 } // deprecated
   });
+
+  // const insertSvg = (svg, bindfunction) => {
+  //   console.log(svg);
+  //   console.log(bindfunction);
+  // };
+
+  // var graphDefinition = 'graph TB\na-->b';
+  // var graph = mermaidAPI.render('graphDiv', graphDefinition, insertSvg);
 
   document.addEventListener('click', (evt) => {
     const target = evt.target.className;

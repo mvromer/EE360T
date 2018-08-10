@@ -1,14 +1,19 @@
-.class-view, .method-view {
-  display: inline-block;
+.graph-container {
   height: 100%;
+}
+
+.class-view, .method-view {
+  display: block;
+  width: 100%;
   overflow: scroll;
-  padding: 4rem 2rem 2rem;
   position: relative;
+  overflow: scroll;
 }
 
 .class-view {
-  width: 60%;
-  border-right: 4px $gcolor5 solid;
+  height: 40%;
+  border-bottom: 4px $gcolor5 solid;
+  padding: 4rem 2rem 2rem;
 
   p {
     margin-bottom: 2rem;
@@ -26,7 +31,6 @@
   }
 
   .systemDiv {
-    height: 70%;
     margin: auto;
 
     .classGroup {
@@ -35,7 +39,8 @@
   }
 }
 .method-view {
-  width: 39%;
+  height: 60%;
+  padding: 2rem;
 
   &> .mermaid {
     opacity: 0;

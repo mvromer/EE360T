@@ -3,12 +3,12 @@ import { removeAllHighlight } from './utils';
 
 export default (tests) => {
   const dropdown = document.querySelector('.header__view-test__dd');
-  const testSet = [];
+  const testSet = {};
 
-  Object.entries(tests).forEach(([testKey, data]) => {
-    testSet.push(testKey);
+  tests.forEach((test) => {
+    testSet[test.testMethodName] = test.tracePath;
     dropdown.insertAdjacentHTML('beforeend', `
-      <option value="${testKey}">${testKey}</option>
+      <option value="${test.testMethodName}">${test.testMethodName}</option>
     `);
   });
 
@@ -20,12 +20,12 @@ export default (tests) => {
         break;
       case 'all':
         removeAllHighlight();
-        testSet.forEach(test => {
-          highlightTestPath(tests[test]);
+        Object.entries(testSet).forEach(([key, value]) => {
+          highlightTestPath(value);
         });
         break;
       default:
-        const test = tests[value];
+        const test = testSet[value];
         removeAllHighlight();
         highlightTestPath(test);
         break;
