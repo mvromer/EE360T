@@ -15,19 +15,19 @@ class NodeId {
         this.localId = localId;
     }
 
-    public String getClassName() {
+    String getClassName() {
         return className;
     }
 
-    public String getMethodName() {
+    String getMethodName() {
         return methodName;
     }
 
-    public String getMethodDescriptor() {
+    String getMethodDescriptor() {
         return methodDescriptor;
     }
 
-    public int getLocalId() {
+    int getLocalId() {
         return localId;
     }
 
