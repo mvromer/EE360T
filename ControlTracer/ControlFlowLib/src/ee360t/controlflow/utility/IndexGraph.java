@@ -11,6 +11,7 @@ public class IndexGraph {
     Set<Integer> nodes = new HashSet<>();
     Map<Integer, Set<Integer>> edges = new HashMap<>();
     Map<Integer, Set<Integer>> backEdges = new HashMap<>();
+    Map<Integer, Integer> sourceLineNumbers = new HashMap<>();
 
     public void addNode( int iNode ) {
         nodes.add( iNode );
@@ -52,6 +53,11 @@ public class IndexGraph {
         addNode( iTo );
         edges.get( iFrom ).add( iTo );
         backEdges.get( iTo ).add( iFrom );
+    }
+
+    public void mapSourceLineNumber( int iNode, int sourceLineNumber ) {
+        nodes.add( iNode );
+        sourceLineNumbers.put( iNode, sourceLineNumber );
     }
 
     public Set<Integer> getNodes() {

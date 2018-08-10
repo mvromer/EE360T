@@ -2,6 +2,7 @@ package ee360t.controlflow.utility;
 
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
+import org.objectweb.asm.tree.LineNumberNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.Analyzer;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
@@ -37,26 +38,43 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
             // instructions signifying labels, line numbers, and stack frames.
+            final int INVALID_LINE = -1;
             int iInstruction = 0;
+            int lineNumber = INVALID_LINE;
             ListIterator<AbstractInsnNode> instructionIter = method.instructions.iterator();
+
             while( instructionIter.hasNext() ) {
                 AbstractInsnNode currentInstruction = instructionIter.next();
                 int instructionType = currentInstruction.getType();
-                int opcode = currentInstruction.getOpcode();
 
                 if( instructionType == AbstractInsnNode.LABEL ||
                         instructionType == AbstractInsnNode.LINE ||
                         instructionType == AbstractInsnNode.FRAME ) {
+                    // If this is a line number, record it so that we can associate it with the next real instruction.
+                    if( instructionType == AbstractInsnNode.LINE )
+                        lineNumber = ((LineNumberNode)currentInstruction).line;
+
                     analyzer.controlFlow.removeNode( iInstruction );
                 }
-                else if( opcode == Opcodes.ARETURN ||
-                        opcode == Opcodes.DRETURN ||
-                        opcode == Opcodes.FRETURN ||
-                        opcode == Opcodes.IRETURN ||
-                        opcode == Opcodes.LRETURN ||
-                        opcode == Opcodes.RETURN ) {
-                    // Add an edge from this return statement to the well-defined exit node for this method.
-                    analyzer.controlFlow.addEdge( iInstruction, IndexGraph.EXIT );
+                else {
+                    // Associate this "real" instruction with the most recent line number of its valid. After
+                    // associating, we reset the line number so that at most one control flow node maps to the
+                    // associated line number instruction node.
+                    if( lineNumber != INVALID_LINE ) {
+                        analyzer.controlFlow.mapSourceLineNumber( iInstruction, lineNumber );
+                        lineNumber = INVALID_LINE;
+                    }
+
+                    int opcode = currentInstruction.getOpcode();
+                    if( opcode == Opcodes.ARETURN ||
+                            opcode == Opcodes.DRETURN ||
+                            opcode == Opcodes.FRETURN ||
+                            opcode == Opcodes.IRETURN ||
+                            opcode == Opcodes.LRETURN ||
+                            opcode == Opcodes.RETURN ) {
+                        // Add an edge from this return statement to the well-defined exit node for this method.
+                        analyzer.controlFlow.addEdge( iInstruction, IndexGraph.EXIT );
+                    }
                 }
 
                 ++iInstruction;
