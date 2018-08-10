@@ -80,28 +80,34 @@ public class TraceRegistry {
             methodJson.addProperty( "methodName", methodId.getMethodName() );
             methodJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
             methodJson.addProperty(  "methodId", nextMethodId );
-            methodJson.add( "nodes", gson.toJsonTree( controlFlow.getNodes().stream().mapToInt( localId ->  {
-                NodeId nodeId = new NodeId( className, methodId.getMethodName(),
-                    methodId.getMethodDescriptor(), localId  );
-                return globalIds.get( nodeId );
-            } ).toArray() ) );
+
+            // Serialize the global IDs for this method's nodes both in the nodes list and the list of edges.
+            Map<Integer, Integer> localToGlobalId = new HashMap<>();
+            Set<Integer> globalNodes = new HashSet<>();
+            for( int iNode : controlFlow.getNodes() ) {
+                int globalId = globalIds.get( new NodeId( className,
+                        methodId.getMethodName(),
+                        methodId.getMethodDescriptor(),
+                        iNode ) );
+
+                localToGlobalId.put( iNode, globalId );
+                globalNodes.add( globalId );
+            }
+
+            methodJson.add( "nodes", gson.toJsonTree( globalNodes ) );
 
             Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
-            Map<Integer, Set<Integer>> mappedEdges = new HashMap<>();
+            Map<Integer, Set<Integer>> globalEdges = new HashMap<>();
             for( int iFrom : edges.keySet() ) {
-                NodeId fromNodeId = new NodeId( className, methodId.getMethodName(),
-                    methodId.getMethodDescriptor(), iFrom );
-                Set<Integer> mappedTo = new HashSet<>();
+                Set<Integer> globalSuccessors = new HashSet<>();
 
                 for( int iTo : edges.get( iFrom ) ) {
-                    NodeId toNodeId = new NodeId( className, methodId.getMethodName(),
-                        methodId.getMethodDescriptor(), iTo );
-                    mappedTo.add( globalIds.get( toNodeId ) );
+                    globalSuccessors.add( localToGlobalId.get( iTo ) );
                 }
 
-                mappedEdges.put( globalIds.get( fromNodeId ), mappedTo );
+                globalEdges.put( localToGlobalId.get( iFrom ), globalSuccessors );
             }
-           methodJson.add( "edges", gson.toJsonTree( mappedEdges ) );
+           methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
 
             ++nextMethodId;
             methodsJson.add( methodJson );
