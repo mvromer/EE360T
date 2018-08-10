@@ -63,7 +63,6 @@ public class TraceRegistry {
                 .create();
 
         JsonObject results = new JsonObject();
-        //results.add( "globalIdToNodeId", gson.toJsonTree( nodeIds ) );
         results.add( "traceRecords", gson.toJsonTree( traceRecords ) );
 
         JsonObject controlFlowsJson = new JsonObject();
@@ -157,6 +156,7 @@ public class TraceRegistry {
         }
 
         results.add( "controlFlows", controlFlowsJson );
+        results.add( "globalIdToNodeId", gson.toJsonTree( nodeIds ) );
 
         try( Writer outputWriter = new FileWriter( outputPath ) ) {
             outputWriter.write( gson.toJson( results ) );
