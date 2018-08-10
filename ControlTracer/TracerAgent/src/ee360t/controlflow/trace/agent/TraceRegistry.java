@@ -47,6 +47,7 @@ public class TraceRegistry {
     public static void serialize( String outputPath ) {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter( TraceRecord.class, new TraceRecordSerializer() )
+                .registerTypeAdapter( NodeId.class, new NodeIdSerializer() )
                 .setPrettyPrinting()
                 .disableHtmlEscaping()
                 .create();
@@ -60,7 +61,11 @@ public class TraceRegistry {
             IndexGraph controlFlow = controlFlows.get( methodId );
             JsonObject controlFlowJson = new JsonObject();
 
-            controlFlowJson.addProperty( "className", methodId.getClassName() );
+            String[] classNameParts = methodId.getClassName().split( "/" );
+            String className = classNameParts[classNameParts.length - 1];
+
+            controlFlowJson.addProperty( "classInternalName", methodId.getClassName() );
+            controlFlowJson.addProperty( "className", className );
             controlFlowJson.addProperty( "methodName", methodId.getMethodName() );
             controlFlowJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
             controlFlowJson.add( "nodes", gson.toJsonTree( controlFlow.getNodes() ) );

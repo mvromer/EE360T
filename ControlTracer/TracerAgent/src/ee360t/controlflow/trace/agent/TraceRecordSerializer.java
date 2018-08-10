@@ -13,6 +13,9 @@ public class TraceRecordSerializer implements JsonSerializer<TraceRecord> {
     public JsonElement serialize( TraceRecord traceRecord, Type type, JsonSerializationContext context ) {
         JsonObject json = new JsonObject();
         json.addProperty( "label", traceRecord.getLabel() );
+        json.addProperty( "testClassName", traceRecord.getTestClassName() );
+        json.addProperty( "testMethodName", traceRecord.getTestMethodName() );
+        json.addProperty( "testMethodDescriptor", traceRecord.getTestMethodDescriptor() );
         json.add( "tracePath", context.serialize( traceRecord.getTracePath() ) );
         return json;
     }

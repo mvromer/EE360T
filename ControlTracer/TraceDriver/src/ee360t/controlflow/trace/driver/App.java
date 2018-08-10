@@ -13,4 +13,7 @@ public class App {
     public void t2() {
         E1.M2();
     }
+
+    @Test
+    public void t3() { E1.M3(); }
 }

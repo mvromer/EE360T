@@ -9,4 +9,8 @@ public class E1 {
             x = x + 10;
         return x;
     }
+
+    public static void M3() {
+        E2.M1();
+    }
 }

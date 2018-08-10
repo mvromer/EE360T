@@ -15,6 +15,22 @@ class NodeId {
         this.localId = localId;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public String getMethodDescriptor() {
+        return methodDescriptor;
+    }
+
+    public int getLocalId() {
+        return localId;
+    }
+
     @Override
     public boolean equals( Object o ) {
         if( this == o )

@@ -4,19 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TraceRecord {
-    private String label;
+    private String testClassName;
+    private String testMethodName;
+    private String testMethodDescriptor;
     private List<Integer> tracePath = new ArrayList<>();
 
     public TraceRecord( String testClassName, String testMethodName, String testMethodDescriptor ) {
-        label = testClassName + "." + testMethodName + testMethodDescriptor;
+        this.testClassName = testClassName;
+        this.testMethodName = testMethodName;
+        this.testMethodDescriptor = testMethodDescriptor;
     }
 
     public void addNode( int globalId ) {
         tracePath.add( globalId );
     }
 
+    public String getTestClassName() {
+        return testClassName;
+    }
+
+    public String getTestMethodName() {
+        return testMethodName;
+    }
+
+    public String getTestMethodDescriptor() {
+        return testMethodDescriptor;
+    }
+
     String getLabel() {
-        return label;
+        return testClassName + "." + testMethodName + testMethodDescriptor;
     }
 
     List<Integer> getTracePath() {
