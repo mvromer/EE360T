@@ -15,7 +15,10 @@ public class TracerAgent {
                 .parse( agentArgs.split( "\\s" ) );
         }
 
-        Runtime.getRuntime().addShutdownHook( new TracerShutdownHook( options.outputPath ) );
+        // Append current directory to list of source paths.
+        options.sourcePaths.add( "." );
+
+        Runtime.getRuntime().addShutdownHook( new TracerShutdownHook( options.outputPath, options.sourcePaths ) );
         inst.addTransformer( new TraceTransformer( options.prefixesToTrace, options.verbose ) );
     }
 }

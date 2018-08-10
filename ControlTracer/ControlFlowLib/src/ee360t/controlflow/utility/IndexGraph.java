@@ -8,6 +8,9 @@ public class IndexGraph {
     public static final int ENTRY = -2;
     public static final int EXIT = -1;
 
+    // Well-defined line numbers.
+    public static final int INVALID_LINE = -1;
+
     Set<Integer> nodes = new HashSet<>();
     Map<Integer, Set<Integer>> edges = new HashMap<>();
     Map<Integer, Set<Integer>> backEdges = new HashMap<>();
@@ -58,6 +61,10 @@ public class IndexGraph {
     public void mapSourceLineNumber( int iNode, int sourceLineNumber ) {
         nodes.add( iNode );
         sourceLineNumbers.put( iNode, sourceLineNumber );
+    }
+
+    public int getSourceLineNumber( int iNode ) {
+        return sourceLineNumbers.getOrDefault( iNode, INVALID_LINE );
     }
 
     public Set<Integer> getNodes() {

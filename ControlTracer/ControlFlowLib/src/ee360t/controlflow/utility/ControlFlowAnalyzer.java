@@ -38,9 +38,8 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
             // instructions signifying labels, line numbers, and stack frames.
-            final int INVALID_LINE = -1;
             int iInstruction = 0;
-            int lineNumber = INVALID_LINE;
+            int lineNumber = IndexGraph.INVALID_LINE;
             ListIterator<AbstractInsnNode> instructionIter = method.instructions.iterator();
 
             while( instructionIter.hasNext() ) {
@@ -60,9 +59,9 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                     // Associate this "real" instruction with the most recent line number of its valid. After
                     // associating, we reset the line number so that at most one control flow node maps to the
                     // associated line number instruction node.
-                    if( lineNumber != INVALID_LINE ) {
+                    if( lineNumber != IndexGraph.INVALID_LINE ) {
                         analyzer.controlFlow.mapSourceLineNumber( iInstruction, lineNumber );
-                        lineNumber = INVALID_LINE;
+                        lineNumber = IndexGraph.INVALID_LINE;
                     }
 
                     int opcode = currentInstruction.getOpcode();

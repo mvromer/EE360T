@@ -7,10 +7,15 @@ import com.google.gson.JsonObject;
 import ee360t.controlflow.utility.IndexGraph;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class TraceRegistry {
+    private static Map<String, String> sourceFileNames = new HashMap<>();
     private static Map<MethodId, IndexGraph> controlFlows = new HashMap<>();
     private static Map<NodeId, Integer> globalIds = new HashMap<>();
     private static Map<Integer, NodeId> nodeIds = new HashMap<>();
@@ -44,8 +49,13 @@ public class TraceRegistry {
         controlFlows.put( methodId, controlFlow );
     }
 
-    public static void serialize( String outputPath ) {
+    public static void setSourceFileName( String className, String sourceFileName ) {
+        sourceFileNames.put( className, sourceFileName );
+    }
+
+    public static void serialize( String outputPath, List<String> sourcePaths ) {
         Gson gson = new GsonBuilder()
+                .serializeNulls()
                 .registerTypeAdapter( TraceRecord.class, new TraceRecordSerializer() )
                 .registerTypeAdapter( NodeId.class, new NodeIdSerializer() )
                 .setPrettyPrinting()
@@ -58,6 +68,7 @@ public class TraceRegistry {
 
         JsonObject controlFlowsJson = new JsonObject();
         Map<String, JsonObject> controlFlowsForClass = new HashMap<>();
+        Map<String, List<String>> sourceLinesForClass = new HashMap<>();
 
         int nextMethodId = 0;
         for( MethodId methodId : controlFlows.keySet() ) {
@@ -65,6 +76,7 @@ public class TraceRegistry {
             String className = methodId.getClassName();
             JsonObject controlFlowJson = controlFlowsForClass.computeIfAbsent( className,
                 trash -> {
+                    // Setup the new object for this class.
                     JsonObject json = new JsonObject();
                     String[] classNameParts = methodId.getClassName().split( "/" );
                     String displayName = classNameParts[classNameParts.length - 1];
@@ -72,6 +84,17 @@ public class TraceRegistry {
                     controlFlowsJson.add( className, json );
                     json.addProperty( "classDisplayName", displayName );
                     json.add( "methods", new JsonArray() );
+
+                    // Read the source lines for this class in case we need to annotate our method nodes. We assume that
+                    // the source file for a class is stored in its package on disk, with each package rooted in one of
+                    // the given source paths. Since our class name parts is prefixed by the class's package, we just
+                    // replace the class name with the class source file to form the relative path to the class's source
+                    // file.
+                    String sourceFileName = sourceFileNames.get( className );
+                    if( sourceFileName != null ) {
+                        classNameParts[classNameParts.length - 1] = sourceFileName;
+                        sourceLinesForClass.put( className, getSourceLines( classNameParts, sourcePaths ) );
+                    }
                     return json;
                 } );
 
@@ -81,9 +104,10 @@ public class TraceRegistry {
             methodJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
             methodJson.addProperty(  "methodId", nextMethodId );
 
-            // Serialize the global IDs for this method's nodes both in the nodes list and the list of edges.
+            // Serialize the annotated global IDs for this method's nodes.
+            List<String> sourceLines = sourceLinesForClass.get( className );
             Map<Integer, Integer> localToGlobalId = new HashMap<>();
-            Set<Integer> globalNodes = new HashSet<>();
+            Map<Integer, String> globalNodes = new HashMap<>();
             for( int iNode : controlFlow.getNodes() ) {
                 int globalId = globalIds.get( new NodeId( className,
                         methodId.getMethodName(),
@@ -91,11 +115,30 @@ public class TraceRegistry {
                         iNode ) );
 
                 localToGlobalId.put( iNode, globalId );
-                globalNodes.add( globalId );
-            }
 
+                // Attempt to get the annotation for this node. For ENTRY and EXIT nodes, we have special annotations.
+                // For all other nodes, we attempt to get the corresponding source line, if there is one.
+                String annotation = null;
+                if( iNode == IndexGraph.ENTRY ) {
+                    annotation = "[ENTRY]";
+                }
+                else if( iNode == IndexGraph.EXIT ) {
+                    annotation = "[EXIT]";
+                }
+                else if( sourceLines != null ) {
+                    int sourceLineNumber = controlFlow.getSourceLineNumber( iNode );
+                    if( sourceLineNumber != IndexGraph.INVALID_LINE ) {
+                        // Line numbers are 1-based.
+                        annotation = String.format( "Line %d: %s", sourceLineNumber,
+                                sourceLines.get( sourceLineNumber - 1 ).trim() );
+                    }
+                }
+
+                globalNodes.put( globalId, annotation );
+            }
             methodJson.add( "nodes", gson.toJsonTree( globalNodes ) );
 
+            // Serialize the edges for this method, with local node IDs replaced with their global IDs.
             Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
             Map<Integer, Set<Integer>> globalEdges = new HashMap<>();
             for( int iFrom : edges.keySet() ) {
@@ -122,6 +165,22 @@ public class TraceRegistry {
             System.err.println( "Error writing trace results." );
             ex.printStackTrace( System.err );
         }
+    }
+
+    private static List<String> getSourceLines( String[] sourceFilePathParts, List<String> sourcePaths ) {
+        for( String sourcePath : sourcePaths ) {
+            Path sourceFilePath = Paths.get( sourcePath, sourceFilePathParts );
+            if( Files.exists( sourceFilePath ) ) {
+                try {
+                    return Files.readAllLines( sourceFilePath );
+                }
+                catch( IOException ex ) {
+                    System.err.println( "Failed to read source file path " + sourceFilePath.toString() );
+                    return null;
+                }
+            }
+        }
+        return null;
     }
 
     private TraceRegistry() {}

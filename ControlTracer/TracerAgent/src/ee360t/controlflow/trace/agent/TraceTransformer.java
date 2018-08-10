@@ -121,6 +121,7 @@ public class TraceTransformer implements ClassFileTransformer {
         try {
             IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
             TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
+            TraceRegistry.setSourceFileName( owner.name, owner.sourceFile );
 
             // For each node, we want to record when we're about to visit it. We visit the nodes in reverse index order
             // so that when we insert our instrumentation for a given node, we don't invalidate the instruction indices
