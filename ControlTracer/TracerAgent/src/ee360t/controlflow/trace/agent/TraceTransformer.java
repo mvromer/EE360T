@@ -82,7 +82,7 @@ public class TraceTransformer implements ClassFileTransformer {
         if( !modifiedClass )
             return null;
 
-        if( verbose ) {
+        if( verbose && shouldTraceClass ) {
             TraceClassVisitor classVisitor = new TraceClassVisitor( new PrintWriter( System.out ) );
             classNode.accept( classVisitor );
         }
