@@ -53,24 +53,58 @@ public class TraceRegistry {
                 .create();
 
         JsonObject results = new JsonObject();
-        results.add( "globalIdToNodeId", gson.toJsonTree( nodeIds ) );
+        //results.add( "globalIdToNodeId", gson.toJsonTree( nodeIds ) );
         results.add( "traceRecords", gson.toJsonTree( traceRecords ) );
 
-        JsonArray controlFlowsJson = new JsonArray();
+        JsonObject controlFlowsJson = new JsonObject();
+        Map<String, JsonObject> controlFlowsForClass = new HashMap<>();
+
+        int nextMethodId = 0;
         for( MethodId methodId : controlFlows.keySet() ) {
             IndexGraph controlFlow = controlFlows.get( methodId );
-            JsonObject controlFlowJson = new JsonObject();
+            String className = methodId.getClassName();
+            JsonObject controlFlowJson = controlFlowsForClass.computeIfAbsent( className,
+                trash -> {
+                    JsonObject json = new JsonObject();
+                    String[] classNameParts = methodId.getClassName().split( "/" );
+                    String displayName = classNameParts[classNameParts.length - 1];
 
-            String[] classNameParts = methodId.getClassName().split( "/" );
-            String className = classNameParts[classNameParts.length - 1];
+                    controlFlowsJson.add( className, json );
+                    json.addProperty( "classDisplayName", displayName );
+                    json.add( "methods", new JsonArray() );
+                    return json;
+                } );
 
-            controlFlowJson.addProperty( "classInternalName", methodId.getClassName() );
-            controlFlowJson.addProperty( "className", className );
-            controlFlowJson.addProperty( "methodName", methodId.getMethodName() );
-            controlFlowJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
-            controlFlowJson.add( "nodes", gson.toJsonTree( controlFlow.getNodes() ) );
-            controlFlowJson.add( "edges", gson.toJsonTree( controlFlow.getEdges() ) );
-            controlFlowsJson.add( controlFlowJson );
+            JsonArray methodsJson = controlFlowJson.getAsJsonArray( "methods" );
+            JsonObject methodJson = new JsonObject();
+            methodJson.addProperty( "methodName", methodId.getMethodName() );
+            methodJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
+            methodJson.addProperty(  "methodId", nextMethodId );
+            methodJson.add( "nodes", gson.toJsonTree( controlFlow.getNodes().stream().mapToInt( localId ->  {
+                NodeId nodeId = new NodeId( className, methodId.getMethodName(),
+                    methodId.getMethodDescriptor(), localId  );
+                return globalIds.get( nodeId );
+            } ).toArray() ) );
+
+            Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
+            Map<Integer, Set<Integer>> mappedEdges = new HashMap<>();
+            for( int iFrom : edges.keySet() ) {
+                NodeId fromNodeId = new NodeId( className, methodId.getMethodName(),
+                    methodId.getMethodDescriptor(), iFrom );
+                Set<Integer> mappedTo = new HashSet<>();
+
+                for( int iTo : edges.get( iFrom ) ) {
+                    NodeId toNodeId = new NodeId( className, methodId.getMethodName(),
+                        methodId.getMethodDescriptor(), iTo );
+                    mappedTo.add( globalIds.get( toNodeId ) );
+                }
+
+                mappedEdges.put( globalIds.get( fromNodeId ), mappedTo );
+            }
+           methodJson.add( "edges", gson.toJsonTree( mappedEdges ) );
+
+            ++nextMethodId;
+            methodsJson.add( methodJson );
         }
 
         results.add( "controlFlows", controlFlowsJson );

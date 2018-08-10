@@ -136,11 +136,22 @@ public class TraceTransformer implements ClassFileTransformer {
                 if( iNode == IndexGraph.ENTRY || iNode == IndexGraph.EXIT )
                     continue;
 
+                InsnList instrumentation = new InsnList();
+
+                // If this node has the ENTRY node as a predecessor, make sure we visit the ENTRY node.
+                Set<Integer> predecessors = controlFlow.getPredecessors( iNode );
+                if( predecessors.contains( IndexGraph.ENTRY ) ) {
+                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
+                        IndexGraph.ENTRY );
+                    instrumentation.add( new IntInsnNode( BIPUSH, globalEntryId ) );
+                    instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
+                        visitNodeType.getDescriptor(), false ) );
+                }
+
                 // Get (or compute) a global ID for this node based on the node's enclosing class and method (which is
                 // determined by the method name and method descriptor). This is an optimization to minimize overhead
                 // of recording a node visitation.
                 int globalId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, iNode );
-                InsnList instrumentation = new InsnList();
 
                 // Our instrumentation is basically two instructions: push the global ID onto the operand stack and call
                 // our static visitNode method. We could cheat and use the LDC instruction for all possible integer
@@ -181,6 +192,18 @@ public class TraceTransformer implements ClassFileTransformer {
 
                 instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
                         visitNodeType.getDescriptor(), false ) );
+
+                // If this node has the EXIT node as a successor, make sure we visit the EXIT node AFTER this instruction.
+                Set<Integer> successors = controlFlow.getSuccessors( iNode );
+                if( successors.contains( IndexGraph.EXIT ) ) {
+                    InsnList exitInstrumentation = new InsnList();
+                    int globalExitId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
+                        IndexGraph.EXIT );
+                    exitInstrumentation.add( new IntInsnNode( BIPUSH, globalExitId ) );
+                    exitInstrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
+                        visitNodeType.getDescriptor(), false ) );
+                    method.instructions.insert( exitInstrumentation );
+                }
 
                 method.instructions.insertBefore( method.instructions.get( iNode ), instrumentation );
             }

@@ -62,6 +62,10 @@ public class IndexGraph {
         return edges;
     }
 
+    public Set<Integer> getPredecessors( int iNode ) {
+        return backEdges.get( iNode );
+    }
+
     public Set<Integer> getSuccessors( int iNode ) {
         return edges.get( iNode );
     }
@@ -74,9 +78,5 @@ public class IndexGraph {
             }
         }
         stream.println( "}" );
-    }
-
-    private Set<Integer> getPredecessors( int iNode ) {
-        return backEdges.get( iNode );
     }
 }
