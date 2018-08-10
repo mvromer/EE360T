@@ -122,85 +122,61 @@ public class TraceTransformer implements ClassFileTransformer {
             IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
             TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
 
-            // TODO: Ultimately want to do different things depending if we're tracing control flow or basic blocks.
             // For each node, we want to record when we're about to visit it. We visit the nodes in reverse index order
             // so that when we insert our instrumentation for a given node, we don't invalidate the instruction indices
             // used for insertion on subsequent loop iterations.
             //
-            // We don't record anything for the ENTRY or EXIT nodes since they're artificial.
+            // For ENTRY and EXIT nodes, since they're artificial, and thus execution will never naturally reach them,
+            // we need to handle them as special cases so that we make sure we end up visiting them at the correct time.
             //
-            // TODO: Add some smarts to visit the ENTRY/EXIT nodes any time their successor/predecessors are visited.
+            // If an instruction has the ENTRY node as a predecessor, we make sure we visit the ENTRY node first. If an
+            // instruction has the EXIT node as a successor, we make sure we visit the EXIT node after we visit the node
+            // corresponding to the instruction.
+            //
+            // Note that we have to add the instrumentation for the EXIT node BEFORE the actual instruction preceding
+            // our EXIT node. This is because that instruction will actually transfer control flow to some other
+            // method/routine in the program.
+            //
+            // For each node we visit, we compute a globally unique node ID based on the node's enclosing class and
+            // method, which is determined by the method name and method descriptor. This is an optimization to minimize
+            // the overhead of recording a node visitation.
+            //
+            // Our instrumentation is basically two instructions per node we visit: push the node's global ID onto the
+            // operand stack and call our static visitNode method. We could cheat and use the LDC instruction for all
+            // possible integer values, but that's not ideal. To better match what a typical Java compiler would emit,
+            // we need to use BIPUSH, SIPUSH, or one of the ICONST_<i> instructions, depending on the value of the
+            // global ID we're passing to the called method.
+            //
             Integer[] nodes = controlFlow.getNodes().toArray( new Integer[0] );
             Collections.reverse( Arrays.asList( nodes ) );
+
             for( int iNode : nodes ) {
                 if( iNode == IndexGraph.ENTRY || iNode == IndexGraph.EXIT )
                     continue;
 
+                // List of instructions that will represent our instrumentation.
                 InsnList instrumentation = new InsnList();
 
                 // If this node has the ENTRY node as a predecessor, make sure we visit the ENTRY node.
-                Set<Integer> predecessors = controlFlow.getPredecessors( iNode );
-                if( predecessors.contains( IndexGraph.ENTRY ) ) {
-                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
-                        IndexGraph.ENTRY );
-                    instrumentation.add( new IntInsnNode( BIPUSH, globalEntryId ) );
-                    instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
-                        visitNodeType.getDescriptor(), false ) );
+                if( controlFlow.getPredecessors( iNode ).contains( IndexGraph.ENTRY ) ) {
+                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, IndexGraph.ENTRY );
+                    instrumentation.add( getPushGlobalIdInstruction( globalEntryId ) );
+                    instrumentation.add( getInvokeVisitNodeInstruction() );
                 }
 
                 // Get (or compute) a global ID for this node based on the node's enclosing class and method (which is
                 // determined by the method name and method descriptor). This is an optimization to minimize overhead
                 // of recording a node visitation.
                 int globalId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, iNode );
-
-                // Our instrumentation is basically two instructions: push the global ID onto the operand stack and call
-                // our static visitNode method. We could cheat and use the LDC instruction for all possible integer
-                // values, but that's not ideal. To better match what a typical Java compiler would emit, we need to use
-                // BIPUSH, SIPUSH, or one of the ICONST_<i> instructions, depending on the value of the global ID we're
-                // passing to the called method.
-                //
-                // NOTE: We can simplify these checks because we know all global IDs will be nonnegative.
-                //
-                switch( globalId ) {
-                    case 0:
-                        instrumentation.add( new InsnNode( ICONST_0 ) );
-                        break;
-                    case 1:
-                        instrumentation.add( new InsnNode( ICONST_1 ) );
-                        break;
-                    case 2:
-                        instrumentation.add( new InsnNode( ICONST_2 ) );
-                        break;
-                    case 3:
-                        instrumentation.add( new InsnNode( ICONST_3 ) );
-                        break;
-                    case 4:
-                        instrumentation.add( new InsnNode( ICONST_4 ) );
-                        break;
-                    case 5:
-                        instrumentation.add( new InsnNode( ICONST_5 ) );
-                        break;
-                    default:
-                        if( globalId <= Byte.MAX_VALUE )
-                            instrumentation.add( new IntInsnNode( BIPUSH, globalId ) );
-                        else if( globalId <= Short.MAX_VALUE )
-                            instrumentation.add( new IntInsnNode( SIPUSH, globalId ) );
-                        else
-                            instrumentation.add( new LdcInsnNode( globalId ) );
-                        break;
-                }
-
-                instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
-                        visitNodeType.getDescriptor(), false ) );
+                instrumentation.add( getPushGlobalIdInstruction( globalId ) );
+                instrumentation.add( getInvokeVisitNodeInstruction() );
 
                 // If this node has the EXIT node as a successor, make sure we visit the EXIT node.
-                Set<Integer> successors = controlFlow.getSuccessors( iNode );
-                if( successors.contains( IndexGraph.EXIT ) ) {
+                if( controlFlow.getSuccessors( iNode ).contains( IndexGraph.EXIT ) ) {
                     int globalExitId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
                         IndexGraph.EXIT );
-                    instrumentation.add( new IntInsnNode( BIPUSH, globalExitId ) );
-                    instrumentation.add( new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
-                        visitNodeType.getDescriptor(), false ) );
+                    instrumentation.add( getPushGlobalIdInstruction( globalExitId ) );
+                    instrumentation.add( getInvokeVisitNodeInstruction() );
                 }
 
                 AbstractInsnNode insertPoint = method.instructions.get( iNode );
@@ -212,6 +188,36 @@ public class TraceTransformer implements ClassFileTransformer {
                     owner.name, method.name, method.desc ) );
             ex.printStackTrace( System.err );
         }
+    }
+
+    private AbstractInsnNode getPushGlobalIdInstruction( int globalId ) {
+        // NOTE: We can simplify these checks because we know all global IDs will be nonnegative.
+        switch( globalId ) {
+            case 0:
+                return new InsnNode( ICONST_0 );
+            case 1:
+                return new InsnNode( ICONST_1 );
+            case 2:
+                return new InsnNode( ICONST_2 );
+            case 3:
+                return new InsnNode( ICONST_3 );
+            case 4:
+                return new InsnNode( ICONST_4 );
+            case 5:
+                return new InsnNode( ICONST_5 );
+            default:
+                if( globalId <= Byte.MAX_VALUE )
+                    return new IntInsnNode( BIPUSH, globalId );
+                else if( globalId <= Short.MAX_VALUE )
+                    return new IntInsnNode( SIPUSH, globalId );
+                else
+                    return new LdcInsnNode( globalId );
+        }
+    }
+
+    private AbstractInsnNode getInvokeVisitNodeInstruction() {
+        return new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
+                visitNodeType.getDescriptor(), false );
     }
 
     private void instrumentJunitTestMethod( ClassNode owner, MethodNode method ) {
