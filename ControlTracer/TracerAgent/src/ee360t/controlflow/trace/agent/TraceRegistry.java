@@ -16,9 +16,14 @@ import java.util.*;
 
 public class TraceRegistry {
     private static Map<String, String> sourceFileNames = new HashMap<>();
-    private static Map<MethodId, ControlFlow> controlFlows = new HashMap<>();
+
+    private static Map<MethodId, Integer> globalMethodIds = new HashMap<>();
+    private static Map<Integer, MethodId> methodIds = new HashMap<>();
+    private static Map<Integer, ControlFlow> controlFlows = new HashMap<>();
+
     private static Map<NodeId, Integer> globalNodeIds = new HashMap<>();
     private static Map<Integer, NodeId> nodeIds = new HashMap<>();
+
     private static List<TraceRecord> traceRecords = new ArrayList<>();
     private static TraceRecord currentRecord;
 
@@ -44,10 +49,19 @@ public class TraceRegistry {
         } );
     }
 
+    public static int getGlobalMethodId( String className, String methodName, String methodDescriptor ) {
+        MethodId methodId = new MethodId( className, methodName, methodDescriptor );
+        return globalMethodIds.computeIfAbsent( methodId, key -> {
+            int globalMethodId = globalMethodIds.size();
+            methodIds.put( globalMethodId, key );
+            return globalMethodId;
+        } );
+    }
+
     public static void setControlFlow( ControlFlow controlFlow, String className, String methodName,
                                        String methodDescriptor ) {
-        MethodId methodId = new MethodId( className, methodName, methodDescriptor );
-        controlFlows.put( methodId, controlFlow );
+        int globalMethodId = getGlobalMethodId( className, methodName, methodDescriptor );
+        controlFlows.put( globalMethodId, controlFlow );
     }
 
     public static void setSourceFileName( String className, String sourceFileName ) {
@@ -70,9 +84,10 @@ public class TraceRegistry {
         Map<String, JsonObject> controlFlowsForClass = new HashMap<>();
         Map<String, List<String>> sourceLinesForClass = new HashMap<>();
 
-        int nextMethodId = 0;
-        for( MethodId methodId : controlFlows.keySet() ) {
-            ControlFlow controlFlow = controlFlows.get( methodId );
+        for( int globalMethodId : controlFlows.keySet() ) {
+            MethodId methodId = methodIds.get( globalMethodId );
+            ControlFlow controlFlow = controlFlows.get( globalMethodId );
+
             String className = methodId.getClassName();
             JsonObject controlFlowJson = controlFlowsForClass.computeIfAbsent( className,
                 trash -> {
@@ -102,7 +117,7 @@ public class TraceRegistry {
             JsonObject methodJson = new JsonObject();
             methodJson.addProperty( "methodName", methodId.getMethodName() );
             methodJson.addProperty( "methodDescriptor", methodId.getMethodDescriptor() );
-            methodJson.addProperty(  "methodId", nextMethodId );
+            methodJson.addProperty(  "globalMethodId", globalMethodId );
 
             // Serialize the annotated global IDs for this method's nodes.
             List<String> sourceLines = sourceLinesForClass.get( className );
@@ -150,9 +165,7 @@ public class TraceRegistry {
 
                 globalEdges.put( localToGlobalNodeId.get( iFrom ), globalSuccessors );
             }
-           methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
-
-            ++nextMethodId;
+            methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
             methodsJson.add( methodJson );
         }
 
