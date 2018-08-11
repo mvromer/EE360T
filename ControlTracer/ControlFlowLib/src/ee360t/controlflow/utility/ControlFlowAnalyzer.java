@@ -1,21 +1,31 @@
 package ee360t.controlflow.utility;
 
+import ee360t.controlflow.model.NodeId;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.LineNumberNode;
+import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
 import org.objectweb.asm.tree.analysis.Analyzer;
 import org.objectweb.asm.tree.analysis.AnalyzerException;
 import org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.objectweb.asm.tree.analysis.BasicValue;
 
+import java.util.HashSet;
 import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
 
 // Custom analyzer that will record the control flow edges found by the ASM method analyzer.
 public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
     ControlFlow controlFlow = new ControlFlow();
 
     public static ControlFlow buildControlFlow( String ownerName, MethodNode method ) {
+        return buildControlFlow( ownerName, method, null );
+    }
+
+    public static ControlFlow buildControlFlow( String ownerName, MethodNode method,
+                                                Map<NodeId, Set<NodeId>> intraclassEdges ) {
         ControlFlowAnalyzer analyzer = new ControlFlowAnalyzer();
 
         try {
@@ -40,6 +50,7 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
             // instructions signifying labels, line numbers, and stack frames.
             int iInstruction = 0;
             int lineNumber = ControlFlow.INVALID_LINE;
+            NodeId calleeExitId = null;
             ListIterator<AbstractInsnNode> instructionIter = method.instructions.iterator();
 
             while( instructionIter.hasNext() ) {
@@ -64,6 +75,17 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                         lineNumber = ControlFlow.INVALID_LINE;
                     }
 
+                    // If we have a callee exit node from a previous iteration, that means the last "real" instruction
+                    // was an invocation. The current "real" instruction is the return site, so form an intraclass edge
+                    // from the callee exit node to this node.
+                    if( calleeExitId != null ) {
+                        NodeId returnSiteId = new NodeId( ownerName, method.name, method.desc, iInstruction );
+                        intraclassEdges.computeIfAbsent( calleeExitId, key -> new HashSet<>() ).add( returnSiteId );
+
+                        // Reset the callee exit node so that we don't form spurious intraclass edges.
+                        calleeExitId = null;
+                    }
+
                     int opcode = currentInstruction.getOpcode();
                     if( opcode == Opcodes.ARETURN ||
                             opcode == Opcodes.DRETURN ||
@@ -73,6 +95,26 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                             opcode == Opcodes.RETURN ) {
                         // Add an edge from this return statement to the well-defined exit node for this method.
                         analyzer.controlFlow.addEdge( iInstruction, ControlFlow.EXIT );
+                    }
+                    else if( intraclassEdges != null && currentInstruction instanceof MethodInsnNode ) {
+                        MethodInsnNode invokeInstruction = (MethodInsnNode)currentInstruction;
+
+                        // TODO: May need to add an additional check here to see if the invoke instruction's owner is a
+                        // base class of the given owner. Because then it's conceivable that we virtually call a method
+                        // inside of our class.
+                        if( invokeInstruction.owner.equals( ownerName ) ) {
+                            // This invoke instruction calls another method inside of our class. Record the intraclass
+                            // edge that goes from the invoke instruction to the called method. Save the called method's
+                            // exit node so that another intraclass edge can be formed between it and the return site in
+                            // this method, which is the first real instruction following this invoke instruction.
+                            NodeId callSiteId = new NodeId( ownerName, method.name, method.desc, iInstruction );
+                            NodeId calleeEntryId = new NodeId( invokeInstruction.owner, invokeInstruction.name,
+                                    invokeInstruction.desc, ControlFlow.ENTRY );
+                            calleeExitId = new NodeId( invokeInstruction.owner, invokeInstruction.name,
+                                    invokeInstruction.desc, ControlFlow.EXIT );
+
+                            intraclassEdges.computeIfAbsent( callSiteId, key -> new HashSet<>() ).add( calleeEntryId );
+                        }
                     }
                 }
 

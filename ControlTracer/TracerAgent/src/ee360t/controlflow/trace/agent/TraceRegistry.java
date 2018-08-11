@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import ee360t.controlflow.model.NodeId;
 import ee360t.controlflow.utility.ControlFlow;
 
 import java.io.FileWriter;
@@ -23,6 +24,8 @@ public class TraceRegistry {
 
     private static Map<NodeId, Integer> globalNodeIds = new HashMap<>();
     private static Map<Integer, NodeId> nodeIds = new HashMap<>();
+
+    private static Map<String, Map<Integer, Set<Integer>>> globalIntraclassEdges = new HashMap<>();
 
     private static List<TraceRecord> traceRecords = new ArrayList<>();
     private static TraceRecord currentRecord;
@@ -64,6 +67,18 @@ public class TraceRegistry {
         controlFlows.put( globalMethodId, controlFlow );
     }
 
+    public static void setIntraclassEdges( String className, Map<NodeId, Set<NodeId>> intraclassEdges ) {
+        Map<Integer, Set<Integer>> globalIntraclassEdges = new HashMap<>();
+        for( NodeId fromNode : intraclassEdges.keySet() ) {
+            int globalFromId = globalNodeIds.get( fromNode );
+            Set<Integer> globalToIds = new HashSet<>();
+            for( NodeId toNode : intraclassEdges.get( fromNode ) )
+                globalToIds.add( globalNodeIds.get( toNode ) );
+            globalIntraclassEdges.put( globalFromId, globalToIds );
+        }
+        TraceRegistry.globalIntraclassEdges.put( className, globalIntraclassEdges );
+    }
+
     public static void setSourceFileName( String className, String sourceFileName ) {
         sourceFileNames.put( className, sourceFileName );
     }
@@ -98,6 +113,7 @@ public class TraceRegistry {
 
                     controlFlowsJson.add( className, json );
                     json.addProperty( "classDisplayName", displayName );
+                    json.add( "intraclassEdges", gson.toJsonTree( globalIntraclassEdges.get( className ) ) );
                     json.add( "methods", new JsonArray() );
 
                     // Read the source lines for this class in case we need to annotate our method nodes. We assume that

@@ -1,5 +1,6 @@
 package ee360t.controlflow.trace.agent;
 
+import ee360t.controlflow.model.NodeId;
 import ee360t.controlflow.utility.ControlFlowAnalyzer;
 import ee360t.controlflow.utility.ControlFlow;
 import org.objectweb.asm.ClassReader;
@@ -8,6 +9,7 @@ import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.util.TraceClassVisitor;
 
+import javax.xml.soap.Node;
 import java.io.PrintWriter;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -66,10 +68,11 @@ public class TraceTransformer implements ClassFileTransformer {
             classNode.accept( classVisitor );
         }
 
+        Map<NodeId, Set<NodeId>> intraclassEdges = new HashMap<>();
         for( MethodNode method : classNode.methods ) {
             if( shouldTraceClass ) {
                 System.out.println( String.format( "Instrumenting: %s.%s%s", className, method.name, method.desc ) );
-                instrumentTracedMethod( classNode, method );
+                instrumentTracedMethod( classNode, method, intraclassEdges );
                 modifiedClass = true;
             }
             else if( isJunitTestMethod( method ) ) {
@@ -87,6 +90,7 @@ public class TraceTransformer implements ClassFileTransformer {
             classNode.accept( classVisitor );
         }
 
+        TraceRegistry.setIntraclassEdges( className, intraclassEdges );
         ClassWriter classWriter = new ClassWriter( ClassWriter.COMPUTE_FRAMES );
         classNode.accept( classWriter );
         return classWriter.toByteArray();
@@ -117,9 +121,9 @@ public class TraceTransformer implements ClassFileTransformer {
         return false;
     }
 
-    private void instrumentTracedMethod( ClassNode owner, MethodNode method ) {
+    private void instrumentTracedMethod( ClassNode owner, MethodNode method, Map<NodeId, Set<NodeId>> intraclassEdges ) {
         try {
-            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
+            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method, intraclassEdges );
             TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
             TraceRegistry.setSourceFileName( owner.name, owner.sourceFile );
 

@@ -1,8 +1,8 @@
-package ee360t.controlflow.trace.agent;
+package ee360t.controlflow.model;
 
 import java.util.Objects;
 
-class NodeId {
+public class NodeId {
     private String className;
     private String methodName;
     private String methodDescriptor;
@@ -15,19 +15,19 @@ class NodeId {
         this.localId = localId;
     }
 
-    String getClassName() {
+    public String getClassName() {
         return className;
     }
 
-    String getMethodName() {
+    public String getMethodName() {
         return methodName;
     }
 
-    String getMethodDescriptor() {
+    public String getMethodDescriptor() {
         return methodDescriptor;
     }
 
-    int getLocalId() {
+    public int getLocalId() {
         return localId;
     }
 
