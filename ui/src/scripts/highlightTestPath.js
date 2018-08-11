@@ -1,9 +1,7 @@
-const performHighlight = (idArr, type, classDivName = '') => {
-  const classDiv = classDivName ? document.getElementById(`classDiv-${classDivName}`) : document;
+const performHighlight = (idArr) => {
   idArr.forEach(id => {
-    const elem = classDiv.querySelector(`#${id}`);
-    console.log(elem);
-    elem.classList.add('highlighted');
+    const elem = document.getElementById(`${id}`);
+    elem && elem.classList.add('highlighted');
   });
 };
 
@@ -16,22 +14,15 @@ const getPathName = (edges, result) => {
   }
 };
 
-const highlightMethod = (nodesArr) => {
+const highlightMethodNodes = (nodesArr) => {
   const nodesOfEdges = nodesArr.map((node => 'm' + node));
   const edgeIds = getPathName(nodesOfEdges, []);
-  console.log(nodesOfEdges);
-  console.log(edgeIds);
-  performHighlight(nodesOfEdges, 'method');
-  performHighlight(edgeIds, 'method');
-};
-
-const highlightClass = (classArr) => {
-  const edgeIds = getPathName(classArr, []);
-  performHighlight(classArr, 'class');
-  performHighlight(edgeIds, 'class');
+  performHighlight(nodesOfEdges);
+  performHighlight(edgeIds);
 };
 
 export default (tests) => {
-  // highlightClass(tests);
-  highlightMethod(tests);
+  performHighlight(tests.classes);
+  performHighlight(tests.methods);
+  highlightMethodNodes(tests.methodNodes);
 };

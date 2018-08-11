@@ -1,86 +1,88 @@
-.cluster {
-  text {
-    font-weight: 700;
-  }
-}
-
-.node {
-  .label {
-    color: $graphText;
-    transition: .7s all ease-in-out;
-  }
-
-  &.clickable {
-    cursor: pointer;
-  }
-
-  &.highlighted {
-    rect, circle, ellipse, polygon {
-      fill: $highlightBg;
-      stroke: $highlightBorder;
-      transition: .7s all ease-in-out;
+.method-view {
+  .cluster {
+    text {
+      font-weight: 700;
     }
+  }
+
+  .node {
     .label {
-      color: #fff;
+      color: $graphText;
+      transition: .7s all ease-in-out;
+    }
+
+    &.clickable {
+      cursor: pointer;
+    }
+
+    &.highlighted {
+      rect, circle, ellipse, polygon {
+        fill: $highlightBg;
+        stroke: $highlightBorder;
+        transition: .7s all ease-in-out;
+      }
+      .label {
+        color: #fff;
+        transition: .7s all ease-in-out;
+      }
+    }
+
+    rect, circle, ellipse, polygon {
+      fill: $graphBg;
+      stroke: $graphBorder;
+      stroke-width: 1px;
       transition: .7s all ease-in-out;
     }
   }
 
-  rect, circle, ellipse, polygon {
-    fill: $graphBg;
-    stroke: $graphBorder;
-    stroke-width: 1px;
-    transition: .7s all ease-in-out;
-  }
-}
+  .edgePath {
+    &.highlighted {
+      .path {
+        stroke: $highlightEdge;
+      }
 
-.edgePath {
-  &.highlighted {
+      .arrowheadPath {
+        fill: $highlightEdge;
+      }
+    }
+
     .path {
-      stroke: $highlightEdge;
+      stroke: $graphBorder;
+      stroke-width: 1.5px;
+      transition: .7s all ease-in-out;
     }
 
     .arrowheadPath {
-      fill: $highlightEdge;
+      fill: $graphBorder;
+      transition: .7s all ease-in-out;
     }
   }
 
-  .path {
-    stroke: $graphBorder;
-    stroke-width: 1.5px;
-    transition: .7s all ease-in-out;
+  .edgeLabel {
+    background-color: $gcolor4;
   }
 
-  .arrowheadPath {
-    fill: $graphBorder;
-    transition: .7s all ease-in-out;
+  .cluster rect {
+    fill: $gcolor5 !important;
+    stroke: $gcolor5 !important;
+    stroke-width: 1px !important;
   }
-}
 
-.edgeLabel {
-  background-color: $gcolor4;
-}
+  .cluster text {
+    fill: $graphText;
+  }
 
-.cluster rect {
-  fill: $gcolor5 !important;
-  stroke: $gcolor5 !important;
-  stroke-width: 1px !important;
-}
-
-.cluster text {
-  fill: $graphText;
-}
-
-div.mermaidTooltip {
-  position: absolute;
-  text-align: center;
-  max-width: 200px;
-  padding: 2px;
-  font-family: 'trebuchet ms', verdana, arial;
-  font-size: 12px;
-  background: $gcolor5;
-  border: 1px solid $gcolor5;
-  border-radius: 2px;
-  pointer-events: none;
-  z-index: 100;
+  div.mermaidTooltip {
+    position: absolute;
+    text-align: center;
+    max-width: 200px;
+    padding: 2px;
+    font-family: 'trebuchet ms', verdana, arial;
+    font-size: 12px;
+    background: $gcolor5;
+    border: 1px solid $gcolor5;
+    border-radius: 2px;
+    pointer-events: none;
+    z-index: 100;
+  }
 }

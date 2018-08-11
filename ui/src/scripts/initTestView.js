@@ -1,12 +1,24 @@
 import highlightTestPath from './highlightTestPath';
 import { removeAllHighlight } from './utils';
 
-export default (tests) => {
+export default (tests, globalIdMap) => {
   const dropdown = document.querySelector('.header__view-test__dd');
   const testSet = {};
 
   tests.forEach((test) => {
-    testSet[test.testMethodName] = test.tracePath;
+    const visitedClassSet = new Set();
+    const visitedMethodSet = new Set();
+    test.tracePath.forEach(node => {
+      visitedClassSet.add(globalIdMap[node.toString()].className);
+      visitedMethodSet.add(globalIdMap[node.toString()].globalMethodId);
+    });
+
+    testSet[test.testMethodName] = {
+      methodNodes: test.tracePath,
+      classes: [...visitedClassSet],
+      methods: [...visitedMethodSet],
+    };
+
     dropdown.insertAdjacentHTML('beforeend', `
       <option value="${test.testMethodName}">${test.testMethodName}</option>
     `);
@@ -21,6 +33,7 @@ export default (tests) => {
       case 'all':
         removeAllHighlight();
         Object.entries(testSet).forEach(([key, value]) => {
+          console.log(value);
           highlightTestPath(value);
         });
         break;

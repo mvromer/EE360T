@@ -1,9 +1,11 @@
-import { hideAllGraph, HtmlEncode } from './utils';
+import { hideAllGraph, disselectALL } from './utils';
 
-const genCrossEdges = (edges) => {
+const genIntraClassEdges = (edges) => {
   let resultStat = '';
-  edges.forEach(edge => {
-    resultStat += `${edge[0]} --> ${edge[1]} \n`;
+  Object.entries(edges).forEach(([edgeFrom, edgesTo]) => {
+    edgesTo.forEach(edge => {
+      resultStat += `m${edgeFrom} --> m${edge} \n`;
+    });
   });
   return resultStat;
 };
@@ -42,7 +44,7 @@ export default (controlFlows) => {
   const methodView = document.querySelector('.method-view');
   const methodTitle = document.querySelector('.method-view__title');
 
-  let systemDiv = `<div class="mermaid systemDiv"> graph TD\n`;
+  let systemDiv = `<div class=" systemDiv"> graph TD\n`;
   let classArr = [];
 
   // controlFlows.classRelations.forEach(relation => {
@@ -53,16 +55,20 @@ export default (controlFlows) => {
     systemDiv += `subgraph ${value.classDisplayName.replace(/[^a-zA-Z0-9\/ ]/g, "")} \n`;
     const className = value.classDisplayName;
     classArr.push(className);
-    // const crossEdges = value.crossEdges;
     const methods = value.methods;
-    let classDiv = `<div class="mermaid" id="classDiv-${className}"> graph LR\n`;
-    //classDiv += genCrossEdges(crossEdges);
+    let classDiv = `<div class="classDiv" id="classDiv-${className}"> graph LR\n`;
+
+    const intraClassEdges = value.intraclassEdges;
+    if (Object.keys(intraClassEdges).length !== 0 && intraClassEdges.constructor === Object) {
+      classDiv += genIntraClassEdges(intraClassEdges);
+    }
 
     methods.forEach(method => {
       classDiv += genMethodGraph(method);
-      systemDiv += `${method.methodId}["${method.methodName.replace(/[^a-zA-Z0-9\/ ]/g, "")}${method.methodDescriptor}"]\n`;
+      systemDiv += `${method.globalMethodId}["${method.methodName.replace(/[^a-zA-Z0-9\/ ]/g, "")}${method.methodDescriptor}"]\n`;
     });
     classDiv += `</div>`;
+    //console.log(classDiv);
     methodView.insertAdjacentHTML('beforeend', classDiv);
 
     systemDiv += 'end \n';
@@ -77,14 +83,50 @@ export default (controlFlows) => {
     classArr.forEach(classDivId => {
       const classElem = document.getElementById(classDivId);
       classElem.addEventListener('click', (evt) => {
-        const arrow = document.querySelector('.arrow');
         hideAllGraph();
+        disselectALL();
+        classElem.classList.add('selected');
         document.getElementById(`classDiv-${classDivId}`).classList.add('show');
         methodTitle.textContent = `Class: ${classDivId}`;
-        const y = evt.target.getBoundingClientRect().y;
-        // arrow.style.top = `${y}px`;
-        // arrow.style.display = `block`;
       });
     });
-  }, 1000);
+    methodTitle.textContent = `Select a class to view its methods`;
+  }, 0);
+
+  // zoom fucntion
+  const zoomIns = document.querySelectorAll('.zoom__in');
+  const zoomOuts = document.querySelectorAll('.zoom__out');
+
+  [...zoomIns].forEach(zoomIn => {
+    zoomIn.addEventListener('click', (evt) => {
+      const viewContainerName = evt.currentTarget.parentNode.dataset.view;
+      const rate = evt.currentTarget.parentNode.querySelector('.zoom__rate');
+      const viewContainerSvgs = document.querySelectorAll(`.${viewContainerName} svg`);
+      [...viewContainerSvgs].forEach(viewContainerSvg => {
+        const maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
+        const width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
+        viewContainerSvg.setAttribute('width', `${width+10}%`);
+        viewContainerSvg.style.maxWidth = `${maxWidth+100}px`;
+        rate.textContent = `${width+10}%`;
+      });
+
+    }, true);
+  });
+
+  [...zoomOuts].forEach(zoomOut => {
+    zoomOut.addEventListener('click', (evt) => {
+      const viewContainerName = evt.currentTarget.parentNode.dataset.view;
+      const rate = evt.currentTarget.parentNode.querySelector('.zoom__rate');
+      const viewContainerSvgs = document.querySelectorAll(`.${viewContainerName} svg`);
+      [...viewContainerSvgs].forEach(viewContainerSvg => {
+        const maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
+        const width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
+        viewContainerSvg.setAttribute('width', `${width-10}%`);
+        viewContainerSvg.style.maxWidth = `${maxWidth-100}px`;
+        rate.textContent = `${width-10}%`;
+      });
+    }, true);
+  });
+
+
 };
