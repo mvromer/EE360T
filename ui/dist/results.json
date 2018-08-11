@@ -1,0 +1,756 @@
+{
+  "traceRecords": [
+    {
+      "label": "ee360t/controlflow/trace/driver/App.t1()V",
+      "testClassName": "ee360t/controlflow/trace/driver/App",
+      "testMethodName": "t1",
+      "testMethodDescriptor": "()V",
+      "tracePath": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "label": "ee360t/controlflow/trace/driver/App.t2()V",
+      "testClassName": "ee360t/controlflow/trace/driver/App",
+      "testMethodName": "t2",
+      "testMethodDescriptor": "()V",
+      "tracePath": [
+        18,
+        19,
+        17,
+        16,
+        15,
+        10,
+        8,
+        9
+      ]
+    },
+    {
+      "label": "ee360t/controlflow/trace/driver/App.t3()V",
+      "testClassName": "ee360t/controlflow/trace/driver/App",
+      "testMethodName": "t3",
+      "testMethodDescriptor": "()V",
+      "tracePath": [
+        22,
+        23,
+        29,
+        30,
+        31,
+        20,
+        21
+      ]
+    },
+    {
+      "label": "ee360t/controlflow/trace/driver/App.t4()V",
+      "testClassName": "ee360t/controlflow/trace/driver/App",
+      "testMethodName": "t4",
+      "testMethodDescriptor": "()V",
+      "tracePath": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        37,
+        38
+      ]
+    },
+    {
+      "label": "ee360t/controlflow/trace/driver/App.t5()V",
+      "testClassName": "ee360t/controlflow/trace/driver/App",
+      "testMethodName": "t5",
+      "testMethodDescriptor": "()V",
+      "tracePath": [
+        46,
+        47,
+        41,
+        42,
+        43,
+        44,
+        45
+      ]
+    }
+  ],
+  "controlFlows": {
+    "ee360t/controlflow/trace/examples/E1": {
+      "classDisplayName": "E1",
+      "intraclassEdges": {},
+      "methods": [
+        {
+          "methodName": "<init>",
+          "methodDescriptor": "()V",
+          "globalMethodId": 0,
+          "nodes": {
+            "0": null,
+            "1": "[EXIT]",
+            "2": null,
+            "3": "[ENTRY]",
+            "4": "Line 3: public class E1 {"
+          },
+          "edges": {
+            "0": [
+              1
+            ],
+            "1": [],
+            "2": [
+              0
+            ],
+            "3": [
+              4
+            ],
+            "4": [
+              2
+            ]
+          }
+        },
+        {
+          "methodName": "M1",
+          "methodDescriptor": "()V",
+          "globalMethodId": 1,
+          "nodes": {
+            "5": "[ENTRY]",
+            "6": "Line 4: public static void M1() {}",
+            "7": "[EXIT]"
+          },
+          "edges": {
+            "5": [
+              6
+            ],
+            "6": [
+              7
+            ],
+            "7": []
+          }
+        },
+        {
+          "methodName": "M2",
+          "methodDescriptor": "()I",
+          "globalMethodId": 2,
+          "nodes": {
+            "16": "Line 8: if( x < 0 )",
+            "17": null,
+            "18": "[ENTRY]",
+            "19": "Line 7: int x = 5;",
+            "8": null,
+            "9": "[EXIT]",
+            "10": "Line 10: return x;",
+            "11": null,
+            "12": null,
+            "13": null,
+            "14": "Line 9: x = x + 10;",
+            "15": null
+          },
+          "edges": {
+            "16": [
+              15
+            ],
+            "17": [
+              16
+            ],
+            "18": [
+              19
+            ],
+            "19": [
+              17
+            ],
+            "8": [
+              9
+            ],
+            "9": [],
+            "10": [
+              8
+            ],
+            "11": [
+              10
+            ],
+            "12": [
+              11
+            ],
+            "13": [
+              12
+            ],
+            "14": [
+              13
+            ],
+            "15": [
+              10,
+              14
+            ]
+          }
+        },
+        {
+          "methodName": "M3",
+          "methodDescriptor": "()V",
+          "globalMethodId": 3,
+          "nodes": {
+            "20": "Line 15: }",
+            "21": "[EXIT]",
+            "22": "[ENTRY]",
+            "23": "Line 14: E2.M1();"
+          },
+          "edges": {
+            "20": [
+              21
+            ],
+            "21": [],
+            "22": [
+              23
+            ],
+            "23": [
+              20
+            ]
+          }
+        }
+      ]
+    },
+    "ee360t/controlflow/trace/examples/E2": {
+      "classDisplayName": "E2",
+      "intraclassEdges": {},
+      "methods": [
+        {
+          "methodName": "<init>",
+          "methodDescriptor": "()V",
+          "globalMethodId": 4,
+          "nodes": {
+            "24": null,
+            "25": "[EXIT]",
+            "26": null,
+            "27": "[ENTRY]",
+            "28": "Line 3: public class E2 {"
+          },
+          "edges": {
+            "24": [
+              25
+            ],
+            "25": [],
+            "26": [
+              24
+            ],
+            "27": [
+              28
+            ],
+            "28": [
+              26
+            ]
+          }
+        },
+        {
+          "methodName": "M1",
+          "methodDescriptor": "()V",
+          "globalMethodId": 5,
+          "nodes": {
+            "29": "[ENTRY]",
+            "30": "Line 4: public static void M1() { }",
+            "31": "[EXIT]"
+          },
+          "edges": {
+            "29": [
+              30
+            ],
+            "30": [
+              31
+            ],
+            "31": []
+          }
+        }
+      ]
+    },
+    "ee360t/controlflow/trace/examples/E3": {
+      "classDisplayName": "E3",
+      "intraclassEdges": {
+        "40": [
+          41
+        ],
+        "43": [
+          37,
+          44
+        ],
+        "47": [
+          41
+        ]
+      },
+      "methods": [
+        {
+          "methodName": "<init>",
+          "methodDescriptor": "()V",
+          "globalMethodId": 6,
+          "nodes": {
+            "32": null,
+            "33": "[EXIT]",
+            "34": null,
+            "35": "[ENTRY]",
+            "36": "Line 3: public class E3 {"
+          },
+          "edges": {
+            "32": [
+              33
+            ],
+            "33": [],
+            "34": [
+              32
+            ],
+            "35": [
+              36
+            ],
+            "36": [
+              34
+            ]
+          }
+        },
+        {
+          "methodName": "M1",
+          "methodDescriptor": "()V",
+          "globalMethodId": 7,
+          "nodes": {
+            "37": "Line 6: }",
+            "38": "[EXIT]",
+            "39": "[ENTRY]",
+            "40": "Line 5: M2();"
+          },
+          "edges": {
+            "37": [
+              38
+            ],
+            "38": [],
+            "39": [
+              40
+            ],
+            "40": [
+              37
+            ]
+          }
+        },
+        {
+          "methodName": "M2",
+          "methodDescriptor": "()V",
+          "globalMethodId": 8,
+          "nodes": {
+            "41": "[ENTRY]",
+            "42": "Line 8: public static void M2() {}",
+            "43": "[EXIT]"
+          },
+          "edges": {
+            "41": [
+              42
+            ],
+            "42": [
+              43
+            ],
+            "43": []
+          }
+        },
+        {
+          "methodName": "M3",
+          "methodDescriptor": "()V",
+          "globalMethodId": 9,
+          "nodes": {
+            "44": "Line 12: }",
+            "45": "[EXIT]",
+            "46": "[ENTRY]",
+            "47": "Line 11: M2();"
+          },
+          "edges": {
+            "44": [
+              45
+            ],
+            "45": [],
+            "46": [
+              47
+            ],
+            "47": [
+              44
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "globalToLocalNodeId": {
+    "0": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 0,
+      "localId": 4
+    },
+    "1": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 0,
+      "localId": -1
+    },
+    "2": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 0,
+      "localId": 3
+    },
+    "3": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 0,
+      "localId": -2
+    },
+    "4": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 0,
+      "localId": 2
+    },
+    "5": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": -2
+    },
+    "6": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 2
+    },
+    "7": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": -1
+    },
+    "8": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 18
+    },
+    "9": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": -1
+    },
+    "10": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 17
+    },
+    "11": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 13
+    },
+    "12": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 12
+    },
+    "13": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 11
+    },
+    "14": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 10
+    },
+    "15": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 7
+    },
+    "16": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 6
+    },
+    "17": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 3
+    },
+    "18": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": -2
+    },
+    "19": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M2",
+      "methodDescriptor": "()I",
+      "globalMethodId": 2,
+      "localId": 2
+    },
+    "20": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 3,
+      "localId": 5
+    },
+    "21": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 3,
+      "localId": -1
+    },
+    "22": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 3,
+      "localId": -2
+    },
+    "23": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E1",
+      "className": "E1",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 3,
+      "localId": 2
+    },
+    "24": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 4,
+      "localId": 4
+    },
+    "25": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 4,
+      "localId": -1
+    },
+    "26": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 4,
+      "localId": 3
+    },
+    "27": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 4,
+      "localId": -2
+    },
+    "28": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 4,
+      "localId": 2
+    },
+    "29": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 5,
+      "localId": -2
+    },
+    "30": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 5,
+      "localId": 2
+    },
+    "31": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E2",
+      "className": "E2",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 5,
+      "localId": -1
+    },
+    "32": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 6,
+      "localId": 4
+    },
+    "33": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 6,
+      "localId": -1
+    },
+    "34": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 6,
+      "localId": 3
+    },
+    "35": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 6,
+      "localId": -2
+    },
+    "36": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "<init>",
+      "methodDescriptor": "()V",
+      "globalMethodId": 6,
+      "localId": 2
+    },
+    "37": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 7,
+      "localId": 5
+    },
+    "38": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 7,
+      "localId": -1
+    },
+    "39": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 7,
+      "localId": -2
+    },
+    "40": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M1",
+      "methodDescriptor": "()V",
+      "globalMethodId": 7,
+      "localId": 2
+    },
+    "41": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M2",
+      "methodDescriptor": "()V",
+      "globalMethodId": 8,
+      "localId": -2
+    },
+    "42": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M2",
+      "methodDescriptor": "()V",
+      "globalMethodId": 8,
+      "localId": 2
+    },
+    "43": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M2",
+      "methodDescriptor": "()V",
+      "globalMethodId": 8,
+      "localId": -1
+    },
+    "44": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 9,
+      "localId": 5
+    },
+    "45": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 9,
+      "localId": -1
+    },
+    "46": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 9,
+      "localId": -2
+    },
+    "47": {
+      "classInternalName": "ee360t/controlflow/trace/examples/E3",
+      "className": "E3",
+      "methodName": "M3",
+      "methodDescriptor": "()V",
+      "globalMethodId": 9,
+      "localId": 2
+    }
+  }
+}
