@@ -1,7 +1,7 @@
 package ee360t.controlflow.trace.agent;
 
 import ee360t.controlflow.utility.ControlFlowAnalyzer;
-import ee360t.controlflow.utility.IndexGraph;
+import ee360t.controlflow.utility.ControlFlow;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
@@ -119,7 +119,7 @@ public class TraceTransformer implements ClassFileTransformer {
 
     private void instrumentTracedMethod( ClassNode owner, MethodNode method ) {
         try {
-            IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
+            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
             TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
             TraceRegistry.setSourceFileName( owner.name, owner.sourceFile );
 
@@ -152,15 +152,15 @@ public class TraceTransformer implements ClassFileTransformer {
             Collections.reverse( Arrays.asList( nodes ) );
 
             for( int iNode : nodes ) {
-                if( iNode == IndexGraph.ENTRY || iNode == IndexGraph.EXIT )
+                if( iNode == ControlFlow.ENTRY || iNode == ControlFlow.EXIT )
                     continue;
 
                 // List of instructions that will represent our instrumentation.
                 InsnList instrumentation = new InsnList();
 
                 // If this node has the ENTRY node as a predecessor, make sure we visit the ENTRY node.
-                if( controlFlow.getPredecessors( iNode ).contains( IndexGraph.ENTRY ) ) {
-                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, IndexGraph.ENTRY );
+                if( controlFlow.getPredecessors( iNode ).contains( ControlFlow.ENTRY ) ) {
+                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, ControlFlow.ENTRY );
                     instrumentation.add( getPushGlobalIdInstruction( globalEntryId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
                 }
@@ -173,9 +173,9 @@ public class TraceTransformer implements ClassFileTransformer {
                 instrumentation.add( getInvokeVisitNodeInstruction() );
 
                 // If this node has the EXIT node as a successor, make sure we visit the EXIT node.
-                if( controlFlow.getSuccessors( iNode ).contains( IndexGraph.EXIT ) ) {
+                if( controlFlow.getSuccessors( iNode ).contains( ControlFlow.EXIT ) ) {
                     int globalExitId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
-                        IndexGraph.EXIT );
+                        ControlFlow.EXIT );
                     instrumentation.add( getPushGlobalIdInstruction( globalExitId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
                 }
@@ -223,11 +223,11 @@ public class TraceTransformer implements ClassFileTransformer {
 
     private void instrumentJunitTestMethod( ClassNode owner, MethodNode method ) {
         try {
-            IndexGraph controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
+            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method );
 
             // We expect the entry node to point to the first instruction of the method, and there better be only one
             // initial instruction in any given method.
-            Set<Integer> startNodes = controlFlow.getSuccessors( IndexGraph.ENTRY );
+            Set<Integer> startNodes = controlFlow.getSuccessors( ControlFlow.ENTRY );
             assert startNodes.size() == 1;
 
             int iStartInstruction = startNodes.iterator().next();

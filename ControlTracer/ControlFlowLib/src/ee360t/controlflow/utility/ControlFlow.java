@@ -3,7 +3,7 @@ package ee360t.controlflow.utility;
 import java.io.PrintStream;
 import java.util.*;
 
-public class IndexGraph {
+public class ControlFlow {
     // Well-defined entry and exit nodes.
     public static final int ENTRY = -2;
     public static final int EXIT = -1;

@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import ee360t.controlflow.utility.IndexGraph;
+import ee360t.controlflow.utility.ControlFlow;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.*;
 
 public class TraceRegistry {
     private static Map<String, String> sourceFileNames = new HashMap<>();
-    private static Map<MethodId, IndexGraph> controlFlows = new HashMap<>();
+    private static Map<MethodId, ControlFlow> controlFlows = new HashMap<>();
     private static Map<NodeId, Integer> globalIds = new HashMap<>();
     private static Map<Integer, NodeId> nodeIds = new HashMap<>();
     private static List<TraceRecord> traceRecords = new ArrayList<>();
@@ -44,7 +44,7 @@ public class TraceRegistry {
         } );
     }
 
-    public static void setControlFlow( IndexGraph controlFlow, String className, String methodName, String methodDescriptor ) {
+    public static void setControlFlow( ControlFlow controlFlow, String className, String methodName, String methodDescriptor ) {
         MethodId methodId = new MethodId( className, methodName, methodDescriptor );
         controlFlows.put( methodId, controlFlow );
     }
@@ -71,7 +71,7 @@ public class TraceRegistry {
 
         int nextMethodId = 0;
         for( MethodId methodId : controlFlows.keySet() ) {
-            IndexGraph controlFlow = controlFlows.get( methodId );
+            ControlFlow controlFlow = controlFlows.get( methodId );
             String className = methodId.getClassName();
             JsonObject controlFlowJson = controlFlowsForClass.computeIfAbsent( className,
                 trash -> {
@@ -118,15 +118,15 @@ public class TraceRegistry {
                 // Attempt to get the annotation for this node. For ENTRY and EXIT nodes, we have special annotations.
                 // For all other nodes, we attempt to get the corresponding source line, if there is one.
                 String annotation = null;
-                if( iNode == IndexGraph.ENTRY ) {
+                if( iNode == ControlFlow.ENTRY ) {
                     annotation = "[ENTRY]";
                 }
-                else if( iNode == IndexGraph.EXIT ) {
+                else if( iNode == ControlFlow.EXIT ) {
                     annotation = "[EXIT]";
                 }
                 else if( sourceLines != null ) {
                     int sourceLineNumber = controlFlow.getSourceLineNumber( iNode );
-                    if( sourceLineNumber != IndexGraph.INVALID_LINE ) {
+                    if( sourceLineNumber != ControlFlow.INVALID_LINE ) {
                         // Line numbers are 1-based.
                         annotation = String.format( "Line %d: %s", sourceLineNumber,
                                 sourceLines.get( sourceLineNumber - 1 ).trim() );

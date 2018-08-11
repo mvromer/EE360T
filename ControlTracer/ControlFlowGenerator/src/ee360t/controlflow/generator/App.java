@@ -9,7 +9,7 @@ import ee360t.controlflow.model.Method;
 import ee360t.controlflow.serialization.ClassRepositorySerializer;
 import ee360t.controlflow.serialization.ClassSerializer;
 import ee360t.controlflow.serialization.MethodSerializer;
-import ee360t.controlflow.utility.IndexGraph;
+import ee360t.controlflow.utility.ControlFlow;
 
 import java.io.FileWriter;
 import java.io.Writer;
@@ -51,7 +51,7 @@ public class App {
                     System.out.println( "        " + method.getName() + method.getDescriptor() );
                     System.out.println( "            Control Flow:" );
 
-                    IndexGraph controlFlow = method.getControlFlow();
+                    ControlFlow controlFlow = method.getControlFlow();
                     Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
                     for( int iFrom : edges.keySet() ) {
                         for( int iTo : edges.get( iFrom ) ) {

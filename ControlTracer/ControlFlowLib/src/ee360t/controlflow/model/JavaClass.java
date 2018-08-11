@@ -1,6 +1,6 @@
 package ee360t.controlflow.model;
 
-import ee360t.controlflow.utility.IndexGraph;
+import ee360t.controlflow.utility.ControlFlow;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class JavaClass {
         this.methods = new HashMap<>();
     }
 
-    public void addMethod( String methodName, String methodDescriptor, IndexGraph controlFlow ) {
+    public void addMethod( String methodName, String methodDescriptor, ControlFlow controlFlow ) {
         methods.put( new MethodKey( methodName, methodDescriptor ),
             new Method( methodName, methodDescriptor, controlFlow ) );
     }

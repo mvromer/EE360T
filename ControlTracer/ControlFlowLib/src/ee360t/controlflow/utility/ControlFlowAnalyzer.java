@@ -13,9 +13,9 @@ import java.util.ListIterator;
 
 // Custom analyzer that will record the control flow edges found by the ASM method analyzer.
 public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
-    IndexGraph controlFlow = new IndexGraph();
+    ControlFlow controlFlow = new ControlFlow();
 
-    public static IndexGraph buildControlFlow( String ownerName, MethodNode method ) {
+    public static ControlFlow buildControlFlow( String ownerName, MethodNode method ) {
         ControlFlowAnalyzer analyzer = new ControlFlowAnalyzer();
 
         try {
@@ -34,12 +34,12 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
 
             // Add an edge from the well-defined entry node to the first instruction in the control flow graph, which is
             // always at index 0. Do this now so that the entry node points to the first real instruction after pruning.
-            analyzer.controlFlow.addEdge( IndexGraph.ENTRY, 0 );
+            analyzer.controlFlow.addEdge( ControlFlow.ENTRY, 0 );
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
             // instructions signifying labels, line numbers, and stack frames.
             int iInstruction = 0;
-            int lineNumber = IndexGraph.INVALID_LINE;
+            int lineNumber = ControlFlow.INVALID_LINE;
             ListIterator<AbstractInsnNode> instructionIter = method.instructions.iterator();
 
             while( instructionIter.hasNext() ) {
@@ -59,9 +59,9 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                     // Associate this "real" instruction with the most recent line number of its valid. After
                     // associating, we reset the line number so that at most one control flow node maps to the
                     // associated line number instruction node.
-                    if( lineNumber != IndexGraph.INVALID_LINE ) {
+                    if( lineNumber != ControlFlow.INVALID_LINE ) {
                         analyzer.controlFlow.mapSourceLineNumber( iInstruction, lineNumber );
-                        lineNumber = IndexGraph.INVALID_LINE;
+                        lineNumber = ControlFlow.INVALID_LINE;
                     }
 
                     int opcode = currentInstruction.getOpcode();
@@ -72,7 +72,7 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                             opcode == Opcodes.LRETURN ||
                             opcode == Opcodes.RETURN ) {
                         // Add an edge from this return statement to the well-defined exit node for this method.
-                        analyzer.controlFlow.addEdge( iInstruction, IndexGraph.EXIT );
+                        analyzer.controlFlow.addEdge( iInstruction, ControlFlow.EXIT );
                     }
                 }
 
