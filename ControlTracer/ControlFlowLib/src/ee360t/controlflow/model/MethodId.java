@@ -1,4 +1,4 @@
-package ee360t.controlflow.trace.agent;
+package ee360t.controlflow.model;
 
 import java.util.Objects;
 
@@ -13,15 +13,15 @@ public class MethodId {
         this.methodDescriptor = methodDescriptor;
     }
 
-    String getClassName() {
+    public String getClassName() {
         return className;
     }
 
-    String getMethodName() {
+    public String getMethodName() {
         return methodName;
     }
 
-    String getMethodDescriptor() {
+    public String getMethodDescriptor() {
         return methodDescriptor;
     }
 

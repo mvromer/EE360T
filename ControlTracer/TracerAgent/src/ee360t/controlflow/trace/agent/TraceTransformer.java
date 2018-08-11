@@ -1,15 +1,14 @@
 package ee360t.controlflow.trace.agent;
 
 import ee360t.controlflow.model.NodeId;
-import ee360t.controlflow.utility.ControlFlowAnalyzer;
 import ee360t.controlflow.utility.ControlFlow;
+import ee360t.controlflow.utility.ControlFlowAnalyzer;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
 import org.objectweb.asm.util.TraceClassVisitor;
 
-import javax.xml.soap.Node;
 import java.io.PrintWriter;
 import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
@@ -30,6 +29,14 @@ public class TraceTransformer implements ClassFileTransformer {
     private final String visitNodeName = "visitNode";
     private Type visitNodeType;
 
+    private final String pushMethodOwner = Type.getInternalName( TraceRegistry.class );
+    private final String pushMethodName = "pushMethod";
+    private Type pushMethodType;
+
+    private final String popMethodOwner = Type.getInternalName( TraceRegistry.class );
+    private final String popMethodName = "popMethod";
+    private Type popMethodType;
+
     public TraceTransformer( List<String> prefixesToTrace, boolean verbose ) {
         this.prefixesToTrace = new ArrayList<>( prefixesToTrace.size() );
         this.verbose = verbose;
@@ -44,6 +51,8 @@ public class TraceTransformer implements ClassFileTransformer {
             startNewTraceType = Type.getType( TraceRegistry.class.getMethod( startNewTraceName,
                     String.class, String.class, String.class  ) );
             visitNodeType = Type.getType( TraceRegistry.class.getMethod( visitNodeName, int.class ) );
+            pushMethodType = Type.getType( TraceRegistry.class.getMethod( pushMethodName, int.class ) );
+            popMethodType = Type.getType( TraceRegistry.class.getMethod( popMethodName ) );
         }
         catch( NoSuchMethodException ex ) {
             System.err.println( "Error getting method used for instrumentation." );
@@ -167,6 +176,12 @@ public class TraceTransformer implements ClassFileTransformer {
                     int globalEntryId = TraceRegistry.getGlobalNodeId( owner.name, method.name, method.desc, ControlFlow.ENTRY );
                     instrumentation.add( getPushGlobalIdInstruction( globalEntryId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
+
+                    // Get the global method ID for this node's method and push it onto the current trace record's
+                    // call stack.
+                    int globalMethodId = TraceRegistry.getGlobalMethodId( owner.name, method.name, method.desc );
+                    instrumentation.add( getPushGlobalIdInstruction( globalMethodId ) );
+                    instrumentation.add( getInvokePushMethodInstruction() );
                 }
 
                 // Get (or compute) a global ID for this node based on the node's enclosing class and method (which is
@@ -182,6 +197,9 @@ public class TraceTransformer implements ClassFileTransformer {
                         ControlFlow.EXIT );
                     instrumentation.add( getPushGlobalIdInstruction( globalExitId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
+
+                    // Make sure we also pop the method at the top of the current trace record's call stack.
+                    instrumentation.add( getInvokePopMethodInstruction() );
                 }
 
                 AbstractInsnNode insertPoint = method.instructions.get( iNode );
@@ -223,6 +241,16 @@ public class TraceTransformer implements ClassFileTransformer {
     private AbstractInsnNode getInvokeVisitNodeInstruction() {
         return new MethodInsnNode( INVOKESTATIC, visitNodeOwner, visitNodeName,
                 visitNodeType.getDescriptor(), false );
+    }
+
+    private AbstractInsnNode getInvokePushMethodInstruction() {
+        return new MethodInsnNode( INVOKESTATIC, pushMethodOwner, pushMethodName,
+            pushMethodType.getDescriptor(), false );
+    }
+
+    private AbstractInsnNode getInvokePopMethodInstruction() {
+        return new MethodInsnNode( INVOKESTATIC, popMethodOwner, popMethodName,
+            popMethodType.getDescriptor(), false );
     }
 
     private void instrumentJunitTestMethod( ClassNode owner, MethodNode method ) {

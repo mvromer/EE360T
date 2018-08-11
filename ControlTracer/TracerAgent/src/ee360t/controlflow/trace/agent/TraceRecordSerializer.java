@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import ee360t.controlflow.trace.agent.TraceRecord;
 
 import java.lang.reflect.Type;
 
@@ -16,6 +15,7 @@ public class TraceRecordSerializer implements JsonSerializer<TraceRecord> {
         json.addProperty( "testClassName", traceRecord.getTestClassName() );
         json.addProperty( "testMethodName", traceRecord.getTestMethodName() );
         json.addProperty( "testMethodDescriptor", traceRecord.getTestMethodDescriptor() );
+        json.add( "callEdges", context.serialize( traceRecord.getCallEdges() ) );
         json.add( "tracePath", context.serialize( traceRecord.getTracePath() ) );
         return json;
     }

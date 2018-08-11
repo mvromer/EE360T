@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import ee360t.controlflow.model.MethodId;
 import ee360t.controlflow.model.NodeId;
 import ee360t.controlflow.utility.ControlFlow;
 
@@ -41,6 +42,20 @@ public class TraceRegistry {
             throw new RuntimeException( "New trace record must be started before visiting any nodes." );
         System.out.println( "Visited node with global ID: " + globalNodeId );
         currentRecord.addNode( globalNodeId );
+    }
+
+    public static void pushMethod( int globalMethodId ) {
+        if( currentRecord == null )
+            throw new RuntimeException( "New trace record must be started before pushing any method." );
+        System.out.println( "Pushing method with global ID: " + globalMethodId );
+        currentRecord.pushMethod( globalMethodId );
+    }
+
+    public static void popMethod() {
+        if( currentRecord == null )
+            throw new RuntimeException( "New trace record must be started before popping any method." );
+        System.out.println( "Popping method" );
+        currentRecord.popMethod();
     }
 
     public static int getGlobalNodeId( String className, String methodName, String methodDescriptor, int localNodeId ) {
