@@ -58,7 +58,7 @@ public class ControlFlow {
         backEdges.get( iTo ).add( iFrom );
     }
 
-    public void mapSourceLineNumber( int iNode, int sourceLineNumber ) {
+    public void setSourceLineNumber( int iNode, int sourceLineNumber ) {
         nodes.add( iNode );
         sourceLineNumbers.put( iNode, sourceLineNumber );
     }

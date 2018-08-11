@@ -60,7 +60,7 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                     // associating, we reset the line number so that at most one control flow node maps to the
                     // associated line number instruction node.
                     if( lineNumber != ControlFlow.INVALID_LINE ) {
-                        analyzer.controlFlow.mapSourceLineNumber( iInstruction, lineNumber );
+                        analyzer.controlFlow.setSourceLineNumber( iInstruction, lineNumber );
                         lineNumber = ControlFlow.INVALID_LINE;
                     }
 
