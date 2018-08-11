@@ -19,10 +19,10 @@ public class MethodSerializer implements JsonSerializer<Method> {
         json.add( "cfgNodes", context.serialize( method.getControlFlow().getNodes() ) );
 
         List<int[]> cfgEdges = new ArrayList<>();
-        Map<Integer, Set<Integer>> edges = method.getControlFlow().getEdges();
+        Map<Integer, Set<Integer>> nodeEdges = method.getControlFlow().getNodeEdges();
 
-        for( int iFrom : edges.keySet() ) {
-            Set<Integer> successors = edges.get( iFrom );
+        for( int iFrom : nodeEdges.keySet() ) {
+            Set<Integer> successors = nodeEdges.get( iFrom );
             for( int iTo : successors ) {
                 cfgEdges.add( new int[] { iFrom, iTo } );
             }

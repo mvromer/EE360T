@@ -154,12 +154,12 @@ public class TraceRegistry {
             methodJson.add( "nodes", gson.toJsonTree( globalNodes ) );
 
             // Serialize the edges for this method, with local node IDs replaced with their global IDs.
-            Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
+            Map<Integer, Set<Integer>> nodeEdges = controlFlow.getNodeEdges();
             Map<Integer, Set<Integer>> globalEdges = new HashMap<>();
-            for( int iFrom : edges.keySet() ) {
+            for( int iFrom : nodeEdges.keySet() ) {
                 Set<Integer> globalSuccessors = new HashSet<>();
 
-                for( int iTo : edges.get( iFrom ) ) {
+                for( int iTo : nodeEdges.get( iFrom ) ) {
                     globalSuccessors.add( localToGlobalNodeId.get( iTo ) );
                 }
 

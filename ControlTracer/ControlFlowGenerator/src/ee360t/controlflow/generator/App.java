@@ -52,9 +52,9 @@ public class App {
                     System.out.println( "            Control Flow:" );
 
                     ControlFlow controlFlow = method.getControlFlow();
-                    Map<Integer, Set<Integer>> edges = controlFlow.getEdges();
-                    for( int iFrom : edges.keySet() ) {
-                        for( int iTo : edges.get( iFrom ) ) {
+                    Map<Integer, Set<Integer>> nodeEdges = controlFlow.getNodeEdges();
+                    for( int iFrom : nodeEdges.keySet() ) {
+                        for( int iTo : nodeEdges.get( iFrom ) ) {
                             System.out.println( String.format( "                %d -> %d", iFrom, iTo ) );
                         }
                     }

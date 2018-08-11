@@ -12,13 +12,13 @@ public class ControlFlow {
     public static final int INVALID_LINE = -1;
 
     Set<Integer> nodes = new HashSet<>();
-    Map<Integer, Set<Integer>> edges = new HashMap<>();
+    Map<Integer, Set<Integer>> nodeEdges = new HashMap<>();
     Map<Integer, Set<Integer>> backEdges = new HashMap<>();
     Map<Integer, Integer> sourceLineNumbers = new HashMap<>();
 
     public void addNode( int iNode ) {
         nodes.add( iNode );
-        edges.computeIfAbsent( iNode, k -> new HashSet<>() );
+        nodeEdges.computeIfAbsent( iNode, k -> new HashSet<>() );
         backEdges.computeIfAbsent( iNode, k -> new HashSet<>() );
     }
 
@@ -34,7 +34,7 @@ public class ControlFlow {
 
             for( int iPredecessor : predecessors ) {
                 // Remove the forward edge to the given node from its predecessor.
-                edges.get( iPredecessor ).remove( iNode );
+                nodeEdges.get( iPredecessor ).remove( iNode );
 
                 // Add an edge from the predecessor to each of the given node's successors.
                 for( int iSuccessor : successors ) {
@@ -45,7 +45,7 @@ public class ControlFlow {
             // Remove the forward edges from the given node to all of its successors.
             // Remove the back edges from the given node to all of its predecessors.
             // Remove the given node from the set of nodes.
-            edges.remove( iNode );
+            nodeEdges.remove( iNode );
             backEdges.remove( iNode );
             nodes.remove( iNode );
         }
@@ -54,7 +54,7 @@ public class ControlFlow {
     public void addEdge( int iFrom, int iTo ) {
         addNode( iFrom );
         addNode( iTo );
-        edges.get( iFrom ).add( iTo );
+        nodeEdges.get( iFrom ).add( iTo );
         backEdges.get( iTo ).add( iFrom );
     }
 
@@ -71,8 +71,8 @@ public class ControlFlow {
         return nodes;
     }
 
-    public Map<Integer, Set<Integer>> getEdges() {
-        return edges;
+    public Map<Integer, Set<Integer>> getNodeEdges() {
+        return nodeEdges;
     }
 
     public Set<Integer> getPredecessors( int iNode ) {
@@ -80,13 +80,13 @@ public class ControlFlow {
     }
 
     public Set<Integer> getSuccessors( int iNode ) {
-        return edges.get( iNode );
+        return nodeEdges.get( iNode );
     }
 
     public void printDot( PrintStream stream ) {
         stream.println( "digraph {" );
-        for( int iFrom : edges.keySet() ) {
-            for( int iTo : edges.get( iFrom ) ) {
+        for( int iFrom : nodeEdges.keySet() ) {
+            for( int iTo : nodeEdges.get( iFrom ) ) {
                 stream.println( String.format( "    %d -> %d", iFrom, iTo ) );
             }
         }
