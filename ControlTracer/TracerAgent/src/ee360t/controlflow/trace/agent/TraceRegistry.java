@@ -17,7 +17,7 @@ import java.util.*;
 public class TraceRegistry {
     private static Map<String, String> sourceFileNames = new HashMap<>();
     private static Map<MethodId, ControlFlow> controlFlows = new HashMap<>();
-    private static Map<NodeId, Integer> globalIds = new HashMap<>();
+    private static Map<NodeId, Integer> globalNodeIds = new HashMap<>();
     private static Map<Integer, NodeId> nodeIds = new HashMap<>();
     private static List<TraceRecord> traceRecords = new ArrayList<>();
     private static TraceRecord currentRecord;
@@ -28,23 +28,24 @@ public class TraceRegistry {
         traceRecords.add( currentRecord );
     }
 
-    public static void visitNode( int globalId ) {
+    public static void visitNode( int globalNodeId ) {
         if( currentRecord == null )
             throw new RuntimeException( "New trace record must be started before visiting any nodes." );
-        System.out.println( "Visited node with global ID: " + globalId );
-        currentRecord.addNode( globalId );
+        System.out.println( "Visited node with global ID: " + globalNodeId );
+        currentRecord.addNode( globalNodeId );
     }
 
-    public static int getGlobalId( String className, String methodName, String methodDescriptor, int localId ) {
-        NodeId nodeId = new NodeId( className, methodName, methodDescriptor, localId );
-        return globalIds.computeIfAbsent( nodeId, key -> {
-            int globalId = globalIds.size();
-            nodeIds.put( globalId, key );
-            return globalId;
+    public static int getGlobalNodeId( String className, String methodName, String methodDescriptor, int localNodeId ) {
+        NodeId nodeId = new NodeId( className, methodName, methodDescriptor, localNodeId );
+        return globalNodeIds.computeIfAbsent( nodeId, key -> {
+            int globalNodeId = globalNodeIds.size();
+            nodeIds.put( globalNodeId, key );
+            return globalNodeId;
         } );
     }
 
-    public static void setControlFlow( ControlFlow controlFlow, String className, String methodName, String methodDescriptor ) {
+    public static void setControlFlow( ControlFlow controlFlow, String className, String methodName,
+                                       String methodDescriptor ) {
         MethodId methodId = new MethodId( className, methodName, methodDescriptor );
         controlFlows.put( methodId, controlFlow );
     }
@@ -105,15 +106,15 @@ public class TraceRegistry {
 
             // Serialize the annotated global IDs for this method's nodes.
             List<String> sourceLines = sourceLinesForClass.get( className );
-            Map<Integer, Integer> localToGlobalId = new HashMap<>();
+            Map<Integer, Integer> localToGlobalNodeId = new HashMap<>();
             Map<Integer, String> globalNodes = new HashMap<>();
             for( int iNode : controlFlow.getNodes() ) {
-                int globalId = globalIds.get( new NodeId( className,
+                int globalNodeId = globalNodeIds.get( new NodeId( className,
                         methodId.getMethodName(),
                         methodId.getMethodDescriptor(),
                         iNode ) );
 
-                localToGlobalId.put( iNode, globalId );
+                localToGlobalNodeId.put( iNode, globalNodeId );
 
                 // Attempt to get the annotation for this node. For ENTRY and EXIT nodes, we have special annotations.
                 // For all other nodes, we attempt to get the corresponding source line, if there is one.
@@ -133,7 +134,7 @@ public class TraceRegistry {
                     }
                 }
 
-                globalNodes.put( globalId, annotation );
+                globalNodes.put( globalNodeId, annotation );
             }
             methodJson.add( "nodes", gson.toJsonTree( globalNodes ) );
 
@@ -144,10 +145,10 @@ public class TraceRegistry {
                 Set<Integer> globalSuccessors = new HashSet<>();
 
                 for( int iTo : edges.get( iFrom ) ) {
-                    globalSuccessors.add( localToGlobalId.get( iTo ) );
+                    globalSuccessors.add( localToGlobalNodeId.get( iTo ) );
                 }
 
-                globalEdges.put( localToGlobalId.get( iFrom ), globalSuccessors );
+                globalEdges.put( localToGlobalNodeId.get( iFrom ), globalSuccessors );
             }
            methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
 
@@ -156,7 +157,7 @@ public class TraceRegistry {
         }
 
         results.add( "controlFlows", controlFlowsJson );
-        results.add( "globalIdToNodeId", gson.toJsonTree( nodeIds ) );
+        results.add( "globalToLocalNodeId", gson.toJsonTree( nodeIds ) );
 
         try( Writer outputWriter = new FileWriter( outputPath ) ) {
             outputWriter.write( gson.toJson( results ) );

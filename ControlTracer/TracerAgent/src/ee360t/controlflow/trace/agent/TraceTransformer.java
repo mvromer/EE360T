@@ -160,7 +160,7 @@ public class TraceTransformer implements ClassFileTransformer {
 
                 // If this node has the ENTRY node as a predecessor, make sure we visit the ENTRY node.
                 if( controlFlow.getPredecessors( iNode ).contains( ControlFlow.ENTRY ) ) {
-                    int globalEntryId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, ControlFlow.ENTRY );
+                    int globalEntryId = TraceRegistry.getGlobalNodeId( owner.name, method.name, method.desc, ControlFlow.ENTRY );
                     instrumentation.add( getPushGlobalIdInstruction( globalEntryId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
                 }
@@ -168,13 +168,13 @@ public class TraceTransformer implements ClassFileTransformer {
                 // Get (or compute) a global ID for this node based on the node's enclosing class and method (which is
                 // determined by the method name and method descriptor). This is an optimization to minimize overhead
                 // of recording a node visitation.
-                int globalId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc, iNode );
+                int globalId = TraceRegistry.getGlobalNodeId( owner.name, method.name, method.desc, iNode );
                 instrumentation.add( getPushGlobalIdInstruction( globalId ) );
                 instrumentation.add( getInvokeVisitNodeInstruction() );
 
                 // If this node has the EXIT node as a successor, make sure we visit the EXIT node.
                 if( controlFlow.getSuccessors( iNode ).contains( ControlFlow.EXIT ) ) {
-                    int globalExitId = TraceRegistry.getGlobalId( owner.name, method.name, method.desc,
+                    int globalExitId = TraceRegistry.getGlobalNodeId( owner.name, method.name, method.desc,
                         ControlFlow.EXIT );
                     instrumentation.add( getPushGlobalIdInstruction( globalExitId ) );
                     instrumentation.add( getInvokeVisitNodeInstruction() );
