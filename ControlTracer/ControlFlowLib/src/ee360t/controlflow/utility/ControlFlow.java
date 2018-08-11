@@ -13,13 +13,13 @@ public class ControlFlow {
 
     Set<Integer> nodes = new HashSet<>();
     Map<Integer, Set<Integer>> nodeEdges = new HashMap<>();
-    Map<Integer, Set<Integer>> backEdges = new HashMap<>();
+    Map<Integer, Set<Integer>> nodeBackEdges = new HashMap<>();
     Map<Integer, Integer> sourceLineNumbers = new HashMap<>();
 
     public void addNode( int iNode ) {
         nodes.add( iNode );
         nodeEdges.computeIfAbsent( iNode, k -> new HashSet<>() );
-        backEdges.computeIfAbsent( iNode, k -> new HashSet<>() );
+        nodeBackEdges.computeIfAbsent( iNode, k -> new HashSet<>() );
     }
 
     public void removeNode( int iNode ) {
@@ -29,7 +29,7 @@ public class ControlFlow {
 
             for( int iSuccessor : successors ) {
                 // Remove the back edge to the given node from its successor.
-                backEdges.get( iSuccessor ).remove( iNode );
+                nodeBackEdges.get( iSuccessor ).remove( iNode );
             }
 
             for( int iPredecessor : predecessors ) {
@@ -46,7 +46,7 @@ public class ControlFlow {
             // Remove the back edges from the given node to all of its predecessors.
             // Remove the given node from the set of nodes.
             nodeEdges.remove( iNode );
-            backEdges.remove( iNode );
+            nodeBackEdges.remove( iNode );
             nodes.remove( iNode );
         }
     }
@@ -55,7 +55,7 @@ public class ControlFlow {
         addNode( iFrom );
         addNode( iTo );
         nodeEdges.get( iFrom ).add( iTo );
-        backEdges.get( iTo ).add( iFrom );
+        nodeBackEdges.get( iTo ).add( iFrom );
     }
 
     public void setSourceLineNumber( int iNode, int sourceLineNumber ) {
@@ -76,7 +76,7 @@ public class ControlFlow {
     }
 
     public Set<Integer> getPredecessors( int iNode ) {
-        return backEdges.get( iNode );
+        return nodeBackEdges.get( iNode );
     }
 
     public Set<Integer> getSuccessors( int iNode ) {
