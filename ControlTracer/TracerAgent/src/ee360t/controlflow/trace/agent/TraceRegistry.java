@@ -184,9 +184,28 @@ public class TraceRegistry {
             methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
             methodsJson.add( methodJson );
         }
-
         results.add( "controlFlows", controlFlowsJson );
-        results.add( "globalToLocalNodeId", gson.toJsonTree( nodeIds ) );
+
+        JsonObject globalToLocalNodeIdJson = new JsonObject();
+        for( int globalNodeId : nodeIds.keySet() ) {
+            NodeId currentNodeId = nodeIds.get( globalNodeId );
+            MethodId nodeMethod = new MethodId( currentNodeId.getClassName(),
+                    currentNodeId.getMethodName(),
+                    currentNodeId.getMethodDescriptor() );
+
+            String[] classNameParts = currentNodeId.getClassName().split( "/" );
+            String className = classNameParts[classNameParts.length - 1];
+            JsonObject nodeIdJson = new JsonObject();
+
+            nodeIdJson.addProperty( "classInternalName", currentNodeId.getClassName() );
+            nodeIdJson.addProperty( "className", className );
+            nodeIdJson.addProperty( "methodName", currentNodeId.getMethodName() );
+            nodeIdJson.addProperty( "methodDescriptor", currentNodeId.getMethodDescriptor() );
+            nodeIdJson.addProperty( "globalMethodId", globalMethodIds.get( nodeMethod ) );
+            nodeIdJson.addProperty( "localId", currentNodeId.getLocalId() );
+            globalToLocalNodeIdJson.add( Integer.toString( globalNodeId ), nodeIdJson );
+        }
+        results.add( "globalToLocalNodeId", globalToLocalNodeIdJson );
 
         try( Writer outputWriter = new FileWriter( outputPath ) ) {
             outputWriter.write( gson.toJson( results ) );
