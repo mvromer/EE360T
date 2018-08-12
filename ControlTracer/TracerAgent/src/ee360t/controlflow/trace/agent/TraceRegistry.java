@@ -188,13 +188,20 @@ public class TraceRegistry {
             Map<Integer, Set<Integer>> nodeEdges = controlFlow.getNodeEdges();
             Map<Integer, Set<Integer>> globalEdges = new HashMap<>();
             for( int iFrom : nodeEdges.keySet() ) {
-                Set<Integer> globalSuccessors = new HashSet<>();
+                // Prune out those edges that correspond to calls to methods within the same class. We render the actual
+                // edges between methods within the same class.
+                int iGlobalFrom = localToGlobalNodeId.get( iFrom );
+                if( globalIntraclassEdges.get( className ).containsKey( iGlobalFrom ) ) {
+                    System.out.println( "Pruning " + iGlobalFrom );
+                    continue;
+                }
 
+                Set<Integer> globalSuccessors = new HashSet<>();
                 for( int iTo : nodeEdges.get( iFrom ) ) {
                     globalSuccessors.add( localToGlobalNodeId.get( iTo ) );
                 }
 
-                globalEdges.put( localToGlobalNodeId.get( iFrom ), globalSuccessors );
+                globalEdges.put( iGlobalFrom, globalSuccessors );
             }
             methodJson.add( "edges", gson.toJsonTree( globalEdges ) );
             methodsJson.add( methodJson );
