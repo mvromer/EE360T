@@ -197,7 +197,8 @@ public class TraceRegistry {
 
                 // Attempt to get the annotation for this node. For ENTRY and EXIT nodes, we have special annotations.
                 // For all other nodes, we attempt to get the corresponding source line, if there is one.
-                String annotation = null;
+                String annotation = String.format( "%s.%s:%d", methodId.getMethodName(), methodId.getMethodDescriptor(),
+                        globalNodeId );
                 if( iNode == ControlFlow.ENTRY ) {
                     annotation = "[ENTRY]";
                 }

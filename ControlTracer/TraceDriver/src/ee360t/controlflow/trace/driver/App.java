@@ -2,6 +2,7 @@ package ee360t.controlflow.trace.driver;
 
 import ee360t.controlflow.trace.examples.E1;
 import ee360t.controlflow.trace.examples.E3;
+import ee360t.controlflow.trace.examples.E4;
 import org.junit.Test;
 
 public class App {
@@ -23,4 +24,7 @@ public class App {
 
     @Test
     public void t5() { E3.M3(); }
+
+    @Test
+    public void t6() { E4.M1(); }
 }
