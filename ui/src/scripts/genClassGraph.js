@@ -84,7 +84,7 @@ export default (controlFlows, callGraph) => {
         methodTitle.textContent = `Class: ${classDivId}`;
       });
     });
-    methodTitle.textContent = `Select a class to view its methods`;
+    methodTitle.textContent = `Click on the class to open control flow graphs for methods of the class.`;
   }, 0);
 
   // zoom fucntion
