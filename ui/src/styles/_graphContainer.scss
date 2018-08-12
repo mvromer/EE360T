@@ -12,6 +12,7 @@
 
 .class-view {
   padding: 4rem 2rem 2rem;
+  user-select: none;
 
   p {
     margin-bottom: 2rem;
@@ -38,13 +39,19 @@
 }
 .method-view {
   padding: 2rem;
+  user-select: none;
 
   &> .classDiv {
     opacity: 0;
     position: absolute;
     margin: auto;
     width: 90%;
+    height: 100%;
     transition: .2s opacity ease-in-out;
+
+    svg {
+      max-height: 80%;
+    }
 
     &.show {
       opacity: 1;

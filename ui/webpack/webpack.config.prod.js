@@ -5,7 +5,7 @@ const common = require('./webpack.common.js');
 const Webpack = require('webpack');
 const Path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const ExtractSASS = new ExtractTextPlugin('styles/bundle.css');
+const ExtractSASS = new ExtractTextPlugin('style.css');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -18,7 +18,7 @@ module.exports = merge(common, {
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new ExtractTextPlugin({ filename: 'bundle.css' }),
+    new ExtractTextPlugin({ filename: 'style.css' }),
     // compiling mode “scope hoisting”
     new Webpack.optimize.ModuleConcatenationPlugin(),
     ExtractSASS
