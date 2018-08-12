@@ -1,9 +1,36 @@
 .zoom {
   display: flex;
-  width: 7rem;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-content: center;
   position: fixed;
   right: 2rem;
   z-index: 999;
+  border-radius: 5px;
+  background-color: $graphBorder;
+  color: #fff;
+  height: 1.9rem;
+  overflow: hidden;
+  opacity: .7;
+
+  &__rate {
+    width: 4rem;
+    text-align: center;
+    padding: .4rem .6rem;
+    border-left: 1px $gcolor5 solid;
+    border-right: 1px $gcolor5 solid;
+  }
+
+  &__in, &__out {
+    padding: .4rem;
+    transition: .3s all ease-in;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $graphText;
+    }
+
+    svg {
+      fill: #fff;
+    }
+  }
 }

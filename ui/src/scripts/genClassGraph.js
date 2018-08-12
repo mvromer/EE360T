@@ -24,21 +24,6 @@ const genMethodGraph = (methodData) => {
   return resultStat;
 };
 
-const getRelationStat = (relation) => {
-  const map = {
-    extension: '--|>',
-    composition: '--*',
-    aggregation: '--o',
-    dependency: '-->',
-  };
-
-  if (!relation) {
-    return `..`;
-  } else {
-    return map[relation];
-  }
-};
-
 export default (controlFlows) => {
   const classView = document.querySelector('.class-view');
   const methodView = document.querySelector('.method-view');
@@ -46,10 +31,6 @@ export default (controlFlows) => {
 
   let systemDiv = `<div class=" systemDiv"> graph TD\n`;
   let classArr = [];
-
-  // controlFlows.classRelations.forEach(relation => {
-  //   systemDiv += `${relation[0]} ${getRelationStat(relation[2])} ${relation[1]}\n`;
-  // });
 
   Object.entries(controlFlows).forEach(([classKey, value]) => {
     systemDiv += `subgraph ${value.classDisplayName.replace(/[^a-zA-Z0-9\/ ]/g, "")} \n`;
@@ -97,35 +78,41 @@ export default (controlFlows) => {
   const zoomIns = document.querySelectorAll('.zoom__in');
   const zoomOuts = document.querySelectorAll('.zoom__out');
 
+  const zoomFunc = (zoomBtn, isIncre) => {
+    const viewContainerName = zoomBtn.parentNode.dataset.view;
+    const rate = zoomBtn.parentNode.querySelector('.zoom__rate');
+    const viewContainerSvgs = document.querySelectorAll(`.${viewContainerName} svg`);
+    [...viewContainerSvgs].forEach(viewContainerSvg => {
+      let maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
+      let width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
+      let maxHeight = width - 20;
+      console.log(viewContainerSvg.style);
+      if (isIncre) {
+        maxWidth += 100;
+        maxHeight += 10;
+        width += 10;
+      } else {
+        maxWidth -= 100;
+        maxHeight -= 10;
+        width -= 10;
+      }
+      viewContainerSvg.setAttribute('width', `${width}%`);
+      viewContainerSvg.style.maxWidth = `${maxWidth}px`;
+      viewContainerSvg.style.maxHeight = `${maxHeight}%`;
+      rate.textContent = `${width}%`;
+    });
+  };
+
   [...zoomIns].forEach(zoomIn => {
     zoomIn.addEventListener('click', (evt) => {
-      const viewContainerName = evt.currentTarget.parentNode.dataset.view;
-      const rate = evt.currentTarget.parentNode.querySelector('.zoom__rate');
-      const viewContainerSvgs = document.querySelectorAll(`.${viewContainerName} svg`);
-      [...viewContainerSvgs].forEach(viewContainerSvg => {
-        const maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
-        const width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
-        viewContainerSvg.setAttribute('width', `${width+10}%`);
-        viewContainerSvg.style.maxWidth = `${maxWidth+100}px`;
-        rate.textContent = `${width+10}%`;
-      });
-
-    }, true);
+      zoomFunc(evt.currentTarget, true);
+    });
   });
 
   [...zoomOuts].forEach(zoomOut => {
     zoomOut.addEventListener('click', (evt) => {
-      const viewContainerName = evt.currentTarget.parentNode.dataset.view;
-      const rate = evt.currentTarget.parentNode.querySelector('.zoom__rate');
-      const viewContainerSvgs = document.querySelectorAll(`.${viewContainerName} svg`);
-      [...viewContainerSvgs].forEach(viewContainerSvg => {
-        const maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
-        const width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
-        viewContainerSvg.setAttribute('width', `${width-10}%`);
-        viewContainerSvg.style.maxWidth = `${maxWidth-100}px`;
-        rate.textContent = `${width-10}%`;
-      });
-    }, true);
+      zoomFunc(evt.currentTarget, false);
+    });
   });
 
 
