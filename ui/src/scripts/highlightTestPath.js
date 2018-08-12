@@ -21,8 +21,17 @@ const highlightMethodNodes = (nodesArr) => {
   performHighlight(edgeIds);
 };
 
+const highlightCallEdges = (callEdges) => {
+  Object.entries(callEdges).forEach(([key, values]) => {
+    values.forEach(value => {
+      performHighlight([`${key}-${value}`]);
+    });
+  });
+};
+
 export default (tests) => {
   performHighlight(tests.classes);
   performHighlight(tests.methods);
+  highlightCallEdges(tests.callEdges);
   highlightMethodNodes(tests.methodNodes);
 };

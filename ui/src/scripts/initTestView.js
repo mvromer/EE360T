@@ -15,6 +15,7 @@ export default (tests, globalIdMap) => {
 
     testSet[test.testMethodName] = {
       methodNodes: test.tracePath,
+      callEdges: test.callEdges,
       classes: [...visitedClassSet],
       methods: [...visitedMethodSet],
     };

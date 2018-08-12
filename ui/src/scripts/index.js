@@ -9,7 +9,7 @@ import {
 
 // split screen
 Split(['#class-view', '#method-view'], {
-  sizes: [40, 60],
+  sizes: [50, 50],
   direction: 'vertical'
 });
 
@@ -19,10 +19,11 @@ loadJSON("results.json", (response) => {
   const {
     controlFlows,
     traceRecords,
-    globalToLocalNodeId
+    globalToLocalNodeId,
+    callGraph,
   } = data;
 
-  genClassGraph(controlFlows);
+  genClassGraph(controlFlows, callGraph);
   initTestView(traceRecords, globalToLocalNodeId);
 
   // mermaidAPI.initialize({

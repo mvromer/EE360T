@@ -10,6 +10,17 @@ const genIntraClassEdges = (edges) => {
   return resultStat;
 };
 
+const genCallGraph = (methods) => {
+  let resultStat = '';
+  Object.entries(methods).forEach(([methodFrom, methodsTo]) => {
+    methodsTo.forEach(method => {
+      resultStat += `${methodFrom} --> ${method} \n`;
+    });
+  });
+  return resultStat;
+};
+
+
 const genMethodGraph = (methodData) => {
   let resultStat = `subgraph ${methodData.methodName.replace(/[^a-zA-Z0-9 ]/g, "")}-${methodData.methodDescriptor.replace(/[^a-zA-Z0-9 ]/g, "")} \n`;
   Object.entries(methodData.nodes).forEach(([nodeKey, nodeValue]) => {
@@ -24,13 +35,15 @@ const genMethodGraph = (methodData) => {
   return resultStat;
 };
 
-export default (controlFlows) => {
+export default (controlFlows, callGraph) => {
   const classView = document.querySelector('.class-view');
   const methodView = document.querySelector('.method-view');
   const methodTitle = document.querySelector('.method-view__title');
 
   let systemDiv = `<div class=" systemDiv"> graph TD\n`;
   let classArr = [];
+
+  systemDiv += genCallGraph(callGraph);
 
   Object.entries(controlFlows).forEach(([classKey, value]) => {
     systemDiv += `subgraph ${value.classDisplayName.replace(/[^a-zA-Z0-9\/ ]/g, "")} \n`;

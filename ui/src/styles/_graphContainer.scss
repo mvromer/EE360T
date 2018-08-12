@@ -31,9 +31,12 @@
 
   .systemDiv {
     margin: auto;
+    width: 100%;
+    height: 100%;
+    transition: .2s opacity ease-in-out;
 
-    .classGroup {
-      cursor: pointer;
+    svg {
+      max-height: 80%;
     }
   }
 }
@@ -45,7 +48,7 @@
     opacity: 0;
     position: absolute;
     margin: auto;
-    width: 90%;
+    width: 100%;
     height: 100%;
     transition: .2s opacity ease-in-out;
 
