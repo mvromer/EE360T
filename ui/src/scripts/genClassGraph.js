@@ -1,10 +1,6 @@
 import he from 'he';
 import { hideAllGraph, disselectALL } from './utils';
 
-console.log( "head" );
-console.log( he.encode( "<head>" ));
-console.log( he.encode( "\"stuff in quotes\"", { "decimal": true } ) );
-
 const genIntraClassEdges = (edges) => {
   let resultStat = '';
   Object.entries(edges).forEach(([edgeFrom, edgesTo]) => {
@@ -79,7 +75,6 @@ export default (controlFlows, callGraph) => {
   });
 
   systemDiv += `</div>`;
-  console.log( systemDiv );
 
   classView.insertAdjacentHTML('beforeend', systemDiv);
 
@@ -109,7 +104,6 @@ export default (controlFlows, callGraph) => {
       let maxWidth = parseInt(viewContainerSvg.style.maxWidth.replace('px', ''));
       let width = parseInt(viewContainerSvg.getAttribute('width').replace('%', ''));
       let maxHeight = width - 20;
-      console.log(viewContainerSvg.style);
       if (isIncre) {
         maxWidth += 100;
         maxHeight += 10;

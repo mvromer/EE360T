@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>webpack starterkit</title>
+  <title>Visualizing Runtime Test Coverage</title>
 <link href="style.css" rel="stylesheet"></head>
 <body>
   <section class="header">
-    <h1>Control Flow Graph Viewer</h1>
+    <h1>Visualizing Runtime Test Coverage</h1>
     <div class="header__view-test">
       <span class="header__view-test__title">View Test: </span>
       <select class="header__view-test__dd">
@@ -24,7 +24,6 @@
         <span class="zoom__in"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
       </div>
       <h2 class="class-view__title">System Overview</h2>
-      <p>Click on the class to open control flow graphs for methods of the class.</p>
     </section>
     <section class="method-view view-Container" id="method-view">
         <div class="zoom" data-view="classDiv">
@@ -37,16 +36,5 @@
   </section>
 
   <script src="mermaid.js"></script>
-  <!-- <script>
-    mermaid.initialize({
-      //theme: 'dark',
-      // themeCSS: '.node rect { fill: red; }',
-      logLevel: 3,
-      flowchart: { curve: 'linear' },
-      gantt: { axisFormat: '%m/%d/%Y' },
-      sequence: { actorMargin: 50 },
-      // sequenceDiagram: { actorMargin: 300 } // deprecated
-    });
-  </script> -->
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>

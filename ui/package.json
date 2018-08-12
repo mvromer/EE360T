@@ -1,14 +1,14 @@
 {
-  "name": "yet-another-webpack-es6-starterkit",
+  "name": "Runtime-Test-Coverage-Visualizer",
   "version": "1.0.0",
-  "description": "A light foundation for your next frontend project based on webpack.",
+  "description": "Visualizing Runtime Test Coverage",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js  --colors",
     "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wbkd/yet-another-webpack-es6-starterkit.git"
+    "url": "git+https://github.com/mvromer/EE360T.git"
   },
   "keywords": [
     "webpack",
@@ -18,10 +18,10 @@
     "javascript",
     "webdev"
   ],
-  "author": "webkid.io",
+  "author": "Jeff Ng & Michael Romer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wbkd/yet-another-webpack-es6-starterkit/issues"
+    "url": "https://github.com/mvromer/EE360T.git"
   },
   "eslintConfig": {
     "env": {
@@ -41,7 +41,6 @@
       "es2015"
     ]
   },
-  "homepage": "https://github.com/wbkd/yet-another-webpack-es6-starterkit#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

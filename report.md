@@ -1,9 +1,6 @@
 # Visualizing Runtime Test Coverage
 
 ## Table of content
-
-- [Visualizing Runtime Test Coverage](#visualizing-runtime-test-coverage)
-  - [Table of content](#table-of-content)
   - [Abstract](#abstract)
   - [Introduction](#introduction)
   - [Implementation](#implementation)
@@ -35,6 +32,11 @@ system view, class view and method view.
   - Method view: displays control flow graph of the method
 - Highlight the paths from each test execution on the UI as well and the control
 flow path in the involved methods.
+
+The visualization of the test execution provides the following advantages:
+- Easily find code paths without tests
+- Provide a better understanding of the test coverage beyond just a percentage
+- Readily trace paths for the failed tests
 
 ## Implementation
 
