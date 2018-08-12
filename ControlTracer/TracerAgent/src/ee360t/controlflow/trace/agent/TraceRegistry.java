@@ -28,6 +28,9 @@ public class TraceRegistry {
 
     private static Map<String, Map<Integer, Set<Integer>>> globalIntraclassEdges = new HashMap<>();
 
+    private static Map<MethodId, Set<MethodId>> callEdges = new HashMap<>();
+    private static Set<String> tracedClasses = new HashSet<>();
+
     private static List<TraceRecord> traceRecords = new ArrayList<>();
     private static TraceRecord currentRecord;
 
@@ -98,6 +101,14 @@ public class TraceRegistry {
         sourceFileNames.put( className, sourceFileName );
     }
 
+    public static void addCallEdges( Map<MethodId, Set<MethodId>> callEdges ) {
+        TraceRegistry.callEdges.putAll( callEdges );
+    }
+
+    public static void addTracedClass( String className ) {
+        tracedClasses.add( className );
+    }
+
     public static void serialize( String outputPath, List<String> sourcePaths ) {
         Gson gson = new GsonBuilder()
                 .serializeNulls()
@@ -107,9 +118,31 @@ public class TraceRegistry {
                 .disableHtmlEscaping()
                 .create();
 
+        // Serialize the trace records.
         JsonObject results = new JsonObject();
         results.add( "traceRecords", gson.toJsonTree( traceRecords ) );
 
+        // Serialize the call graph. Prune out those methods that are called but whose classes have not been traced.
+        // Also convert all method IDs to global method IDs.
+        Map<Integer, Set<Integer>> globalCallEdges = new HashMap<>();
+
+        for( MethodId callerId : callEdges.keySet() ) {
+            Set<Integer> globalCalleeIds = new HashSet<>();
+
+            for( MethodId calleeId : callEdges.get( callerId ) ) {
+                if( tracedClasses.contains( calleeId.getClassName() ) ) {
+                    globalCalleeIds.add( globalMethodIds.get( calleeId ) );
+                }
+            }
+
+            if( !globalCalleeIds.isEmpty() ) {
+                globalCallEdges.put( globalMethodIds.get( callerId ), globalCalleeIds );
+            }
+        }
+
+        results.add( "callGraph", gson.toJsonTree( globalCallEdges ) );
+
+        // Serialize the control flows.
         JsonObject controlFlowsJson = new JsonObject();
         Map<String, JsonObject> controlFlowsForClass = new HashMap<>();
         Map<String, List<String>> sourceLinesForClass = new HashMap<>();
@@ -208,6 +241,7 @@ public class TraceRegistry {
         }
         results.add( "controlFlows", controlFlowsJson );
 
+        // Serialize the global to local node ID mappings.
         JsonObject globalToLocalNodeIdJson = new JsonObject();
         for( int globalNodeId : nodeIds.keySet() ) {
             NodeId currentNodeId = nodeIds.get( globalNodeId );

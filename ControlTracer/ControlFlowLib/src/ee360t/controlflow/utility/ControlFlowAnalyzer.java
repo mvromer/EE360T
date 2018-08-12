@@ -1,5 +1,6 @@
 package ee360t.controlflow.utility;
 
+import ee360t.controlflow.model.MethodId;
 import ee360t.controlflow.model.NodeId;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -21,11 +22,12 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
     ControlFlow controlFlow = new ControlFlow();
 
     public static ControlFlow buildControlFlow( String ownerName, MethodNode method ) {
-        return buildControlFlow( ownerName, method, null );
+        return buildControlFlow( ownerName, method, null, null );
     }
 
     public static ControlFlow buildControlFlow( String ownerName, MethodNode method,
-                                                Map<NodeId, Set<NodeId>> intraclassEdges ) {
+                                                Map<NodeId, Set<NodeId>> intraclassEdges,
+                                                Map<MethodId, Set<MethodId>> callEdges ) {
         ControlFlowAnalyzer analyzer = new ControlFlowAnalyzer();
 
         try {
@@ -96,17 +98,26 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
                         // Add an edge from this return statement to the well-defined exit node for this method.
                         analyzer.controlFlow.addEdge( iInstruction, ControlFlow.EXIT );
                     }
-                    else if( intraclassEdges != null && currentInstruction instanceof MethodInsnNode ) {
+                    else if( currentInstruction instanceof MethodInsnNode ) {
                         MethodInsnNode invokeInstruction = (MethodInsnNode)currentInstruction;
 
-                        // TODO: May need to add an additional check here to see if the invoke instruction's owner is a
-                        // base class of the given owner. Because then it's conceivable that we virtually call a method
-                        // inside of our class.
-                        if( invokeInstruction.owner.equals( ownerName ) ) {
-                            // This invoke instruction calls another method inside of our class. Record the intraclass
-                            // edge that goes from the invoke instruction to the called method. Save the called method's
-                            // exit node so that another intraclass edge can be formed between it and the return site in
-                            // this method, which is the first real instruction following this invoke instruction.
+                        // Record the call graph edge from this method to the invoked method.
+                        // TODO: Figure out if we need to add edges for derived classes if calling base class method.
+                        if( callEdges != null ) {
+                            MethodId callerId = new MethodId( ownerName, method.name, method.desc );
+                            MethodId calleeId = new MethodId( invokeInstruction.owner, invokeInstruction.name,
+                                invokeInstruction.desc );
+
+                            callEdges.computeIfAbsent( callerId, key -> new HashSet<>() ).add( calleeId );
+                        }
+
+                        // Record the intraclass edge that goes from the invoke instruction to the called method.
+                        // TODO: Figure out if we need to add edges for derived classes if calling base class method.
+                        if( intraclassEdges != null && invokeInstruction.owner.equals( ownerName ) ) {
+                            // This invoke instruction calls another method inside of our class.  Save the called
+                            // method's exit node so that another intraclass edge can be formed between it and the
+                            // return site in this method, which is the first real instruction following this invoke
+                            // instruction.
                             NodeId callSiteId = new NodeId( ownerName, method.name, method.desc, iInstruction );
                             NodeId calleeEntryId = new NodeId( invokeInstruction.owner, invokeInstruction.name,
                                     invokeInstruction.desc, ControlFlow.ENTRY );

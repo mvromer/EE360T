@@ -1,5 +1,6 @@
 package ee360t.controlflow.trace.agent;
 
+import ee360t.controlflow.model.MethodId;
 import ee360t.controlflow.model.NodeId;
 import ee360t.controlflow.utility.ControlFlow;
 import ee360t.controlflow.utility.ControlFlowAnalyzer;
@@ -66,7 +67,8 @@ public class TraceTransformer implements ClassFileTransformer {
                              ProtectionDomain protectionDomain, byte[] classfileBuffer )
         throws IllegalClassFormatException {
         boolean shouldTraceClass = shouldTraceClass( className );
-        boolean modifiedClass = false;
+        boolean instrumentedTracedMethod = false;
+        boolean instrumentedJunitTestMethod = false;
 
         ClassReader classReader = new ClassReader( classfileBuffer );
         ClassNode classNode = new ClassNode( ASM4 );
@@ -78,20 +80,21 @@ public class TraceTransformer implements ClassFileTransformer {
         }
 
         Map<NodeId, Set<NodeId>> intraclassEdges = new HashMap<>();
+        Map<MethodId, Set<MethodId>> callEdges = new HashMap<>();
         for( MethodNode method : classNode.methods ) {
             if( shouldTraceClass ) {
                 System.out.println( String.format( "Instrumenting: %s.%s%s", className, method.name, method.desc ) );
-                instrumentTracedMethod( classNode, method, intraclassEdges );
-                modifiedClass = true;
+                instrumentTracedMethod( classNode, method, intraclassEdges, callEdges );
+                instrumentedTracedMethod = true;
             }
             else if( isJunitTestMethod( method ) ) {
                 System.out.println( String.format( "Instrumenting: %s.%s%s\n", className, method.name, method.desc ) );
                 instrumentJunitTestMethod( classNode, method );
-                modifiedClass = true;
+                instrumentedJunitTestMethod = true;
             }
         }
 
-        if( !modifiedClass )
+        if( !instrumentedTracedMethod && !instrumentedJunitTestMethod )
             return null;
 
         if( verbose && shouldTraceClass ) {
@@ -99,7 +102,12 @@ public class TraceTransformer implements ClassFileTransformer {
             classNode.accept( classVisitor );
         }
 
-        TraceRegistry.setIntraclassEdges( className, intraclassEdges );
+        if( instrumentedTracedMethod ) {
+            TraceRegistry.setIntraclassEdges( className, intraclassEdges );
+            TraceRegistry.addCallEdges( callEdges );
+            TraceRegistry.addTracedClass( className );
+        }
+
         ClassWriter classWriter = new ClassWriter( ClassWriter.COMPUTE_FRAMES );
         classNode.accept( classWriter );
         return classWriter.toByteArray();
@@ -130,9 +138,12 @@ public class TraceTransformer implements ClassFileTransformer {
         return false;
     }
 
-    private void instrumentTracedMethod( ClassNode owner, MethodNode method, Map<NodeId, Set<NodeId>> intraclassEdges ) {
+    private void instrumentTracedMethod( ClassNode owner, MethodNode method,
+                                         Map<NodeId, Set<NodeId>> intraclassEdges,
+                                         Map<MethodId, Set<MethodId>> callEdges ) {
         try {
-            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method, intraclassEdges );
+            ControlFlow controlFlow = ControlFlowAnalyzer.buildControlFlow( owner.name, method,
+                intraclassEdges, callEdges );
             TraceRegistry.setControlFlow( controlFlow, owner.name, method.name, method.desc );
             TraceRegistry.setSourceFileName( owner.name, owner.sourceFile );
 
