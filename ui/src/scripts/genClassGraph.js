@@ -1,4 +1,9 @@
+import he from 'he';
 import { hideAllGraph, disselectALL } from './utils';
+
+console.log( "head" );
+console.log( he.encode( "<head>" ));
+console.log( he.encode( "\"stuff in quotes\"", { "decimal": true } ) );
 
 const genIntraClassEdges = (edges) => {
   let resultStat = '';
@@ -24,7 +29,11 @@ const genCallGraph = (methods) => {
 const genMethodGraph = (methodData) => {
   let resultStat = `subgraph ${methodData.methodName.replace(/[^a-zA-Z0-9 ]/g, "")}-${methodData.methodDescriptor.replace(/[^a-zA-Z0-9 ]/g, "")} \n`;
   Object.entries(methodData.nodes).forEach(([nodeKey, nodeValue]) => {
-    resultStat += `m${nodeKey}("${nodeValue}") \n`;
+    // Mermaid was failing to render graphs if node descriptions had special characters in them. However, following
+    // Mermaid's docs on how to encode special characters using HTML entities within double quotes didn't actually
+    // work (it would render the HTML entities into the actual SVG rather than copy them verbatim). Somehow, doing
+    // a double encode using named references (as opposed to numeric entities) worked.
+    resultStat += `m${nodeKey}("${he.encode( he.encode( nodeValue, { "useNamedReferences": true } ), { "useNamedReferences": true } )}") \n`;
   });
   Object.entries(methodData.edges).forEach(([edgeKey, edgeValues]) => {
     edgeValues.forEach(edgeValue => {
@@ -70,6 +79,7 @@ export default (controlFlows, callGraph) => {
   });
 
   systemDiv += `</div>`;
+  console.log( systemDiv );
 
   classView.insertAdjacentHTML('beforeend', systemDiv);
 
