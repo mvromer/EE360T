@@ -74,27 +74,65 @@ This is the User Interface for visualizing the call graph, control flow graph of
 - adjustable split pane for different views
 - responsive layout
 
-#### Data Source ####
-The Visualizer requires a JSON file named `results.json` as the data source for generating different graphs. The JSON should has 4 major data in order to generate all the graphs and enable all the features of the UI:
+#### Data Source
+The Trace Explorer requires a JSON file named `results.json` as the data source for generating different graphs. The JSON should has 4 major data in order to generate all the graphs and enable all the features of the UI:
 - callGraph: generating call graph for all classes in the `System View Pane`
 - contorlFlows: generating control flow graph for methods of all classes in the `Method View Pane`
 - traceRecords: each record shows as an item on the `View Test Dropdown` and highlights the paths on the `System View Pane` and `Method View Pane` when the corresponding test is selected.
-- globalToLocalNodeId: the mapping reference for all the nodes which contains details about the class and method that node belongs to.
+- globalToLocalNodeId: the mapping reference  using a global id for all the nodes which contains details about the class and method that node belongs to.
 
-#### UI Design ####
-The visualizer aims to help provide an intuitive interface for the user to understand the system architecture better and visualizing test coverage at different layers. There are 3 sections in the UI:
+#### UI Design
+The Trace Explorer aims to help provide an intuitive interface for the user to understand the system architecture better and visualizing test coverage at different layers. There are 3 sections in the UI:
 
 - Header: it is the fixed position section at the top containing the name of the application and the `View Test Dropdown`. User can switch between each individual test case or simply select `all` for showing the overall test coverage of all test cases.
 - System View Pane: it is the upper large pane for showing all the classes of the system along with edges between their methods, which representing the call graph of the system. Each class is clickable for changing content in the `Method View Pane`, the thick border around the class indicates the selected state of the class.
 - Method View Pane: it is the bottom pane of the page for showing control flow graph of methods in the selected class.
 
-![alt text](visualizer.jpg "UI design")
+Apart from that, each node in the graph has it's own description, it shows the method name if the node represents a method and shows related line number and syntax if it's a node in a method. This can help user better associate the graph to the source code of the program.
 
-#### Technologies ####
-This web application is using webpack as the build tool for transpiling Javascript ES6 and pre-processing sass for styles in both development and production. Mermaid.js is the main Javascript library for graph generation, the version of Mermaid.js used in the project is slightly modified to better fit the need of all the designed interactions for improving user experience.
+Because of the screen size limitation, the graph generated for a complex system could too large to fit in the screen and readable at the same time. A zoom-in & -out feature for both panes is added to enlarge or minimize the graph according to the need of the user, plus svg vector graphics serves well for this purpose.
 
-## Results
-Show example classes and visualized results.
+![alt text](screenshots/visualizer.jpg "UI design")
+
+#### Technologies
+This web application is using [webpack](https://webpack.js.org/) as the build tool for transpiling [Javascript ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla) and pre-processing [sass](https://sass-lang.com/) for styles in both development and production. [Mermaid.js](https://github.com/knsv/mermaid) is the main Javascript library for graph generation, and Mermaid.js has [d3](https://d3js.org/) and [dagre-d3](https://github.com/dagrejs/dagre-d3) as the dependencies for graphical layout and drawing libraries.
+There're also some helper functions in the application for specific features. [split.js](https://nathancahill.github.io/Split.js/) helps to create the adjustable split panes on the page, and [he](https://github.com/mathiasbynens/he) encodes special characters to HTML entities, so they can be used as descriptions on the mehod nodes.
+
+#### Implementation Details
+As mentioned before, Mermaid.js is used for generating the call graphs and control flow graph, Mermaid takes a simple markdown-like script to do that. The challenge is to gather data from the data source and convert them into the Mermaid script and another challenge is to making the generated SVG graphs to be interactive. The original Mermaid library cannot archive the goal, We have to slightly modify it, so the elements in the graphs are generated with the desired attributes which make them selectable by Javascript for adding the highlighting effects as well as some transition effects.
+
+The app first loops through  `controlFlows` object from the data source to build the class blocks and control flow graphs and then retrieves data from `callGraph` to build the edges between class blocks. Each element in the blocks and graph has a unique id composed from the JSON data and in the consistent format like this:
+`System View Pane':
+- class container: [classsName]
+- method: [globalMethodId]
+- call graph edge: [globalMethodId:from]-[globalMethodId:to]
+
+`Method View Pane':
+- method container: [methodName]-[methodDescriptor]
+- method node: [globalNodeId]
+- control flow graph edge: [globalNodeId:from]-[globalNodeId:to]
+
+So each element can be selected individually, When a test is selected from the `Test Dropdown`, it takes global node ids from the `tracePath` of the `traceRecords` object, and select all the related elements and add the highlighting styles to them in order to show the actual test paths. Similarly, the `all` option on the `Test Dropdown` trigger the code to retrieve and highlight `tracePath` for all tests to show the overall coverage.
+
+## Demonstration
+This is a simple demonstration of the data source generated by the Trace Agent and it's result on the Trace Explorer.
+<!-- links may need to update -->
+- [Java code example](https://github.com/mvromer/EE360T/tree/master/ControlTracer/TraceDriver/src/ee360t/controlflow/trace/examples)
+- [Test driver example](https://github.com/mvromer/EE360T/blob/master/ControlTracer/TraceDriver/src/ee360t/controlflow/trace/driver/App.java)
+- [corresponding Trace Agent output](https://github.com/mvromer/EE360T/blob/master/ui/dist/results.json)
+
+On the Trace Exploer:
+1. Call graphs showing in the System View Pane with no control flow graph showing and no test selected
+![alt text](screenshots/result-1.png "demo step 1")
+
+2. Click on one of the class block and have the methods in that class showing in the Method view Pane
+![alt text](screenshots/result-2.png "demo step 2")
+
+3. Select a test from the Test Dropdown to highlight the test path on the graphs
+![alt text](screenshots/result-3.png "demo step 3")
+
+1. Enlarge a comples graphs to view the details
+![alt text](screenshots/result-4.png "demo step 4")
 
 ## Future Work
 
