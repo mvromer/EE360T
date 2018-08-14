@@ -1,13 +1,21 @@
 # Visualizing Runtime Test Coverage
 
 ## Table of content
+- [Visualizing Runtime Test Coverage](#visualizing-runtime-test-coverage)
+  - [Table of content](#table-of-content)
   - [Abstract](#abstract)
   - [Introduction](#introduction)
-  - [Implementation](#implementation)
-    - [Runtime Trace Agent](#runtime-trace-agent)
-    - [Web-Based Trace Visualizer](#web-based-trace-visualizer)
-  - [Results](#results)
+  - [Technique](#technique)
+    - [Runtime Agent](#runtime-agent)
+    - [Web-Based Trace Explorer](#web-based-trace-explorer)
+      - [Data Source](#data-source)
+      - [UI Design](#ui-design)
+      - [Technologies](#technologies)
+      - [Implementation Details](#implementation-details)
+  - [Demonstration](#demonstration)
   - [Future Work](#future-work)
+    - [Limitations](#limitations)
+    - [Enhancements](#enhancements)
   - [Conclusion](#conclusion)
 
 ## Abstract
