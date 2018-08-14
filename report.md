@@ -146,12 +146,13 @@ On the Trace Exploer:
 
 ### Limitations
 Talk about improvements we could make or features we could add.
-- UI
-  - inter-class method node connections: add edges between nodes of methods according to call graph
-  - more scalable
-  - browser support
+- Web-based Trace Explorer
+  - inter-class method node connections: currently, inter-class connection can be view on the call graph level between methods of different classes, but not on control graph level, edges between method nodes of different classes should be available to indicate the actual method invoking path.
+  - more scalable: even with the graph enlarging feature, it's not easy to look at class has 100+ method or method has 1000+ nodes. A more scalable designed UI may be needed for a wider application.
+  - browser support: the way to read external JSON file is making a XMLHttpRequest request for the file, which works well if running the app on a server. There may be issues when a user open the `index.html` with browsers directly, browsers like Chrome blocks XMLHttpRequest to load a local file, but user ca use FireFox as a workaround.
 
 ### Enhancements
+
 
 ## Conclusion
 Summarize work and results.
