@@ -110,15 +110,15 @@ There're also some helper functions in the application for specific features. [s
 As mentioned before, Mermaid.js is used for generating the call graphs and control flow graph, Mermaid takes a simple markdown-like script to do that. The challenge is to gather data from the data source and convert them into the Mermaid script and another challenge is to making the generated SVG graphs to be interactive. The original Mermaid library cannot archive the goal, We have to slightly modify it, so the elements in the graphs are generated with the desired attributes which make them selectable by Javascript for adding the highlighting effects as well as some transition effects.
 
 The app first loops through  `controlFlows` object from the data source to build the class blocks and control flow graphs and then retrieves data from `callGraph` to build the edges between class blocks. Each element in the blocks and graph has a unique id composed from the JSON data and in the consistent format like this:
-`System View Pane':
-- class container: [classsName]
-- method: [globalMethodId]
-- call graph edge: [globalMethodId:from]-[globalMethodId:to]
+- `System View Pane`:
+  - class container: [classsName]
+  - method: [globalMethodId]
+  - call graph edge: [globalMethodId:from]-[globalMethodId:to]
 
-`Method View Pane':
-- method container: [methodName]-[methodDescriptor]
-- method node: [globalNodeId]
-- control flow graph edge: [globalNodeId:from]-[globalNodeId:to]
+- `Method View Pane`:
+  - method container: [methodName]-[methodDescriptor]
+  - method node: [globalNodeId]
+  - control flow graph edge: [globalNodeId:from]-[globalNodeId:to]
 
 So each element can be selected individually, When a test is selected from the `Test Dropdown`, it takes global node ids from the `tracePath` of the `traceRecords` object, and select all the related elements and add the highlighting styles to them in order to show the actual test paths. Similarly, the `all` option on the `Test Dropdown` trigger the code to retrieve and highlight `tracePath` for all tests to show the overall coverage.
 
