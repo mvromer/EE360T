@@ -67,6 +67,31 @@ If the code under test has been compiled with debug information and the runtime 
 When the JVM terminates, the agent's shutdown hook is executed. During this time, the global trace registry serializes each trace record created at runtime, the call graph for the code under test, and the control flow graph for each method under test that was instrumented. Internal mapping state is also recorded so that the results stored in the previous three structures can be appropriately interpreted by downstream processors. All data is serialized to a JSON file in a format that is readily consumable by the web-based trace explorer.
 
 ### Web-Based Trace Explorer
+This is the User Interface for visualizing the call graph, control flow graph of a system and it also enables user to select desired test case and highlight the coverage of selected test, features includes:
+- generate different views and graphs for a system
+- options for highlighting individual test cases and overall test coverage
+- zoom in out feature for graphs
+- adjustable split pane for different views
+- responsive layout
+
+#### Data Source ####
+The Visualizer requires a JSON file named `results.json` as the data source for generating different graphs. The JSON should has 4 major data in order to generate all the graphs and enable all the features of the UI:
+- callGraph: generating call graph for all classes in the `System View Pane`
+- contorlFlows: generating control flow graph for methods of all classes in the `Method View Pane`
+- traceRecords: each record shows as an item on the `View Test Dropdown` and highlights the paths on the `System View Pane` and `Method View Pane` when the corresponding test is selected.
+- globalToLocalNodeId: the mapping reference for all the nodes which contains details about the class and method that node belongs to.
+
+#### UI Design ####
+The visualizer aims to help provide an intuitive interface for the user to understand the system architecture better and visualizing test coverage at different layers. There are 3 sections in the UI:
+
+- Header: it is the fixed position section at the top containing the name of the application and the `View Test Dropdown`. User can switch between each individual test case or simply select `all` for showing the overall test coverage of all test cases.
+- System View Pane: it is the upper large pane for showing all the classes of the system along with edges between their methods, which representing the call graph of the system. Each class is clickable for changing content in the `Method View Pane`, the thick border around the class indicates the selected state of the class.
+- Method View Pane: it is the bottom pane of the page for showing control flow graph of methods in the selected class.
+
+![alt text](visualizer.jpg "UI design")
+
+#### Technologies ####
+This web application is using webpack as the build tool for transpiling Javascript ES6 and pre-processing sass for styles in both development and production. Mermaid.js is the main Javascript library for graph generation, the version of Mermaid.js used in the project is slightly modified to better fit the need of all the designed interactions for improving user experience.
 
 ## Results
 Show example classes and visualized results.
@@ -75,6 +100,10 @@ Show example classes and visualized results.
 
 ### Limitations
 Talk about improvements we could make or features we could add.
+- UI
+  - inter-class method node connections: add edges between nodes of methods according to call graph
+  - more scalable
+  - browser support
 
 ### Enhancements
 
