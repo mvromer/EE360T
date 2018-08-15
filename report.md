@@ -135,7 +135,7 @@ On the Trace Exploer:
 3. Select a test from the Test Dropdown to highlight the test path on the graphs
 ![alt text](screenshots/result-3.png "demo step 3")
 
-1. Enlarge a comples graphs to view the details
+4. Enlarge a comples graphs to view the details
 ![alt text](screenshots/result-4.png "demo step 4")
 
 ## Future Work
@@ -146,7 +146,7 @@ A handful of issues limits the scenarios in which our current implementation cou
 
 The scalability of the trace explorer currently prevents large numbers of classes or classes that span a large number of nodes to be viewed efficiently. Test suites that result in the instrumentation of a large number of classes and/or methods generate system renderings that are difficult to view and navigate, despite the availability of zoom controls within the user interface. Furthermore, agent output that spans on the order of thousands of nodes causes the trace explorer to experience periods of unresponsiveness as it processes and renders all of the nodes prior to displaying the results.
 
-One strategy for improving responsiveness would be make greater use of lazy evaluation when loading and processing the trace results produced by the agent. In particular, instead of parsing and rendering all control flow graps when the trace explorer first loads, each graph could be processed the first time the user requests to view it. Another approach would be to introduce new user interface elements that help limit the amount of content that is displayed at any given time, allowing more screen real estate to be dedicated to a few number of elements at any given time. Such elements would include options for filtering which methods, and thus control flow graphs, are visible at a given time as well as pagination features to allow for efficient scrolling through visual elements within the browswer.
+One strategy for improving responsiveness would be make greater use of lazy evaluation when loading and processing the trace results produced by the agent. In particular, instead of parsing and rendering all control flow graphs when the trace explorer first loads, each graph could be processed the first time the user requests to view it. Another approach would be to introduce new user interface elements that help limit the amount of content that is displayed at any given time, allowing more screen real estate to be dedicated to a few number of elements at any given time. Such elements would include options for filtering which methods, and thus control flow graphs, are visible at a given time as well as pagination features to allow for efficient scrolling through visual elements within the browser.
 
 Finally, our trace explorer currently loads the trace results file from a fixed path on disk. This limits testability since not all browsers, e.g., Chrome, support a JavaScript web application loading files from local storage. Moving forward, this can be improved by introducing a small server component that can locally host the trace results file and server it over a REST API that the trace explorer would call directly. This has the additional advantage of further preparing the trace explorer for deployment in more production-like scenarios where the expectation would be for it to integrate with other components over a REST API.
 
