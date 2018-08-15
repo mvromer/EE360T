@@ -143,16 +143,24 @@ On the Trace Exploer:
 ![alt text](screenshots/result-4.png "demo step 4")
 
 ## Future Work
+Our current implementation can be improved by both addressing existing limitations and developing additional feature enhancements. Here we explore both sets of opportunities for improvement and discuss future work that can be done to take advantage of them.
 
 ### Limitations
-Talk about improvements we could make or features we could add.
+A handful of issues limits the scenarios in which our current implementation could be applied. Most notably the runtime agent is **not** thread-safe, thus executing any instrumented method that executes across multiple threads would be inherently dangerous. At best we could expect the output of the agent to contain corrupted trace records. To resolve this, thread synchronization would need to be added to coordinate access to the shared global state maintained by the trace registry.
+
+The scalability of the trace explorer currently prevents large numbers of classes or classes that span a large number of nodes to be viewed efficiently. Test suites that result in the instrumentation of a large number of classes and/or methods generate system renderings that are difficult to view and navigate, despite the availability of zoom controls within the user interface. Furthermore, agent output that spans on the order of thousands of nodes causes the trace explorer to experience periods of unresponsiveness as it processes and renders all of the nodes prior to displaying the results.
+
+One strategy for improving responsiveness would be make greater use of lazy evaluation when loading and processing the trace results produced by the agent. In particular, instead of parsing and rendering all control flow graps when the trace explorer first loads, each graph could be processed the first time the user requests to view it. Another approach would be to introduce new user interface elements that help limit the amount of content that is displayed at any given time, allowing more screen real estate to be dedicated to a few number of elements at any given time. Such elements would include options for filtering which methods, and thus control flow graphs, are visible at a given time as well as pagination features to allow for efficient scrolling through visual elements within the browswer.
+
+Finally, our trace explorer currently loads the trace results file from a fixed path on disk. This limits testability since not all browswers, e.g., Chrome, support a JavaScript web application loading files from local storage. Moving forward, this can be improved by introducing a small server component that can locally host the trace results file and server it over a REST API that the trace explorer would call directly. This has the additional advantage of further preparing the trace explorer for deployment in more production-like scenarios where the expectation would be for it to integrate with other components over a REST API.
+
+
+### Enhancements
+
 - Web-based Trace Explorer
   - inter-class method node connections: currently, inter-class connection can be view on the call graph level between methods of different classes, but not on control graph level, edges between method nodes of different classes should be available to indicate the actual method invoking path.
   - more scalable: even with the graph enlarging feature, it's not easy to look at class has 100+ method or method has 1000+ nodes. A more scalable designed UI may be needed for a wider application.
   - browser support: the way to read external JSON file is making a XMLHttpRequest request for the file, which works well if running the app on a server. There may be issues when a user open the `index.html` with browsers directly, browsers like Chrome blocks XMLHttpRequest to load a local file, but user ca use FireFox as a workaround.
-
-### Enhancements
-
 
 ## Conclusion
 Summarize work and results.
