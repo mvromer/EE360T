@@ -28,23 +28,19 @@ necessary to use tooling that measures test coverage percentage to help decide w
 there are ‘enough’ test cases.
 
 ## Introduction
-In this project, the goal is to visualize the test coverage to provide more information to
-the developer about the quality of their test suite. Here are the details:
-- Statically generate call and control flow graphs of the software under test.
-- At runtime, trace execution of a test to determine the path taken through the call
-and control flow graphs.
-- Present a UI allowing one to drill down into different levels of the software:
-system view, class view and method view.
-  - System view: displays all the class components of the system
-  - Class view: displays all the methods in the class
-  - Method view: displays control flow graph of the method
-- Highlight the paths from each test execution on the UI as well and the control
-flow path in the involved methods.
+Despite many of the [researched and measured benefits](https://dl.acm.org/citation.cfm?id=2114489.2114785) of test driven development, experience has shown that it is still hard in many cases to convince a software engineer to incorporate this as part of their development process. However, even if one is consistently engaging in good software testing practices, it is just as difficult to build an effective suite of tests in an efficient manner.
 
-The visualization of the test execution provides the following advantages:
-- Easily find code paths without tests
-- Provide a better understanding of the test coverage beyond just a percentage
-- Readily trace paths for the failed tests
+Part of the challenge is determining whether a particular set of tests is good and worthy of inclusion in the overall test suite. One measure of goodness typically stems from the engineering team wanting to achieve some level of coverage with their test suite. Off the shelf tools exist for a variety of language environments capable of measuring and visualizing coverage such as [EclEmma](https://www.eclemma.org/) for Java and [NCover](https://www.ncover.com/) for .NET. However, many of these tools simply focus on reporting the aggregate value for the metric they are measuring, e.g., total code coverage, without deeper insights into the code actually covered at runtime.
+
+Sometimes these tools will highlight source code lines executed during the execution of one or more tests, which can be good for viewing at a course level the runtime behavior of the code under test. However, very few of these tools will allow a software engineer to easily view the actual paths taken by their code, making it difficult to trace the actual execution of a test, especially one that touches several software components. This can be a severe impediment to a developer that is, for example, trying to recreate an error by constructing a representative test case and wishes to confirm that the test executes the same faulty sequence of instructions.
+
+In this project, our goal is to record and visualize runtime test execution so that we may provide more information to a developer about the quality of their test suite. In particular, we will show how a combination of control flow and call graphs statically generated from the code under test in conjunction with trace information gathered at runtime can be used to identify the paths executed by each test in a test suite. We present this information in a web-based user interface that allows the developer to visualize the coverage of their test suite at three different levels:
+
+- System view: Displays all thes classes in the system under test and highlights those covered by a particular test. The call graph across all classes is also viewable from here.
+- Class view: Displays all the methods in the class and highlights those covered by a particular test.
+- Method view: Displays the control flow graph of a method under test. Highlights the instruction nodes and execution paths taken within a method by a particular test.
+
+The user interface allows a developer to drill-down from the system view all the way down to the method view. By providing more fine-grained information at deeper levels, the goal is to provide the developer with more insights into the coverage quality of each individual test as well as all tests in aggregate.
 
 ## Technique
 Our test coverage analysis tool comprises two primary components: a runtime agent for instrumenting and tracing the code under test and a web-based review tool for visualizing and exploring trace results. In general, the agent assumes a well-defined set of test methods that validates functionality is provided by the code under test. The agent will generate a new trace for each test method executed, and each trace records the execution path taken by the code under test.
@@ -171,3 +167,8 @@ This can lead to possible confusion when using the trace explorer to view the co
 
 ## Conclusion
 Summarize work and results.
+
+The visualization of the test execution provides the following advantages:
+- Easily find code paths without tests
+- Provide a better understanding of the test coverage beyond just a percentage
+- Readily trace paths for the failed tests
