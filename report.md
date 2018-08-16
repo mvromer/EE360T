@@ -166,9 +166,4 @@ For all methods within a class, each method's control flow graph is augmented so
 This can lead to possible confusion when using the trace explorer to view the control flow graph for a method containing one of these interclass method calls. The user interface simply renders this as a linear sequence of nodes wholly contained within the method rather than showing proper edges that result in control flow being transferred to the called method. Incorporating this interclass method call information at the control flow level would help in generating more accurate diagrams that better explain to the user what paths their software could potentially execute at runtime.
 
 ## Conclusion
-Summarize work and results.
-
-The visualization of the test execution provides the following advantages:
-- Easily find code paths without tests
-- Provide a better understanding of the test coverage beyond just a percentage
-- Readily trace paths for the failed tests
+Despite there're some limitations and improvements can be made to our project, we still made good progress on recording and visualizing runtime test execution, which can help developers to easily find code paths without tests, give them a better understanding of the test coverage beyond just a percentage and readily trace paths for the failed tests. Our result shows that we archived our goal we set for the project.
