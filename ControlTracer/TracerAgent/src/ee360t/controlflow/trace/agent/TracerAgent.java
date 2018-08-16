@@ -18,6 +18,7 @@ public class TracerAgent {
         // Append current directory to list of source paths.
         options.sourcePaths.add( "." );
 
+        TraceRegistry.createDefaultTrace();
         Runtime.getRuntime().addShutdownHook( new TracerShutdownHook( options.outputPath, options.sourcePaths ) );
         inst.addTransformer( new TraceTransformer( options.prefixesToTrace, options.verbose ) );
     }

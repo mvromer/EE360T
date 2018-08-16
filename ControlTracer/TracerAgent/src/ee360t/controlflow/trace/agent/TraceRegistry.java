@@ -34,6 +34,10 @@ public class TraceRegistry {
     private static List<TraceRecord> traceRecords = new ArrayList<>();
     private static TraceRecord currentRecord;
 
+    public static void createDefaultTrace() {
+        TraceRegistry.startNewTrace( "<default>", "<default>", "()V" );
+    }
+
     public static void startNewTrace( String testClassName, String testMethodName, String testMethodDescriptor ) {
         System.out.println( "New trace started for " + testClassName + "." + testMethodName + testMethodDescriptor );
         currentRecord = new TraceRecord( testClassName, testMethodName, testMethodDescriptor );
