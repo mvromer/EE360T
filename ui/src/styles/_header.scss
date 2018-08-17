@@ -16,8 +16,12 @@
     width: 30%;
   }
 
+  &-control {
+    display: flex;
+  }
+
   &__view-test {
-    margin: auto 2rem;
+    margin: auto 1rem;
     color: #fff;
     position: relative;
     display: inline-block;
@@ -76,6 +80,26 @@
 
     & select[disabled] {
       color: rgba(0,0,0,.25);
+    }
+  }
+
+  .coverage {
+    display: flex;
+    color: #fff;
+    margin: auto 2rem auto 1rem;
+
+    &-title {
+
+    }
+
+    &-item {
+      padding: 0 .2rem;
+    }
+
+    .cPercent, .mPercent, .nPercent {
+      display: inline-block;
+      width: 3rem;
+      text-align: right;
     }
   }
 }

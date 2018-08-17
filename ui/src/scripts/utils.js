@@ -29,3 +29,28 @@ export const loadJSON = (file, callback) => {
   };
   xobj.send(null);
 };
+
+export const elemCount = (controlFLow, globalId) => {
+  const nodeCount = Object.keys(globalId).length;
+  let classCount = 0;
+  let methodCount = 0;
+  Object.entries(controlFLow).forEach(([key, value]) => {
+    classCount++;
+    methodCount += value.methods.length;
+  });
+
+  return {classCount, methodCount, nodeCount};
+};
+
+export const setPercentage = ({
+  classCount,
+  classCoveredCount,
+  methodCount,
+  methodCoveredCount,
+  nodeCount,
+  nodeCoveredCount
+}) => {
+  document.querySelector('.cPercent').textContent = (classCoveredCount / classCount * 100).toFixed(2);
+  document.querySelector('.mPercent').textContent = (methodCoveredCount / methodCount * 100).toFixed(2);
+  document.querySelector('.nPercent').textContent = (nodeCoveredCount / nodeCount * 100).toFixed(2);
+}
