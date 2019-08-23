@@ -192,6 +192,7 @@ public class TraceRegistry {
             Map<Integer, Integer> localToGlobalNodeId = new HashMap<>();
             Map<Integer, String> globalNodes = new HashMap<>();
             for( int iNode : controlFlow.getNodes() ) {
+                System.out.println( "NODE SERIAL: " + iNode );
                 int globalNodeId = globalNodeIds.get( new NodeId( className,
                         methodId.getMethodName(),
                         methodId.getMethodDescriptor(),

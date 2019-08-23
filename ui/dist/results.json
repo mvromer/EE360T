@@ -1,126 +1,264 @@
 {
   "traceRecords": [
     {
-      "label": "ee360t/controlflow/trace/driver/App.t1()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t1",
-      "testMethodDescriptor": "()V",
-      "callEdges": {},
-      "tracePath": [
-        5,
-        6,
-        7
-      ]
-    },
-    {
-      "label": "ee360t/controlflow/trace/driver/App.t2()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t2",
-      "testMethodDescriptor": "()V",
-      "callEdges": {},
-      "tracePath": [
-        18,
-        19,
-        17,
-        16,
-        15,
-        10,
-        8,
-        9
-      ]
-    },
-    {
-      "label": "ee360t/controlflow/trace/driver/App.t3()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t3",
+      "label": "<default>.<default>()V",
+      "testClassName": "<default>",
+      "testMethodName": "<default>",
       "testMethodDescriptor": "()V",
       "callEdges": {
-        "3": [
-          5
+        "1": [
+          2,
+          20,
+          21,
+          30
+        ],
+        "2": [
+          6
+        ],
+        "6": [
+          19
         ]
       },
       "tracePath": [
-        22,
-        23,
-        29,
-        30,
-        31,
-        20,
-        21
-      ]
-    },
-    {
-      "label": "ee360t/controlflow/trace/driver/App.t4()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t4",
-      "testMethodDescriptor": "()V",
-      "callEdges": {
-        "7": [
-          8
-        ]
-      },
-      "tracePath": [
+        3,
+        4,
+        2,
+        0,
+        1,
+        38,
         39,
+        37,
+        36,
+        35,
+        48,
+        49,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        85,
+        86,
+        84,
+        83,
+        82,
+        117,
+        118,
+        116,
+        115,
+        114,
+        113,
+        111,
+        112,
+        80,
+        81,
         40,
         41,
-        42,
-        43,
-        37,
-        38
-      ]
-    },
-    {
-      "label": "ee360t/controlflow/trace/driver/App.t5()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t5",
-      "testMethodDescriptor": "()V",
-      "callEdges": {
-        "9": [
-          8
-        ]
-      },
-      "tracePath": [
-        46,
+        34,
+        33,
+        32,
+        128,
+        129,
+        127,
+        126,
+        125,
+        124,
+        123,
+        122,
+        121,
+        119,
+        120,
+        31,
+        246,
+        247,
+        245,
+        244,
+        242,
+        243,
+        30,
+        29,
+        28,
+        48,
+        49,
         47,
-        41,
-        42,
-        43,
+        46,
+        45,
         44,
-        45
-      ]
-    },
-    {
-      "label": "ee360t/controlflow/trace/driver/App.t6()V",
-      "testClassName": "ee360t/controlflow/trace/driver/App",
-      "testMethodName": "t6",
-      "testMethodDescriptor": "()V",
-      "callEdges": {},
-      "tracePath": [
-        68,
-        69,
-        67,
-        66,
-        65,
-        59,
-        53,
-        54
+        43,
+        42,
+        85,
+        86,
+        84,
+        83,
+        82,
+        117,
+        118,
+        116,
+        115,
+        114,
+        113,
+        111,
+        112,
+        80,
+        81,
+        40,
+        41,
+        27,
+        26,
+        25,
+        128,
+        129,
+        127,
+        121,
+        119,
+        120,
+        24,
+        246,
+        247,
+        245,
+        244,
+        242,
+        243,
+        23,
+        22,
+        21,
+        48,
+        49,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        85,
+        86,
+        84,
+        83,
+        82,
+        117,
+        118,
+        116,
+        115,
+        114,
+        113,
+        111,
+        112,
+        80,
+        81,
+        40,
+        41,
+        20,
+        19,
+        18,
+        17,
+        145,
+        146,
+        144,
+        137,
+        136,
+        135,
+        134,
+        133,
+        132,
+        130,
+        131,
+        16,
+        246,
+        247,
+        245,
+        244,
+        242,
+        243,
+        15,
+        14,
+        13,
+        48,
+        49,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        85,
+        86,
+        84,
+        83,
+        82,
+        117,
+        118,
+        116,
+        115,
+        114,
+        113,
+        111,
+        112,
+        80,
+        81,
+        40,
+        41,
+        12,
+        11,
+        10,
+        9,
+        145,
+        146,
+        144,
+        143,
+        142,
+        141,
+        140,
+        139,
+        138,
+        132,
+        130,
+        131,
+        8,
+        246,
+        247,
+        245,
+        244,
+        242,
+        243,
+        7,
+        5,
+        6
       ]
     }
   ],
   "callGraph": {
+    "1": [
+      17,
+      2,
+      18,
+      7
+    ],
+    "2": [
+      6
+    ],
     "3": [
-      5
+      6
     ],
-    "7": [
-      8
+    "4": [
+      6
     ],
-    "9": [
-      8
+    "5": [
+      6
+    ],
+    "6": [
+      19
+    ],
+    "23": [
+      24
+    ],
+    "29": [
+      28
     ]
   },
   "controlFlows": {
-    "ee360t/controlflow/trace/examples/E1": {
-      "classDisplayName": "E1",
+    "org/extendedStringBuilder/ConditionalStringBuilderTest": {
+      "classDisplayName": "ConditionalStringBuilderTest",
       "intraclassEdges": {},
       "methods": [
         {
@@ -132,7 +270,7 @@
             "1": "[EXIT]",
             "2": "<init>.()V:2",
             "3": "[ENTRY]",
-            "4": "Line 3: public class E1 {"
+            "4": "<init>.()V:4"
           },
           "edges": {
             "0": [
@@ -151,61 +289,62 @@
           }
         },
         {
-          "methodName": "M1",
+          "methodName": "SimpleAppendIfTest",
           "methodDescriptor": "()V",
           "globalMethodId": 1,
           "nodes": {
-            "5": "[ENTRY]",
-            "6": "Line 4: public static void M1() {}",
-            "7": "[EXIT]"
+            "5": "SimpleAppendIfTest.()V:5",
+            "6": "[EXIT]",
+            "7": "SimpleAppendIfTest.()V:7",
+            "8": "SimpleAppendIfTest.()V:8",
+            "9": "SimpleAppendIfTest.()V:9",
+            "10": "SimpleAppendIfTest.()V:10",
+            "11": "SimpleAppendIfTest.()V:11",
+            "12": "SimpleAppendIfTest.()V:12",
+            "13": "SimpleAppendIfTest.()V:13",
+            "14": "SimpleAppendIfTest.()V:14",
+            "15": "SimpleAppendIfTest.()V:15",
+            "16": "SimpleAppendIfTest.()V:16",
+            "17": "SimpleAppendIfTest.()V:17",
+            "18": "SimpleAppendIfTest.()V:18",
+            "19": "SimpleAppendIfTest.()V:19",
+            "20": "SimpleAppendIfTest.()V:20",
+            "21": "SimpleAppendIfTest.()V:21",
+            "22": "SimpleAppendIfTest.()V:22",
+            "23": "SimpleAppendIfTest.()V:23",
+            "24": "SimpleAppendIfTest.()V:24",
+            "25": "SimpleAppendIfTest.()V:25",
+            "26": "SimpleAppendIfTest.()V:26",
+            "27": "SimpleAppendIfTest.()V:27",
+            "28": "SimpleAppendIfTest.()V:28",
+            "29": "SimpleAppendIfTest.()V:29",
+            "30": "SimpleAppendIfTest.()V:30",
+            "31": "SimpleAppendIfTest.()V:31",
+            "32": "SimpleAppendIfTest.()V:32",
+            "33": "SimpleAppendIfTest.()V:33",
+            "34": "SimpleAppendIfTest.()V:34",
+            "35": "SimpleAppendIfTest.()V:35",
+            "36": "SimpleAppendIfTest.()V:36",
+            "37": "SimpleAppendIfTest.()V:37",
+            "38": "[ENTRY]",
+            "39": "SimpleAppendIfTest.()V:39"
           },
           "edges": {
             "5": [
               6
             ],
-            "6": [
-              7
-            ],
-            "7": []
-          }
-        },
-        {
-          "methodName": "M2",
-          "methodDescriptor": "()I",
-          "globalMethodId": 2,
-          "nodes": {
-            "16": "Line 8: if( x < 0 )",
-            "17": "M2.()I:17",
-            "18": "[ENTRY]",
-            "19": "Line 7: int x = 5;",
-            "8": "M2.()I:8",
-            "9": "[EXIT]",
-            "10": "Line 10: return x;",
-            "11": "M2.()I:11",
-            "12": "M2.()I:12",
-            "13": "M2.()I:13",
-            "14": "Line 9: x = x + 10;",
-            "15": "M2.()I:15"
-          },
-          "edges": {
-            "16": [
-              15
-            ],
-            "17": [
-              16
-            ],
-            "18": [
-              19
-            ],
-            "19": [
-              17
+            "6": [],
+            "7": [
+              5
             ],
             "8": [
-              9
+              7
             ],
-            "9": [],
-            "10": [
+            "9": [
               8
+            ],
+            "10": [
+              9
             ],
             "11": [
               10
@@ -220,251 +359,217 @@
               13
             ],
             "15": [
-              10,
               14
-            ]
-          }
-        },
-        {
-          "methodName": "M3",
-          "methodDescriptor": "()V",
-          "globalMethodId": 3,
-          "nodes": {
-            "20": "Line 15: }",
-            "21": "[EXIT]",
-            "22": "[ENTRY]",
-            "23": "Line 14: E2.M1();"
-          },
-          "edges": {
+            ],
+            "16": [
+              15
+            ],
+            "17": [
+              16
+            ],
+            "18": [
+              17
+            ],
+            "19": [
+              18
+            ],
             "20": [
+              19
+            ],
+            "21": [
+              20
+            ],
+            "22": [
               21
             ],
-            "21": [],
-            "22": [
+            "23": [
+              22
+            ],
+            "24": [
               23
             ],
-            "23": [
-              20
-            ]
-          }
-        }
-      ]
-    },
-    "ee360t/controlflow/trace/examples/E2": {
-      "classDisplayName": "E2",
-      "intraclassEdges": {},
-      "methods": [
-        {
-          "methodName": "<init>",
-          "methodDescriptor": "()V",
-          "globalMethodId": 4,
-          "nodes": {
-            "24": "<init>.()V:24",
-            "25": "[EXIT]",
-            "26": "<init>.()V:26",
-            "27": "[ENTRY]",
-            "28": "Line 3: public class E2 {"
-          },
-          "edges": {
-            "24": [
-              25
-            ],
-            "25": [],
-            "26": [
+            "25": [
               24
             ],
+            "26": [
+              25
+            ],
             "27": [
-              28
+              26
             ],
             "28": [
-              26
-            ]
-          }
-        },
-        {
-          "methodName": "M1",
-          "methodDescriptor": "()V",
-          "globalMethodId": 5,
-          "nodes": {
-            "29": "[ENTRY]",
-            "30": "Line 4: public static void M1() { }",
-            "31": "[EXIT]"
-          },
-          "edges": {
+              27
+            ],
             "29": [
-              30
+              28
             ],
             "30": [
+              29
+            ],
+            "31": [
+              30
+            ],
+            "32": [
               31
             ],
-            "31": []
+            "33": [
+              32
+            ],
+            "34": [
+              33
+            ],
+            "35": [
+              34
+            ],
+            "36": [
+              35
+            ],
+            "37": [
+              36
+            ],
+            "38": [
+              39
+            ],
+            "39": [
+              37
+            ]
           }
         }
       ]
     },
-    "ee360t/controlflow/trace/examples/E3": {
-      "classDisplayName": "E3",
+    "org/extendedStringBuilder/ExtStringBuilder": {
+      "classDisplayName": "ExtStringBuilder",
       "intraclassEdges": {
-        "40": [
-          41
+        "81": [
+          50,
+          70,
+          40,
+          60
         ],
-        "43": [
-          37,
-          44
+        "52": [
+          85
         ],
-        "47": [
-          41
+        "72": [
+          85
+        ],
+        "42": [
+          85
+        ],
+        "62": [
+          85
         ]
       },
       "methods": [
         {
-          "methodName": "<init>",
-          "methodDescriptor": "()V",
-          "globalMethodId": 6,
+          "methodName": "create",
+          "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 2,
           "nodes": {
-            "32": "<init>.()V:32",
-            "33": "[EXIT]",
-            "34": "<init>.()V:34",
-            "35": "[ENTRY]",
-            "36": "Line 3: public class E3 {"
-          },
-          "edges": {
-            "32": [
-              33
-            ],
-            "33": [],
-            "34": [
-              32
-            ],
-            "35": [
-              36
-            ],
-            "36": [
-              34
-            ]
-          }
-        },
-        {
-          "methodName": "M1",
-          "methodDescriptor": "()V",
-          "globalMethodId": 7,
-          "nodes": {
-            "37": "Line 6: }",
-            "38": "[EXIT]",
-            "39": "[ENTRY]",
-            "40": "Line 5: M2();"
-          },
-          "edges": {
-            "37": [
-              38
-            ],
-            "38": [],
-            "39": [
-              40
-            ]
-          }
-        },
-        {
-          "methodName": "M2",
-          "methodDescriptor": "()V",
-          "globalMethodId": 8,
-          "nodes": {
-            "41": "[ENTRY]",
-            "42": "Line 8: public static void M2() {}",
-            "43": "[EXIT]"
-          },
-          "edges": {
-            "41": [
-              42
-            ],
-            "42": [
-              43
-            ]
-          }
-        },
-        {
-          "methodName": "M3",
-          "methodDescriptor": "()V",
-          "globalMethodId": 9,
-          "nodes": {
-            "44": "Line 12: }",
-            "45": "[EXIT]",
-            "46": "[ENTRY]",
-            "47": "Line 11: M2();"
-          },
-          "edges": {
-            "44": [
-              45
-            ],
-            "45": [],
-            "46": [
-              47
-            ]
-          }
-        }
-      ]
-    },
-    "ee360t/controlflow/trace/examples/E4": {
-      "classDisplayName": "E4",
-      "intraclassEdges": {},
-      "methods": [
-        {
-          "methodName": "<init>",
-          "methodDescriptor": "()V",
-          "globalMethodId": 10,
-          "nodes": {
-            "48": "<init>.()V:48",
-            "49": "[EXIT]",
-            "50": "<init>.()V:50",
-            "51": "[ENTRY]",
-            "52": "Line 3: public class E4 {"
+            "48": "[ENTRY]",
+            "49": "Line 9: final java.lang.StringBuilder builder = new java.lang.StringBuilder(DEFAULT_SIZE);",
+            "40": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:40",
+            "41": "[EXIT]",
+            "42": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:42",
+            "43": "Line 10: return fromJavaStringBuilder(builder);",
+            "44": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:44",
+            "45": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:45",
+            "46": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:46",
+            "47": "create.()Lorg/extendedStringBuilder/ExtStringBuilder;:47"
           },
           "edges": {
             "48": [
               49
             ],
-            "49": [],
-            "50": [
-              48
+            "49": [
+              47
             ],
-            "51": [
-              52
+            "40": [
+              41
             ],
-            "52": [
-              50
+            "41": [],
+            "43": [
+              42
+            ],
+            "44": [
+              43
+            ],
+            "45": [
+              44
+            ],
+            "46": [
+              45
+            ],
+            "47": [
+              46
             ]
           }
         },
         {
-          "methodName": "M1",
-          "methodDescriptor": "()V",
-          "globalMethodId": 11,
+          "methodName": "create",
+          "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 3,
           "nodes": {
-            "64": "Line 8: throw new RuntimeException( \"No negatives\" );",
-            "65": "M1.()V:65",
-            "66": "Line 7: if( x < 0 )",
-            "67": "M1.()V:67",
+            "50": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:50",
+            "51": "[EXIT]",
+            "52": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:52",
+            "53": "Line 15: return fromJavaStringBuilder(builder);",
+            "54": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:54",
+            "55": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:55",
+            "56": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:56",
+            "57": "create.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:57",
+            "58": "[ENTRY]",
+            "59": "Line 14: final java.lang.StringBuilder builder = new java.lang.StringBuilder(capacity);"
+          },
+          "edges": {
+            "50": [
+              51
+            ],
+            "51": [],
+            "53": [
+              52
+            ],
+            "54": [
+              53
+            ],
+            "55": [
+              54
+            ],
+            "56": [
+              55
+            ],
+            "57": [
+              56
+            ],
+            "58": [
+              59
+            ],
+            "59": [
+              57
+            ]
+          }
+        },
+        {
+          "methodName": "create",
+          "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 4,
+          "nodes": {
+            "64": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:64",
+            "65": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:65",
+            "66": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:66",
+            "67": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:67",
             "68": "[ENTRY]",
-            "69": "Line 5: int x = 5;",
-            "53": "Line 13: }",
-            "54": "[EXIT]",
-            "55": "M1.()V:55",
-            "56": "M1.()V:56",
-            "57": "Line 11: ex.printStackTrace( System.out );",
-            "58": "Line 10: catch( Exception ex ) {",
-            "59": "Line 12: }",
-            "60": "M1.()V:60",
-            "61": "M1.()V:61",
-            "62": "M1.()V:62",
-            "63": "M1.()V:63"
+            "69": "Line 19: final java.lang.StringBuilder builder = new java.lang.StringBuilder(string);",
+            "60": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:60",
+            "61": "[EXIT]",
+            "62": "create.(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:62",
+            "63": "Line 20: return fromJavaStringBuilder(builder);"
           },
           "edges": {
             "64": [
               63
             ],
             "65": [
-              64,
-              59
+              64
             ],
             "66": [
               65
@@ -478,34 +583,1186 @@
             "69": [
               67
             ],
-            "53": [
-              54
-            ],
-            "54": [],
-            "55": [
-              53
-            ],
-            "56": [
-              55
-            ],
-            "57": [
-              56
-            ],
-            "58": [
-              57
-            ],
-            "59": [
-              53
-            ],
-            "60": [],
-            "61": [
-              60
-            ],
-            "62": [
+            "60": [
               61
             ],
+            "61": [],
             "63": [
               62
+            ]
+          }
+        },
+        {
+          "methodName": "create",
+          "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 5,
+          "nodes": {
+            "70": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:70",
+            "71": "[EXIT]",
+            "72": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:72",
+            "73": "Line 25: return fromJavaStringBuilder(builder);",
+            "74": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:74",
+            "75": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:75",
+            "76": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:76",
+            "77": "create.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:77",
+            "78": "[ENTRY]",
+            "79": "Line 24: final java.lang.StringBuilder builder = new java.lang.StringBuilder(string);"
+          },
+          "edges": {
+            "70": [
+              71
+            ],
+            "71": [],
+            "73": [
+              72
+            ],
+            "74": [
+              73
+            ],
+            "75": [
+              74
+            ],
+            "76": [
+              75
+            ],
+            "77": [
+              76
+            ],
+            "78": [
+              79
+            ],
+            "79": [
+              77
+            ]
+          }
+        },
+        {
+          "methodName": "fromJavaStringBuilder",
+          "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 6,
+          "nodes": {
+            "80": "fromJavaStringBuilder.(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;:80",
+            "81": "[EXIT]",
+            "82": "fromJavaStringBuilder.(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;:82",
+            "83": "fromJavaStringBuilder.(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;:83",
+            "84": "fromJavaStringBuilder.(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;:84",
+            "85": "[ENTRY]",
+            "86": "Line 29: return new StringBuilderImpl(strBuilder);"
+          },
+          "edges": {
+            "80": [
+              81
+            ],
+            "82": [
+              80
+            ],
+            "83": [
+              82
+            ],
+            "84": [
+              83
+            ],
+            "85": [
+              86
+            ],
+            "86": [
+              84
+            ]
+          }
+        },
+        {
+          "methodName": "toString",
+          "methodDescriptor": "()Ljava/lang/String;",
+          "globalMethodId": 7,
+          "nodes": {
+            "87": "[ENTRY]",
+            "88": "[EXIT]"
+          },
+          "edges": {
+            "87": [
+              88
+            ],
+            "88": []
+          }
+        },
+        {
+          "methodName": "equals",
+          "methodDescriptor": "(Ljava/lang/Object;)Z",
+          "globalMethodId": 8,
+          "nodes": {
+            "89": "[ENTRY]",
+            "90": "[EXIT]"
+          },
+          "edges": {
+            "89": [
+              90
+            ],
+            "90": []
+          }
+        },
+        {
+          "methodName": "breakLine",
+          "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 9,
+          "nodes": {
+            "91": "[ENTRY]",
+            "92": "[EXIT]"
+          },
+          "edges": {
+            "91": [
+              92
+            ],
+            "92": []
+          }
+        },
+        {
+          "methodName": "tab",
+          "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 10,
+          "nodes": {
+            "93": "[ENTRY]",
+            "94": "[EXIT]"
+          },
+          "edges": {
+            "93": [
+              94
+            ],
+            "94": []
+          }
+        },
+        {
+          "methodName": "tab",
+          "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 11,
+          "nodes": {
+            "96": "[EXIT]",
+            "95": "[ENTRY]"
+          },
+          "edges": {
+            "96": [],
+            "95": [
+              96
+            ]
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 12,
+          "nodes": {
+            "97": "[ENTRY]",
+            "98": "[EXIT]"
+          },
+          "edges": {
+            "97": [
+              98
+            ],
+            "98": []
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 13,
+          "nodes": {
+            "99": "[ENTRY]",
+            "100": "[EXIT]"
+          },
+          "edges": {
+            "99": [
+              100
+            ],
+            "100": []
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 14,
+          "nodes": {
+            "101": "[ENTRY]",
+            "102": "[EXIT]"
+          },
+          "edges": {
+            "101": [
+              102
+            ],
+            "102": []
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 15,
+          "nodes": {
+            "103": "[ENTRY]",
+            "104": "[EXIT]"
+          },
+          "edges": {
+            "103": [
+              104
+            ],
+            "104": []
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+          "globalMethodId": 16,
+          "nodes": {
+            "105": "[ENTRY]",
+            "106": "[EXIT]"
+          },
+          "edges": {
+            "105": [
+              106
+            ],
+            "106": []
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 17,
+          "nodes": {
+            "107": "[ENTRY]",
+            "108": "[EXIT]"
+          },
+          "edges": {
+            "107": [
+              108
+            ],
+            "108": []
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 18,
+          "nodes": {
+            "109": "[ENTRY]",
+            "110": "[EXIT]"
+          },
+          "edges": {
+            "109": [
+              110
+            ],
+            "110": []
+          }
+        }
+      ]
+    },
+    "org/extendedStringBuilder/StringBuilderImpl": {
+      "classDisplayName": "StringBuilderImpl",
+      "intraclassEdges": {
+        "164": [
+          155
+        ],
+        "234": [
+          226
+        ],
+        "220": [
+          233
+        ],
+        "157": [
+          190
+        ]
+      },
+      "methods": [
+        {
+          "methodName": "<init>",
+          "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+          "globalMethodId": 19,
+          "nodes": {
+            "112": "[EXIT]",
+            "113": "<init>.(Ljava/lang/StringBuilder;)V:113",
+            "114": "<init>.(Ljava/lang/StringBuilder;)V:114",
+            "115": "Line 13: this.builder = builder;",
+            "116": "<init>.(Ljava/lang/StringBuilder;)V:116",
+            "117": "[ENTRY]",
+            "118": "Line 12: StringBuilderImpl(java.lang.StringBuilder builder) {",
+            "111": "Line 14: }"
+          },
+          "edges": {
+            "112": [],
+            "113": [
+              111
+            ],
+            "114": [
+              113
+            ],
+            "115": [
+              114
+            ],
+            "116": [
+              115
+            ],
+            "117": [
+              118
+            ],
+            "118": [
+              116
+            ],
+            "111": [
+              112
+            ]
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 20,
+          "nodes": {
+            "128": "[ENTRY]",
+            "129": "Line 18: if(condition) {",
+            "119": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:119",
+            "120": "[EXIT]",
+            "121": "Line 21: return this;",
+            "122": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:122",
+            "123": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:123",
+            "124": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:124",
+            "125": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:125",
+            "126": "Line 19: builder.append(str);",
+            "127": "appendIf.(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:127"
+          },
+          "edges": {
+            "128": [
+              129
+            ],
+            "129": [
+              127
+            ],
+            "119": [
+              120
+            ],
+            "120": [],
+            "121": [
+              119
+            ],
+            "122": [
+              121
+            ],
+            "123": [
+              122
+            ],
+            "124": [
+              123
+            ],
+            "125": [
+              124
+            ],
+            "126": [
+              125
+            ],
+            "127": [
+              121,
+              126
+            ]
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 21,
+          "nodes": {
+            "130": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:130",
+            "131": "[EXIT]",
+            "132": "Line 32: return this;",
+            "133": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:133",
+            "134": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:134",
+            "135": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:135",
+            "136": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:136",
+            "137": "Line 30: builder.append(elseStr);",
+            "138": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:138",
+            "139": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:139",
+            "140": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:140",
+            "141": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:141",
+            "142": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:142",
+            "143": "Line 27: builder.append(str);",
+            "144": "appendIf.(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:144",
+            "145": "[ENTRY]",
+            "146": "Line 26: if(condition) {"
+          },
+          "edges": {
+            "130": [
+              131
+            ],
+            "131": [],
+            "132": [
+              130
+            ],
+            "133": [
+              132
+            ],
+            "134": [
+              133
+            ],
+            "135": [
+              134
+            ],
+            "136": [
+              135
+            ],
+            "137": [
+              136
+            ],
+            "138": [
+              132
+            ],
+            "139": [
+              138
+            ],
+            "140": [
+              139
+            ],
+            "141": [
+              140
+            ],
+            "142": [
+              141
+            ],
+            "143": [
+              142
+            ],
+            "144": [
+              137,
+              143
+            ],
+            "145": [
+              146
+            ],
+            "146": [
+              144
+            ]
+          }
+        },
+        {
+          "methodName": "appendIf",
+          "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+          "globalMethodId": 22,
+          "nodes": {
+            "147": "appendIf.(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;:147",
+            "148": "[EXIT]",
+            "149": "appendIf.(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;:149",
+            "150": "appendIf.(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;:150",
+            "151": "appendIf.(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;:151",
+            "152": "appendIf.(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;:152",
+            "153": "[ENTRY]",
+            "154": "Line 37: return new ConditionalStringBuilder(this, condition);"
+          },
+          "edges": {
+            "147": [
+              148
+            ],
+            "148": [],
+            "149": [
+              147
+            ],
+            "150": [
+              149
+            ],
+            "151": [
+              150
+            ],
+            "152": [
+              151
+            ],
+            "153": [
+              154
+            ],
+            "154": [
+              152
+            ]
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 23,
+          "nodes": {
+            "160": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:160",
+            "161": "[ENTRY]",
+            "162": "Line 42: return append(iterable, delimiter, \"\");",
+            "155": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:155",
+            "156": "[EXIT]",
+            "157": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:157",
+            "158": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:158",
+            "159": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;:159"
+          },
+          "edges": {
+            "160": [
+              159
+            ],
+            "161": [
+              162
+            ],
+            "162": [
+              160
+            ],
+            "155": [
+              156
+            ],
+            "156": [],
+            "158": [
+              157
+            ],
+            "159": [
+              158
+            ]
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 24,
+          "nodes": {
+            "163": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:163",
+            "164": "[EXIT]",
+            "165": "Line 56: return this;",
+            "166": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:166",
+            "167": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:167",
+            "168": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:168",
+            "169": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:169",
+            "170": "Line 54: builder.append(str);",
+            "171": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:171",
+            "172": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:172",
+            "173": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:173",
+            "174": "Line 53: .collect(Collectors.joining(delimiter));",
+            "175": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:175",
+            "176": "Line 52: .map(Object::toString)",
+            "177": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:177",
+            "178": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:178",
+            "179": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:179",
+            "180": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:180",
+            "181": "Line 51: final String str = StreamSupport.stream(iterable.spliterator(), false)",
+            "182": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:182",
+            "183": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:183",
+            "184": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:184",
+            "185": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:185",
+            "186": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:186",
+            "187": "Line 48: builder.append(emptyMessage);",
+            "188": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:188",
+            "189": "append.(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:189",
+            "190": "[ENTRY]",
+            "191": "Line 47: if(IterableUtils.isEmpty(iterable)){"
+          },
+          "edges": {
+            "163": [
+              164
+            ],
+            "165": [
+              163
+            ],
+            "166": [
+              165
+            ],
+            "167": [
+              166
+            ],
+            "168": [
+              167
+            ],
+            "169": [
+              168
+            ],
+            "170": [
+              169
+            ],
+            "171": [
+              170
+            ],
+            "172": [
+              171
+            ],
+            "173": [
+              172
+            ],
+            "174": [
+              173
+            ],
+            "175": [
+              174
+            ],
+            "176": [
+              175
+            ],
+            "177": [
+              176
+            ],
+            "178": [
+              177
+            ],
+            "179": [
+              178
+            ],
+            "180": [
+              179
+            ],
+            "181": [
+              180
+            ],
+            "182": [
+              165
+            ],
+            "183": [
+              182
+            ],
+            "184": [
+              183
+            ],
+            "185": [
+              184
+            ],
+            "186": [
+              185
+            ],
+            "187": [
+              186
+            ],
+            "188": [
+              181,
+              187
+            ],
+            "189": [
+              188
+            ],
+            "190": [
+              191
+            ],
+            "191": [
+              189
+            ]
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 25,
+          "nodes": {
+            "192": "append.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:192",
+            "193": "[EXIT]",
+            "194": "Line 62: return this;",
+            "195": "append.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:195",
+            "196": "append.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:196",
+            "197": "append.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:197",
+            "198": "append.(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;:198",
+            "199": "[ENTRY]",
+            "200": "Line 61: builder.append(str);"
+          },
+          "edges": {
+            "192": [
+              193
+            ],
+            "193": [],
+            "194": [
+              192
+            ],
+            "195": [
+              194
+            ],
+            "196": [
+              195
+            ],
+            "197": [
+              196
+            ],
+            "198": [
+              197
+            ],
+            "199": [
+              200
+            ],
+            "200": [
+              198
+            ]
+          }
+        },
+        {
+          "methodName": "append",
+          "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 26,
+          "nodes": {
+            "208": "[ENTRY]",
+            "209": "Line 67: builder.append(str);",
+            "201": "append.(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;:201",
+            "202": "[EXIT]",
+            "203": "Line 68: return this;",
+            "204": "append.(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;:204",
+            "205": "append.(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;:205",
+            "206": "append.(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;:206",
+            "207": "append.(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;:207"
+          },
+          "edges": {
+            "208": [
+              209
+            ],
+            "209": [
+              207
+            ],
+            "201": [
+              202
+            ],
+            "202": [],
+            "203": [
+              201
+            ],
+            "204": [
+              203
+            ],
+            "205": [
+              204
+            ],
+            "206": [
+              205
+            ],
+            "207": [
+              206
+            ]
+          }
+        },
+        {
+          "methodName": "breakLine",
+          "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 27,
+          "nodes": {
+            "210": "breakLine.()Lorg/extendedStringBuilder/ExtStringBuilder;:210",
+            "211": "[EXIT]",
+            "212": "Line 74: return this;",
+            "213": "breakLine.()Lorg/extendedStringBuilder/ExtStringBuilder;:213",
+            "214": "breakLine.()Lorg/extendedStringBuilder/ExtStringBuilder;:214",
+            "215": "breakLine.()Lorg/extendedStringBuilder/ExtStringBuilder;:215",
+            "216": "breakLine.()Lorg/extendedStringBuilder/ExtStringBuilder;:216",
+            "217": "[ENTRY]",
+            "218": "Line 73: builder.append(\"\\n\");"
+          },
+          "edges": {
+            "210": [
+              211
+            ],
+            "211": [],
+            "212": [
+              210
+            ],
+            "213": [
+              212
+            ],
+            "214": [
+              213
+            ],
+            "215": [
+              214
+            ],
+            "216": [
+              215
+            ],
+            "217": [
+              218
+            ],
+            "218": [
+              216
+            ]
+          }
+        },
+        {
+          "methodName": "tab",
+          "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 28,
+          "nodes": {
+            "224": "tab.()Lorg/extendedStringBuilder/ExtStringBuilder;:224",
+            "225": "tab.()Lorg/extendedStringBuilder/ExtStringBuilder;:225",
+            "226": "[ENTRY]",
+            "227": "Line 79: builder.append('\\t');",
+            "219": "tab.()Lorg/extendedStringBuilder/ExtStringBuilder;:219",
+            "220": "[EXIT]",
+            "221": "Line 80: return this;",
+            "222": "tab.()Lorg/extendedStringBuilder/ExtStringBuilder;:222",
+            "223": "tab.()Lorg/extendedStringBuilder/ExtStringBuilder;:223"
+          },
+          "edges": {
+            "224": [
+              223
+            ],
+            "225": [
+              224
+            ],
+            "226": [
+              227
+            ],
+            "227": [
+              225
+            ],
+            "219": [
+              220
+            ],
+            "221": [
+              219
+            ],
+            "222": [
+              221
+            ],
+            "223": [
+              222
+            ]
+          }
+        },
+        {
+          "methodName": "tab",
+          "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+          "globalMethodId": 29,
+          "nodes": {
+            "228": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:228",
+            "229": "[EXIT]",
+            "230": "Line 88: return this;",
+            "231": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:231",
+            "232": "Line 85: for(int i = 0; i < n; i++) {",
+            "233": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:233",
+            "234": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:234",
+            "235": "Line 86: tab();",
+            "236": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:236",
+            "237": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:237",
+            "238": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:238",
+            "239": "tab.(I)Lorg/extendedStringBuilder/ExtStringBuilder;:239",
+            "240": "[ENTRY]",
+            "241": "Line 85: for(int i = 0; i < n; i++) {"
+          },
+          "edges": {
+            "228": [
+              229
+            ],
+            "229": [],
+            "230": [
+              228
+            ],
+            "231": [
+              238
+            ],
+            "232": [
+              231
+            ],
+            "233": [
+              232
+            ],
+            "235": [
+              234
+            ],
+            "236": [
+              230,
+              235
+            ],
+            "237": [
+              236
+            ],
+            "238": [
+              237
+            ],
+            "239": [
+              238
+            ],
+            "240": [
+              241
+            ],
+            "241": [
+              239
+            ]
+          }
+        },
+        {
+          "methodName": "toString",
+          "methodDescriptor": "()Ljava/lang/String;",
+          "globalMethodId": 30,
+          "nodes": {
+            "242": "toString.()Ljava/lang/String;:242",
+            "243": "[EXIT]",
+            "244": "toString.()Ljava/lang/String;:244",
+            "245": "toString.()Ljava/lang/String;:245",
+            "246": "[ENTRY]",
+            "247": "Line 93: return builder.toString();"
+          },
+          "edges": {
+            "242": [
+              243
+            ],
+            "243": [],
+            "244": [
+              242
+            ],
+            "245": [
+              244
+            ],
+            "246": [
+              247
+            ],
+            "247": [
+              245
+            ]
+          }
+        },
+        {
+          "methodName": "hashCode",
+          "methodDescriptor": "()I",
+          "globalMethodId": 31,
+          "nodes": {
+            "256": "hashCode.()I:256",
+            "257": "hashCode.()I:257",
+            "258": "hashCode.()I:258",
+            "259": "hashCode.()I:259",
+            "260": "hashCode.()I:260",
+            "261": "hashCode.()I:261",
+            "262": "hashCode.()I:262",
+            "263": "Line 100: result = prime * result + ((builder == null) ? 0 : builder.hashCode());",
+            "264": "hashCode.()I:264",
+            "265": "Line 99: int result = 1;",
+            "266": "hashCode.()I:266",
+            "267": "[ENTRY]",
+            "268": "Line 98: final int prime = 31;",
+            "248": "hashCode.()I:248",
+            "249": "[EXIT]",
+            "250": "Line 101: return result;",
+            "251": "hashCode.()I:251",
+            "252": "hashCode.()I:252",
+            "253": "hashCode.()I:253",
+            "254": "hashCode.()I:254",
+            "255": "hashCode.()I:255"
+          },
+          "edges": {
+            "256": [
+              252
+            ],
+            "257": [
+              256
+            ],
+            "258": [
+              257,
+              255
+            ],
+            "259": [
+              258
+            ],
+            "260": [
+              259
+            ],
+            "261": [
+              260
+            ],
+            "262": [
+              261
+            ],
+            "263": [
+              262
+            ],
+            "264": [
+              263
+            ],
+            "265": [
+              264
+            ],
+            "266": [
+              265
+            ],
+            "267": [
+              268
+            ],
+            "268": [
+              266
+            ],
+            "248": [
+              249
+            ],
+            "249": [],
+            "250": [
+              248
+            ],
+            "251": [
+              250
+            ],
+            "252": [
+              251
+            ],
+            "253": [
+              252
+            ],
+            "254": [
+              253
+            ],
+            "255": [
+              254
+            ]
+          }
+        },
+        {
+          "methodName": "equals",
+          "methodDescriptor": "(Ljava/lang/Object;)Z",
+          "globalMethodId": 32,
+          "nodes": {
+            "269": "equals.(Ljava/lang/Object;)Z:269",
+            "270": "[EXIT]",
+            "271": "Line 123: return true;",
+            "272": "equals.(Ljava/lang/Object;)Z:272",
+            "273": "Line 121: return false;",
+            "274": "equals.(Ljava/lang/Object;)Z:274",
+            "275": "equals.(Ljava/lang/Object;)Z:275",
+            "276": "equals.(Ljava/lang/Object;)Z:276",
+            "277": "equals.(Ljava/lang/Object;)Z:277",
+            "278": "equals.(Ljava/lang/Object;)Z:278",
+            "279": "equals.(Ljava/lang/Object;)Z:279",
+            "280": "equals.(Ljava/lang/Object;)Z:280",
+            "281": "Line 120: } else if (!builder.toString().equals(other.builder.toString())) {",
+            "282": "equals.(Ljava/lang/Object;)Z:282",
+            "283": "Line 118: return false;",
+            "284": "equals.(Ljava/lang/Object;)Z:284",
+            "285": "equals.(Ljava/lang/Object;)Z:285",
+            "286": "Line 117: if (other.builder != null) {",
+            "287": "equals.(Ljava/lang/Object;)Z:287",
+            "288": "equals.(Ljava/lang/Object;)Z:288",
+            "289": "Line 116: if (builder == null) {",
+            "290": "equals.(Ljava/lang/Object;)Z:290",
+            "291": "equals.(Ljava/lang/Object;)Z:291",
+            "292": "Line 115: StringBuilderImpl other = (StringBuilderImpl) obj;",
+            "293": "equals.(Ljava/lang/Object;)Z:293",
+            "294": "Line 113: return false;",
+            "295": "equals.(Ljava/lang/Object;)Z:295",
+            "296": "equals.(Ljava/lang/Object;)Z:296",
+            "297": "equals.(Ljava/lang/Object;)Z:297",
+            "298": "equals.(Ljava/lang/Object;)Z:298",
+            "299": "Line 112: if (getClass() != obj.getClass()) {",
+            "300": "equals.(Ljava/lang/Object;)Z:300",
+            "301": "Line 110: return false;",
+            "302": "equals.(Ljava/lang/Object;)Z:302",
+            "303": "Line 109: if (obj == null) {",
+            "304": "equals.(Ljava/lang/Object;)Z:304",
+            "305": "Line 107: return true;",
+            "306": "equals.(Ljava/lang/Object;)Z:306",
+            "307": "equals.(Ljava/lang/Object;)Z:307",
+            "308": "[ENTRY]",
+            "309": "Line 106: if (this == obj) {"
+          },
+          "edges": {
+            "269": [
+              270
+            ],
+            "270": [],
+            "271": [
+              269
+            ],
+            "272": [
+              270
+            ],
+            "273": [
+              272
+            ],
+            "274": [
+              273,
+              271
+            ],
+            "275": [
+              274
+            ],
+            "276": [
+              275
+            ],
+            "277": [
+              276
+            ],
+            "278": [
+              277
+            ],
+            "279": [
+              278
+            ],
+            "280": [
+              279
+            ],
+            "281": [
+              280
+            ],
+            "282": [
+              270
+            ],
+            "283": [
+              282
+            ],
+            "284": [
+              283,
+              271
+            ],
+            "285": [
+              284
+            ],
+            "286": [
+              285
+            ],
+            "287": [
+              281,
+              286
+            ],
+            "288": [
+              287
+            ],
+            "289": [
+              288
+            ],
+            "290": [
+              289
+            ],
+            "291": [
+              290
+            ],
+            "292": [
+              291
+            ],
+            "293": [
+              270
+            ],
+            "294": [
+              293
+            ],
+            "295": [
+              292,
+              294
+            ],
+            "296": [
+              295
+            ],
+            "297": [
+              296
+            ],
+            "298": [
+              297
+            ],
+            "299": [
+              298
+            ],
+            "300": [
+              270
+            ],
+            "301": [
+              300
+            ],
+            "302": [
+              299,
+              301
+            ],
+            "303": [
+              302
+            ],
+            "304": [
+              270
+            ],
+            "305": [
+              304
+            ],
+            "306": [
+              305,
+              303
+            ],
+            "307": [
+              306
+            ],
+            "308": [
+              309
+            ],
+            "309": [
+              307
             ]
           }
         }
@@ -514,563 +1771,2483 @@
   },
   "globalToLocalNodeId": {
     "0": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
       "methodName": "<init>",
       "methodDescriptor": "()V",
       "globalMethodId": 0,
       "localId": 4
     },
     "1": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
       "methodName": "<init>",
       "methodDescriptor": "()V",
       "globalMethodId": 0,
       "localId": -1
     },
     "2": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
       "methodName": "<init>",
       "methodDescriptor": "()V",
       "globalMethodId": 0,
       "localId": 3
     },
     "3": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
       "methodName": "<init>",
       "methodDescriptor": "()V",
       "globalMethodId": 0,
       "localId": -2
     },
     "4": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
       "methodName": "<init>",
       "methodDescriptor": "()V",
       "globalMethodId": 0,
       "localId": 2
     },
     "5": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
       "globalMethodId": 1,
-      "localId": -2
+      "localId": 44
     },
     "6": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
       "globalMethodId": 1,
-      "localId": 2
+      "localId": -1
     },
     "7": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M1",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
       "globalMethodId": 1,
-      "localId": -1
+      "localId": 41
     },
     "8": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 18
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 40
     },
     "9": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": -1
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 39
     },
     "10": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 17
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 38
     },
     "11": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 13
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 37
     },
     "12": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 12
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 36
     },
     "13": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 11
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 35
     },
     "14": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 10
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 34
     },
     "15": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 7
-    },
-    "16": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 6
-    },
-    "17": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 3
-    },
-    "18": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": -2
-    },
-    "19": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M2",
-      "methodDescriptor": "()I",
-      "globalMethodId": 2,
-      "localId": 2
-    },
-    "20": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M3",
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 3,
-      "localId": 5
-    },
-    "21": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 3,
-      "localId": -1
-    },
-    "22": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 3,
-      "localId": -2
-    },
-    "23": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E1",
-      "className": "E1",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 3,
-      "localId": 2
-    },
-    "24": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 4,
-      "localId": 4
-    },
-    "25": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 4,
-      "localId": -1
-    },
-    "26": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 4,
-      "localId": 3
-    },
-    "27": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 4,
-      "localId": -2
-    },
-    "28": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 4,
-      "localId": 2
-    },
-    "29": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 5,
-      "localId": -2
-    },
-    "30": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 5,
-      "localId": 2
-    },
-    "31": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E2",
-      "className": "E2",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 5,
-      "localId": -1
-    },
-    "32": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 6,
-      "localId": 4
-    },
-    "33": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 6,
-      "localId": -1
-    },
-    "34": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 6,
-      "localId": 3
-    },
-    "35": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 6,
-      "localId": -2
-    },
-    "36": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 6,
-      "localId": 2
-    },
-    "37": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 7,
-      "localId": 5
-    },
-    "38": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 7,
-      "localId": -1
-    },
-    "39": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 7,
-      "localId": -2
-    },
-    "40": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 7,
-      "localId": 2
-    },
-    "41": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M2",
-      "methodDescriptor": "()V",
-      "globalMethodId": 8,
-      "localId": -2
-    },
-    "42": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M2",
-      "methodDescriptor": "()V",
-      "globalMethodId": 8,
-      "localId": 2
-    },
-    "43": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M2",
-      "methodDescriptor": "()V",
-      "globalMethodId": 8,
-      "localId": -1
-    },
-    "44": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 9,
-      "localId": 5
-    },
-    "45": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 9,
-      "localId": -1
-    },
-    "46": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 9,
-      "localId": -2
-    },
-    "47": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E3",
-      "className": "E3",
-      "methodName": "M3",
-      "methodDescriptor": "()V",
-      "globalMethodId": 9,
-      "localId": 2
-    },
-    "48": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 10,
-      "localId": 4
-    },
-    "49": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 10,
-      "localId": -1
-    },
-    "50": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 10,
-      "localId": 3
-    },
-    "51": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 10,
-      "localId": -2
-    },
-    "52": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "<init>",
-      "methodDescriptor": "()V",
-      "globalMethodId": 10,
-      "localId": 2
-    },
-    "53": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 31
     },
-    "54": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "16": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
-      "localId": -1
+      "globalMethodId": 1,
+      "localId": 30
     },
-    "55": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "17": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
+      "localId": 29
+    },
+    "18": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 28
+    },
+    "19": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
       "localId": 27
     },
-    "56": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "20": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 26
     },
-    "57": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "21": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 25
     },
-    "58": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "22": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
-      "localId": 22
+      "globalMethodId": 1,
+      "localId": 24
     },
-    "59": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "23": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
+      "localId": 21
+    },
+    "24": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 20
+    },
+    "25": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 19
+    },
+    "26": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
       "localId": 18
     },
-    "60": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "27": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
-      "localId": 14
+      "globalMethodId": 1,
+      "localId": 17
     },
-    "61": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "28": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
-      "localId": 13
+      "globalMethodId": 1,
+      "localId": 16
     },
-    "62": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "29": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
+      "localId": 15
+    },
+    "30": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
       "localId": 12
     },
-    "63": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "31": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 11
     },
-    "64": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "32": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 10
     },
-    "65": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "33": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
+      "localId": 9
+    },
+    "34": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 8
+    },
+    "35": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
       "localId": 7
     },
-    "66": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "36": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
       "localId": 6
     },
-    "67": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
+    "37": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
       "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "globalMethodId": 1,
+      "localId": 3
+    },
+    "38": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": -2
+    },
+    "39": {
+      "classInternalName": "org/extendedStringBuilder/ConditionalStringBuilderTest",
+      "className": "ConditionalStringBuilderTest",
+      "methodName": "SimpleAppendIfTest",
+      "methodDescriptor": "()V",
+      "globalMethodId": 1,
+      "localId": 2
+    },
+    "40": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 11
+    },
+    "41": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": -1
+    },
+    "42": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 10
+    },
+    "43": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 9
+    },
+    "44": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 6
+    },
+    "45": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 5
+    },
+    "46": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 4
+    },
+    "47": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 3
+    },
+    "48": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": -2
+    },
+    "49": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 2,
+      "localId": 2
+    },
+    "50": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 11
+    },
+    "51": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": -1
+    },
+    "52": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 10
+    },
+    "53": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 9
+    },
+    "54": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 6
+    },
+    "55": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 5
+    },
+    "56": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 4
+    },
+    "57": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 3
+    },
+    "58": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": -2
+    },
+    "59": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 3,
+      "localId": 2
+    },
+    "60": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 11
+    },
+    "61": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": -1
+    },
+    "62": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 10
+    },
+    "63": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 9
+    },
+    "64": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 6
+    },
+    "65": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 5
+    },
+    "66": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 4
+    },
+    "67": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
       "localId": 3
     },
     "68": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
-      "globalMethodId": 11,
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
       "localId": -2
     },
     "69": {
-      "classInternalName": "ee360t/controlflow/trace/examples/E4",
-      "className": "E4",
-      "methodName": "M1",
-      "methodDescriptor": "()V",
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 4,
+      "localId": 2
+    },
+    "70": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 11
+    },
+    "71": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": -1
+    },
+    "72": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 10
+    },
+    "73": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 9
+    },
+    "74": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 6
+    },
+    "75": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 5
+    },
+    "76": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 4
+    },
+    "77": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 3
+    },
+    "78": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": -2
+    },
+    "79": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "create",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 5,
+      "localId": 2
+    },
+    "80": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": 6
+    },
+    "81": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": -1
+    },
+    "82": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": 5
+    },
+    "83": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": 4
+    },
+    "84": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": 3
+    },
+    "85": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": -2
+    },
+    "86": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "fromJavaStringBuilder",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 6,
+      "localId": 2
+    },
+    "87": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 7,
+      "localId": -2
+    },
+    "88": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 7,
+      "localId": -1
+    },
+    "89": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 8,
+      "localId": -2
+    },
+    "90": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 8,
+      "localId": -1
+    },
+    "91": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 9,
+      "localId": -2
+    },
+    "92": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 9,
+      "localId": -1
+    },
+    "93": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 10,
+      "localId": -2
+    },
+    "94": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 10,
+      "localId": -1
+    },
+    "95": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
       "globalMethodId": 11,
+      "localId": -2
+    },
+    "96": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 11,
+      "localId": -1
+    },
+    "97": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 12,
+      "localId": -2
+    },
+    "98": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 12,
+      "localId": -1
+    },
+    "99": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 13,
+      "localId": -2
+    },
+    "100": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 13,
+      "localId": -1
+    },
+    "101": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 14,
+      "localId": -2
+    },
+    "102": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 14,
+      "localId": -1
+    },
+    "103": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 15,
+      "localId": -2
+    },
+    "104": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 15,
+      "localId": -1
+    },
+    "105": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 16,
+      "localId": -2
+    },
+    "106": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 16,
+      "localId": -1
+    },
+    "107": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 17,
+      "localId": -2
+    },
+    "108": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 17,
+      "localId": -1
+    },
+    "109": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 18,
+      "localId": -2
+    },
+    "110": {
+      "classInternalName": "org/extendedStringBuilder/ExtStringBuilder",
+      "className": "ExtStringBuilder",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 18,
+      "localId": -1
+    },
+    "111": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 11
+    },
+    "112": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": -1
+    },
+    "113": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 8
+    },
+    "114": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 7
+    },
+    "115": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 6
+    },
+    "116": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 3
+    },
+    "117": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": -2
+    },
+    "118": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "<init>",
+      "methodDescriptor": "(Ljava/lang/StringBuilder;)V",
+      "globalMethodId": 19,
+      "localId": 2
+    },
+    "119": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 15
+    },
+    "120": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": -1
+    },
+    "121": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 14
+    },
+    "122": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 10
+    },
+    "123": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 9
+    },
+    "124": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 8
+    },
+    "125": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 7
+    },
+    "126": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 6
+    },
+    "127": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 3
+    },
+    "128": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": -2
+    },
+    "129": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 20,
+      "localId": 2
+    },
+    "130": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 24
+    },
+    "131": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": -1
+    },
+    "132": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 23
+    },
+    "133": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 19
+    },
+    "134": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 18
+    },
+    "135": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 17
+    },
+    "136": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 16
+    },
+    "137": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 15
+    },
+    "138": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 11
+    },
+    "139": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 10
+    },
+    "140": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 9
+    },
+    "141": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 8
+    },
+    "142": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 7
+    },
+    "143": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 6
+    },
+    "144": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 3
+    },
+    "145": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": -2
+    },
+    "146": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(ZLjava/lang/String;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 21,
+      "localId": 2
+    },
+    "147": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 7
+    },
+    "148": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": -1
+    },
+    "149": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 6
+    },
+    "150": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 5
+    },
+    "151": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 4
+    },
+    "152": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 3
+    },
+    "153": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": -2
+    },
+    "154": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "appendIf",
+      "methodDescriptor": "(Z)Lorg/extendedStringBuilder/ConditionalStringBuilder;",
+      "globalMethodId": 22,
+      "localId": 2
+    },
+    "155": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 7
+    },
+    "156": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": -1
+    },
+    "157": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 6
+    },
+    "158": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 5
+    },
+    "159": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 4
+    },
+    "160": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 3
+    },
+    "161": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": -2
+    },
+    "162": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 23,
+      "localId": 2
+    },
+    "163": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 42
+    },
+    "164": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": -1
+    },
+    "165": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 41
+    },
+    "166": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 37
+    },
+    "167": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 36
+    },
+    "168": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 35
+    },
+    "169": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 34
+    },
+    "170": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 33
+    },
+    "171": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 30
+    },
+    "172": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 29
+    },
+    "173": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 28
+    },
+    "174": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 27
+    },
+    "175": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 24
+    },
+    "176": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 23
+    },
+    "177": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 20
+    },
+    "178": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 19
+    },
+    "179": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 18
+    },
+    "180": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 17
+    },
+    "181": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 16
+    },
+    "182": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 12
+    },
+    "183": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 11
+    },
+    "184": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 10
+    },
+    "185": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 9
+    },
+    "186": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 8
+    },
+    "187": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 7
+    },
+    "188": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 4
+    },
+    "189": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 3
+    },
+    "190": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": -2
+    },
+    "191": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 24,
+      "localId": 2
+    },
+    "192": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 10
+    },
+    "193": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": -1
+    },
+    "194": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 9
+    },
+    "195": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 6
+    },
+    "196": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 5
+    },
+    "197": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 4
+    },
+    "198": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 3
+    },
+    "199": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": -2
+    },
+    "200": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/String;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 25,
+      "localId": 2
+    },
+    "201": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 10
+    },
+    "202": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": -1
+    },
+    "203": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 9
+    },
+    "204": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 6
+    },
+    "205": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 5
+    },
+    "206": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 4
+    },
+    "207": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 3
+    },
+    "208": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": -2
+    },
+    "209": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "append",
+      "methodDescriptor": "(Ljava/lang/Object;)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 26,
+      "localId": 2
+    },
+    "210": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 10
+    },
+    "211": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": -1
+    },
+    "212": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 9
+    },
+    "213": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 6
+    },
+    "214": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 5
+    },
+    "215": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 4
+    },
+    "216": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 3
+    },
+    "217": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": -2
+    },
+    "218": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "breakLine",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 27,
+      "localId": 2
+    },
+    "219": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 10
+    },
+    "220": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": -1
+    },
+    "221": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 9
+    },
+    "222": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 6
+    },
+    "223": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 5
+    },
+    "224": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 4
+    },
+    "225": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 3
+    },
+    "226": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": -2
+    },
+    "227": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "()Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 28,
+      "localId": 2
+    },
+    "228": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 22
+    },
+    "229": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": -1
+    },
+    "230": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 21
+    },
+    "231": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 17
+    },
+    "232": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 16
+    },
+    "233": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 13
+    },
+    "234": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 12
+    },
+    "235": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 11
+    },
+    "236": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 8
+    },
+    "237": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 7
+    },
+    "238": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 6
+    },
+    "239": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 3
+    },
+    "240": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": -2
+    },
+    "241": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "tab",
+      "methodDescriptor": "(I)Lorg/extendedStringBuilder/ExtStringBuilder;",
+      "globalMethodId": 29,
+      "localId": 2
+    },
+    "242": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": 5
+    },
+    "243": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": -1
+    },
+    "244": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": 4
+    },
+    "245": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": 3
+    },
+    "246": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": -2
+    },
+    "247": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "toString",
+      "methodDescriptor": "()Ljava/lang/String;",
+      "globalMethodId": 30,
+      "localId": 2
+    },
+    "248": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 30
+    },
+    "249": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": -1
+    },
+    "250": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 29
+    },
+    "251": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 26
+    },
+    "252": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 25
+    },
+    "253": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 22
+    },
+    "254": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 21
+    },
+    "255": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 20
+    },
+    "256": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 17
+    },
+    "257": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 16
+    },
+    "258": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 15
+    },
+    "259": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 14
+    },
+    "260": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 13
+    },
+    "261": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 12
+    },
+    "262": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 11
+    },
+    "263": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 10
+    },
+    "264": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 7
+    },
+    "265": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 6
+    },
+    "266": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 3
+    },
+    "267": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": -2
+    },
+    "268": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "hashCode",
+      "methodDescriptor": "()I",
+      "globalMethodId": 31,
+      "localId": 2
+    },
+    "269": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 69
+    },
+    "270": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": -1
+    },
+    "271": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 68
+    },
+    "272": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 64
+    },
+    "273": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 63
+    },
+    "274": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 60
+    },
+    "275": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 59
+    },
+    "276": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 58
+    },
+    "277": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 57
+    },
+    "278": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 56
+    },
+    "279": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 55
+    },
+    "280": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 54
+    },
+    "281": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 53
+    },
+    "282": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 49
+    },
+    "283": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 48
+    },
+    "284": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 45
+    },
+    "285": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 44
+    },
+    "286": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 43
+    },
+    "287": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 40
+    },
+    "288": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 39
+    },
+    "289": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 38
+    },
+    "290": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 35
+    },
+    "291": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 34
+    },
+    "292": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 33
+    },
+    "293": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 29
+    },
+    "294": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 28
+    },
+    "295": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 25
+    },
+    "296": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 24
+    },
+    "297": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 23
+    },
+    "298": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 22
+    },
+    "299": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 21
+    },
+    "300": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 17
+    },
+    "301": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 16
+    },
+    "302": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 13
+    },
+    "303": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 12
+    },
+    "304": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 8
+    },
+    "305": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 7
+    },
+    "306": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 4
+    },
+    "307": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": 3
+    },
+    "308": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
+      "localId": -2
+    },
+    "309": {
+      "classInternalName": "org/extendedStringBuilder/StringBuilderImpl",
+      "className": "StringBuilderImpl",
+      "methodName": "equals",
+      "methodDescriptor": "(Ljava/lang/Object;)Z",
+      "globalMethodId": 32,
       "localId": 2
     }
   }

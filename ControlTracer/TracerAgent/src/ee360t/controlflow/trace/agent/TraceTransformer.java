@@ -176,8 +176,11 @@ public class TraceTransformer implements ClassFileTransformer {
             Collections.reverse( Arrays.asList( nodes ) );
 
             for( int iNode : nodes ) {
-                if( iNode == ControlFlow.ENTRY || iNode == ControlFlow.EXIT )
+                if( iNode == ControlFlow.ENTRY || iNode == ControlFlow.EXIT ) {
+                    TraceRegistry.getGlobalNodeId( owner.name, method.name, method.desc, iNode );
                     continue;
+                }
+
 
                 // List of instructions that will represent our instrumentation.
                 InsnList instrumentation = new InsnList();
@@ -213,14 +216,15 @@ public class TraceTransformer implements ClassFileTransformer {
                     instrumentation.add( getInvokePopMethodInstruction() );
                 }
 
+                System.out.println( "NODE: " + iNode );
                 AbstractInsnNode insertPoint = method.instructions.get( iNode );
                 method.instructions.insertBefore( insertPoint, instrumentation );
             }
         }
         catch( Exception ex ) {
-            System.err.println( String.format( "Error instrumenting traced method %s.%s%s\n",
+            System.out.println( String.format( "Error instrumenting traced method %s.%s%s\n",
                     owner.name, method.name, method.desc ) );
-            ex.printStackTrace( System.err );
+            ex.printStackTrace( System.out );
         }
     }
 

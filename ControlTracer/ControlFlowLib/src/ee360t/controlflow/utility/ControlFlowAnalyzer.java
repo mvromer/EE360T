@@ -46,7 +46,13 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
 
             // Add an edge from the well-defined entry node to the first instruction in the control flow graph, which is
             // always at index 0. Do this now so that the entry node points to the first real instruction after pruning.
-            analyzer.controlFlow.addEdge( ControlFlow.ENTRY, 0 );
+            if( analyzer.controlFlow.getNodeEdges().size() == 0 ) {
+                analyzer.controlFlow.addEdge( ControlFlow.ENTRY, ControlFlow.EXIT );
+            }
+            else {
+                analyzer.controlFlow.addEdge( ControlFlow.ENTRY, 0 );
+            }
+
 
             // Go through the list of instructions and remove nodes from our control flow graph corresponding to fake
             // instructions signifying labels, line numbers, and stack frames.
@@ -145,6 +151,7 @@ public class ControlFlowAnalyzer extends Analyzer<BasicValue> {
 
     @Override
     protected void newControlFlowEdge( int iFrom, int iTo ) {
+        System.out.println( "new edge from " + iFrom + " to " + iTo );
         controlFlow.addEdge( iFrom, iTo );
     }
 }
