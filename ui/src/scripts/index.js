@@ -4,8 +4,18 @@ import '../styles/index.scss';
 import genClassGraph from './genClassGraph';
 import initTestView from './initTestView';
 import {
-  loadJSON
+  loadJSON,
+  elemCount
 } from './utils';
+
+window.count = {
+  classCount: 0,
+  methodCount: 0,
+  nodeCount: 0,
+  classCoveredCount: 0,
+  methodCoveredCount: 0,
+  nodeCoveredCount: 0
+};
 
 // split screen
 Split(['#class-view', '#method-view'], {
@@ -22,6 +32,8 @@ loadJSON("results.json", (response) => {
     globalToLocalNodeId,
     callGraph,
   } = data;
+
+  window.count = {...window.count, ...elemCount(controlFlows, globalToLocalNodeId)};
 
   genClassGraph(controlFlows, callGraph);
   initTestView(traceRecords, globalToLocalNodeId);

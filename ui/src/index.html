@@ -6,13 +6,20 @@
 </head>
 <body>
   <section class="header">
-    <h1>Runtime Test Coverage Visualizer</h1>
-    <div class="header__view-test">
-      <span class="header__view-test__title">View Test: </span>
-      <select class="header__view-test__dd">
-        <option value="">None</option>
-        <option value="all">All</option>
-      </select>
+    <h1>Runtime Test Trace Explorer</h1>
+    <div class="header-control">
+      <div class="header__view-test">
+        <span class="header__view-test__title">Select Test: </span>
+        <select class="header__view-test__dd">
+          <option value="">None</option>
+          <option value="all">All</option>
+        </select>
+      </div>
+      <div class="coverage">
+        <div class="coverage-item cCoverage">Class: <span class="cPercent">0.00</span>% |</div>
+        <div class="coverage-item mCoverage">Method: <span class="mPercent">0.00</span>% |</div>
+        <div class="coverage-item nCoverage">Nodes: <span class="nPercent">0.00</span>%</dic>
+      </div>
     </div>
   </section>
 

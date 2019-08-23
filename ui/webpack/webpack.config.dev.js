@@ -28,12 +28,16 @@ module.exports = merge(common, {
         loader: 'eslint-loader',
         options: {
           emitWarning: true,
+          ecmaVersion: 6,
         }
       },
       {
         test: /\.(js)$/,
         include: Path.resolve(__dirname, '../src'),
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015', 'stage-3'],
+        }
       },
       {
         test: /\.s?css$/i,
